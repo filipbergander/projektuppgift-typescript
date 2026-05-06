@@ -1,4 +1,4 @@
-# Projektuppift - Programmering i TypeScript
+# Projektuppift - Programmering i TypeScript DT208G
 
 ## Instruktioner från Angular:
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
