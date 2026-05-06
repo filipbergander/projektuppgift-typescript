@@ -1,5 +1,7 @@
-<p>course-table works!</p>
-@for (course of courses(); track course.courseCode ) {
+<!--Testar Angular material-->
+<!--<mat-slide-toggle>Toggle me!</mat-slide-toggle> -->
+
+<!--@for (course of courses(); track course.courseCode ) {
 <div>
     <p>{{course.courseCode}}</p>
     <p>{{course.courseName}}</p>
@@ -8,4 +10,59 @@
     <p>{{course.points}}</p>
 
 </div>
-}
+}-->
+
+<!-- Använder Angular Material UI för att skapa tabellen -->
+<div>
+    <!-- Inputfält för att söka efter kurser eller filtrera -->
+    <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Filtrera..." #input>
+    </mat-form-field>
+
+    <!-- Tabell med kurser inhämtade från service -->
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+
+            <!-- Kurskod -->
+            <ng-container matColumnDef="courseCode">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Kurskod </th>
+                <td mat-cell *matCellDef="let row"> {{row.courseCode}} </td>
+            </ng-container>
+
+            <!-- Kursnamn -->
+            <ng-container matColumnDef="courseName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Kursnamn </th>
+                <td mat-cell *matCellDef="let row"> {{row.courseName}} </td>
+            </ng-container>
+
+            <!-- Högskolepoäng -->
+            <ng-container matColumnDef="points">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Poäng </th>
+                <td mat-cell *matCellDef="let row"> {{row.points}} </td>
+            </ng-container>
+
+            <!-- Ämne -->
+            <ng-container matColumnDef="subject">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Ämne </th>
+                <td mat-cell *matCellDef="let row"> {{row.subject}} </td>
+            </ng-container>
+
+            <!-- Kursplan -->
+            <ng-container matColumnDef="syllabus">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Kursplan </th>
+                <td mat-cell *matCellDef="let row"> {{row.syllabus}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <!-- När ingen kurs matchar sökning visas detta här -->
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">Ingen kurs matchar din sökning "{{input.value}}"</td>
+            </tr>
+        </table>
+        <!-- Paginering istället för att ha allt i en lång lista och sida, och möjlighet att välja antal kurser som visas på varje sida -->
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+    </div>
+</div>
