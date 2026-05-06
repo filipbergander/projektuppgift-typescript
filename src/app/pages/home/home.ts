@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { CourseComponent } from '../course/course';
+import { CourseTable } from '../course-table/course-table';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CourseComponent],
+  imports: [CourseTable],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

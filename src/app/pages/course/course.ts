@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { GetCourseService } from '../../services/get-courses';
+import { Component} from '@angular/core';
+
 
 @Component({
   selector: 'app-course',
@@ -8,10 +8,4 @@ import { GetCourseService } from '../../services/get-courses';
   styleUrl: './course.scss',
 })
 export class CourseComponent {
-
-  courseService = inject(GetCourseService);
-
-  // Hämtar in data från webbtjänsten genom servicen
-  courses = this.courseService.fetchCourses();
-
 }

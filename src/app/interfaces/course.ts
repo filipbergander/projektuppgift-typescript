@@ -1,3 +1,4 @@
+// Interface för hur kurser med datatyper ska vara när det hämtas in från webbtjänsten
 export interface Course {
     courseCode: string;
     subjectCode: string;
