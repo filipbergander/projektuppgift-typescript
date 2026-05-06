@@ -1,4 +1,10 @@
 # Projektuppift - Programmering i TypeScript
+Beskrivning av uppgiften och webbplatsen:
+
+**Webbplats:**
+**Rapport:**
+
+Har jag satsat på grundkraven eller överbetyg?
 
 ## Instruktioner från Angular:
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
