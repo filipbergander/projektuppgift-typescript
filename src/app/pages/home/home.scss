@@ -7,3 +7,9 @@ main {
     max-width: 1000px;
     margin: 0 auto;
 }
+
+@media (max-width: 600px) {
+    main {
+        padding: 0em;
+    }
+}
