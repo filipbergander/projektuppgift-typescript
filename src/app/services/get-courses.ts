@@ -11,7 +11,7 @@ export class GetCourseService {
   private url: string = "https://matdah.github.io/DT208G---Programmering-i-TypeScript/Moment%205%20-%20Projekt/miun_courses.json";
 
   // HttpClient för att kunna hämta extern data från webbtjänsten
-  http = inject(HttpClient);
+  private http = inject(HttpClient);
 
   // Hämtar in datan från webbtjänsten genom interfacet
   fetchCourses(): Signal<Course[]> {

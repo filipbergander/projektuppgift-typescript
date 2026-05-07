@@ -1,0 +1,114 @@
+@use '@angular/material' as mat;
+.mat-mdc-table {
+    width: 100%;
+    background: #ffffff67;
+    box-shadow: 0 0 12px 1px rgb(161, 158, 158);
+}
+
+.mat-elevation-z8 {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.filter-field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    width: 100%;
+}
+
+.filter-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+mat-form-field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9em;
+    gap: 2px;
+    width: 375px;
+    padding: 0;
+    mat-label {
+        font-size: 0.9em;
+    }
+}
+
+.dropdown-menu {
+    font-size: 1em;
+    mat-label {
+        font-size: 0.9em;
+    }
+}
+
+.mat-mdc-select-value,
+.mat-mdc-option {
+    font-size: 0.9em;
+}
+
+.mat-mdc-header-row {
+    background-color: rgb(233, 229, 11);
+}
+
+.mat-mdc-header-cell {
+    font-weight: bold;
+    font-size: 1em;
+    padding: 2px 4px;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.mat-mdc-cell {
+    font-size: 0.9em;
+    padding: 2px 4px;
+}
+
+.mat-mdc-row {
+    height: 50px;
+}
+
+// Bakgrundsfärg på varannan rad i tabellen för att avskilja
+.mat-mdc-row:nth-child(even) {
+    background: #ebe8e854;
+}
+
+// Hover-effekt på raderna inom tabellen
+.mat-mdc-row:hover {
+    background-color: rgba(233, 229, 11, 0.11);
+}
+
+.mat-column-courseCode {
+    width: 80px;
+    padding: 4px 8px;
+}
+
+.mat-column-courseName {
+    width: 250px;
+}
+
+.mat-column-points {
+    width: 60px;
+}
+
+.mat-column-subject {
+    width: 175px;
+}
+
+.mat-column-syllabus {
+    padding: 2px 2px;
+    width: 60px;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.course-plan-row {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin: 0 auto;
+}
