@@ -9,21 +9,20 @@ import { MatLabel, MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
-import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-course-table',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatLabel, MatInputModule, MatIconModule, MatSelectModule, FormsModule, NgFor],
+  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatLabel, MatInputModule, MatIconModule, MatSelectModule, FormsModule],
   templateUrl: './course-table.html',
   styleUrl: './course-table.scss',
 })
 export class CourseTable implements AfterViewInit {
 
   // Alla kolumner som ska finnas i tabellen
-  displayedColumns: string[] = ["courseCode", "courseName", "points", "subject", "syllabus"];
+  displayedColumns: string[] = ["courseCode", "courseName", "points", "subject", "syllabus", "add"];
   // Sparar som en variabel för att visa, filtrera och sortera data i tabellen
-  dataSource: MatTableDataSource<Course> = new MatTableDataSource<Course>();
+  dataSource = new MatTableDataSource<Course>();
 
   // För att hantera sorteringen och pagineringen i tabellen
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -46,7 +45,6 @@ export class CourseTable implements AfterViewInit {
     effect(() => {
       const fetchedData = coursesSignal(); // Lagrar de inhämtade kurserna i fetchedData
       this.dataSource.data = this.courses();
-
       this.subjects = [...new Set(fetchedData.map(c => c.subject))] // Alla ämnen lagras i subjects för att användas i dropdown-menyn till att filtrera i tabellen
     });
   }
@@ -55,6 +53,7 @@ export class CourseTable implements AfterViewInit {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+
   }
 
   // För att hantera filtrering av tabellen när man söker i sökfältet
@@ -66,15 +65,36 @@ export class CourseTable implements AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
-
+  // Filtrera på ämne inom inputfält
   filterSubject(): void {
-    const fetchedCourses = this.courses();
-    const filteredSubject = fetchedCourses.filter(course => this.selected === "" || course.subject.includes(this.selected));
-    this.dataSource.data = filteredSubject;
+    const fetchedCourses = this.courses(); // lagrar kurserna
+    const filteredSubject = fetchedCourses.filter(course => this.selected === "" || course.subject.includes(this.selected)); // Filtrerar efter ämne på det som skrivits i input
+    this.dataSource.data = filteredSubject; // Uppdaterar hela tabellen beroende på input
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+  // Lägger till en kurs till localstorage
+  addCourseToPlan(course: Course): void {
+    console.log("Knappen klickades: ", course)
+    this.setButtonDisabled(course); // Sätter knappen som klickades på till disabled genom metoden
+    localStorage.setItem(course.courseCode, JSON.stringify(course)) // Lägger till den klickade kursen i localstorage    
+  }
+
+  // Ändrar knapp till disabled efter att den klickats på för att lägga till en kurs i ramschemat
+  setButtonDisabled(course: Course): void {
+    const clickedBtn = document.getElementById(course.courseCode) as HTMLButtonElement; // Den knapp som klickades på
+    clickedBtn.classList.add("clicked"); // Lägger till klassen clicked för styling
+    clickedBtn.disabled = true; // Sätter disabled
+    course.added = true; // Sätter added till true
+
+    // Sätter disabled på knappar som har kurser vilka är tillagda i localstorage
+    this.courses().forEach(course => {
+      if (localStorage.getItem(course.courseCode)) {
+        course.added = true;
+      }
+    });
   }
 }
