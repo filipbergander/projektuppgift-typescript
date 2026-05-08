@@ -1,11 +1,11 @@
 @use '@angular/material' as mat;
 .mat-mdc-table {
     width: 100%;
-    background: #ffffff67;
+    background: #ffffff;
     box-shadow: 0 0 12px 1px rgb(161, 158, 158);
 }
 
-.mat-elevation-z8 {
+mat-elevation-z8 {
     width: 100%;
     margin: 0 auto;
 }
@@ -164,7 +164,6 @@ td.mat-mdc-cell.mat-column-syllabus a {
     mat-form-field {
         gap: 1px;
         width: 225px;
-        padding: 0;
         mat-label {
             font-size: 0.9em;
         }
@@ -194,13 +193,9 @@ td.mat-mdc-cell.mat-column-syllabus a {
     }
     .mat-mdc-row {
         height: 40px;
-    }
-    // Bakgrundsfärg på varannan rad i tabellen för att avskilja
-    .mat-mdc-row:nth-child(even) {
-        background: #ebe8e854;
+        hyphens: auto;
     }
     .mat-column-courseCode {
-        display: none;
         width: 60px;
         padding: 2px 4px;
     }
@@ -237,3 +232,9 @@ td.mat-mdc-cell.mat-column-syllabus a {
         font-size: 0.8em;
     }
 }
+
+
+/*@media (max-width: 365px) {
+
+    .mat-column-courseCode {}
+}*/
