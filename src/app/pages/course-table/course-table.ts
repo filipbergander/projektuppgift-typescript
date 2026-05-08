@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, effect, inject, signal, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, effect, inject, ViewChild } from '@angular/core';
 import { GetCourseService } from '../../services/get-courses';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -28,7 +28,7 @@ export class CourseTable implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  // Hämtar in service
+  // Hämtar in kurser genom service
   courseService = inject(GetCourseService);
 
   // Lagrar de inhämtade kurserna i courses
@@ -53,7 +53,6 @@ export class CourseTable implements AfterViewInit {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-
   }
 
   // För att hantera filtrering av tabellen när man söker i sökfältet
