@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CourseTable } from '../course-table/course-table';
+import { CourseTable } from '../../partials/course-table/course-table';
 
 @Component({
   selector: 'app-home',

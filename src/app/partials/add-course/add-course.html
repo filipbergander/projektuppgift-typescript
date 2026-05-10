@@ -44,7 +44,8 @@
             <!--Knapp för att ta bort kursen i ramschemat-->
             <ng-container matColumnDef="removed">
                 <th mat-header-cell *matHeaderCellDef>Radera</th>
-                <td mat-cell *matCellDef="let row"><button class="remove-course-btn" id="{{row.courseCode}}" [class.clicked]="row.removed" [disabled]="row.removed" mat-button (click)="deleteCourseFromPlan(row.courseCode)">Ta bort</button></td>
+                <td mat-cell *matCellDef="let row"><button class="delete-course-btn" id="{{row.courseCode}}" [class.clicked]="row.removed" [disabled]="row.removed" mat-button (click)="deleteCourseFromPlan(row.courseCode)"><span class="delete-course-text"> Ta bort</span><mat-icon class="delete-icon">delete_outline
+                        </mat-icon></button></td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
