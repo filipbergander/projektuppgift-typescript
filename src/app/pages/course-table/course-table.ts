@@ -9,11 +9,12 @@ import { MatLabel, MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { NavHeader } from '../../partials/nav-header/nav-header';
 
 @Component({
   selector: 'app-course-table',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatLabel, MatInputModule, MatIconModule, MatSelectModule, FormsModule],
+  imports: [NavHeader, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatLabel, MatInputModule, MatIconModule, MatSelectModule, FormsModule],
   templateUrl: './course-table.html',
   styleUrl: './course-table.scss',
 })

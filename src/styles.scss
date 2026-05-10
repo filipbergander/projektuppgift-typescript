@@ -4,6 +4,14 @@
 // Learn more about theming and how to use it for your application's
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
+$color-primary:#53CBF3;
+$color-secondary:#FFDE42;
+$color: #5478FF;
+$color-background:#111FA2;
+$btn-color-news: rgb(255, 238, 0);
+$btn-color-red: #e95500e3;
+$color-text: #000000;
+$color-text-light: #ffffff;
 html {
     height: 100%;
     @include mat.theme( ( color: ( primary: mat.$rose-palette, tertiary: mat.$red-palette, ), typography: Roboto, density: 0, ));

@@ -6,7 +6,7 @@ import { AddCourse } from './pages/add-course/add-course';
 export const routes: Routes = [
     {path: 'hem', component: Home},
     {path: '', redirectTo: 'hem', pathMatch:'full'},
-    {path: 'tillagda-kurser', component: AddCourse},
+    {path: 'ramschema', component: AddCourse},
     {path: '404', component: NotFound},
     {path: '**', redirectTo: '404', pathMatch:'full'}
 ];
