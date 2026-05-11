@@ -6,6 +6,7 @@ section {
     background-color: #2B7CA1;
     border-radius: 16px;
     text-align: center;
+    margin-top: 5rem;
     box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.548);
     div {
         margin: 0 auto;
@@ -27,14 +28,6 @@ section {
         align-items: center;
         gap: 0em;
     }
-    mat-icon {
-        font-size: 2rem;
-        width: 2rem;
-        height: 2rem;
-        color: #FBBF24;
-        animation: iconPulse 2.7s ease-in-out infinite;
-        transform-origin: center;
-    }
 }
 
 h2 {
@@ -47,8 +40,17 @@ h2 {
     display: inline-block;
 }
 
+mat-icon {
+    font-size: 2rem;
+    width: 2rem;
+    height: 2rem;
+    color: #FBBF24;
+    animation: iconPulse 2.7s ease-in-out infinite;
+    transform-origin: center;
+}
+
 .star-icon {
-    animation-delay: 0;
+    animation-delay: 0.1s;
 }
 
 .book-icon {
@@ -63,7 +65,7 @@ h2 {
     @extend section;
     background-color: #16cf6094;
     max-width: 500px;
-    margin-top: 2rem;
+    margin-top: 5rem;
     h3 {
         font-size: clamp(1.05rem, 2vw, 1.4rem);
     }

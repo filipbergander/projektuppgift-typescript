@@ -1,0 +1,138 @@
+.card-grid {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 350px));
+    gap: 5rem;
+    margin-top: 5rem;
+}
+
+.pictures-flex {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+    gap: 10em;
+    ul {
+        font-size: 1.2em;
+    }
+}
+
+.pictures-text {
+    margin-top: 0;
+    padding: 1em;
+    border-radius: 12px;
+    span {
+        font-weight: bold;
+    }
+    mat-icon {
+        align-content: center;
+        font-size: 30px;
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.single-pic {
+    background-color: #e2e2e2;
+    text-align: left;
+    max-width: 800px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    img {
+        margin-bottom: 0em;
+        border-radius: 12px;
+    }
+    h3 {
+        font-size: 1.7rem;
+        margin: 0 auto;
+        margin-bottom: 0.2em;
+    }
+    p {
+        font-size: 1.2em;
+        line-height: 1.4;
+        margin-top: 0.8em;
+        max-width: 65ch;
+    }
+}
+
+.icon-card {
+    max-width: 400px;
+}
+
+.man-header {
+    background-image: url('/images/students/student-man-icon.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+}
+
+.girl-header {
+    background-image: url('/images/students/student-icon.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+}
+
+mat-card-header {
+    .title {
+        font-weight: 700;
+        text-align: left;
+    }
+    .subtitle {
+        text-align: left;
+        color: rgb(102, 102, 102);
+    }
+}
+
+mat-card-content {
+    p {
+        font-size: 1.5em;
+        line-height: 1.4;
+        text-align: left;
+        border-left: 4px solid #FBBF24;
+        padding-left: 0.8em;
+        margin-left: 0.2em;
+        font-style: italic;
+    }
+}
+
+.icon-card {
+    height: 570px;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.icon-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.22);
+}
+
+mat-card-content p {
+    background: #f7f7f7;
+    padding: 1rem 1.2rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #333;
+    position: relative;
+}
+
+mat-card-content p::before {
+    content: "“";
+    font-size: 2.4rem;
+    color: #FBBF24;
+    position: absolute;
+    margin-left: 0.2em;
+    left: 0.1rem;
+    top: -0.6rem;
+}
+
+@media (max-width: 360px) {
+    .card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 300px));
+        gap: 2rem;
+    }
+}
