@@ -1,0 +1,23 @@
+<div class="hero">
+    <picture>
+        <!-- Laddar in minst bild vid mobilläge, upplevde ännu mindre bilder som för suddiga i mobilläget, därför denna storlek -->
+        <source media="(max-width: 600px)" srcset="/images/hero/campus-avif-900.avif" type="image/avif">
+        <source media="(max-width: 600px)" srcset="/images/hero/campus-jpg-900.jpg" type="image/jpg">
+
+        <!-- Laddar in mindre bild vid tabletläge -->
+        <source media="(max-width: 1200px)" srcset="/images/hero/campus-avif-1200.avif" type="image/avif">
+        <source media="(max-width: 1200px)" srcset="/images/hero/campus-jpg-1200.jpg" type="image/jpg">
+
+        <!-- Laddar in stor bild vid desktopläge -->
+        <source srcset="/images/hero/campus-avif.avif" type="image/avif">
+        <source srcset="/images/hero/campus-jpg.jpg" type="image/jpg">
+        <img src="/images/campus-jpg.jpg" alt="Campus med människor gåendes">
+    </picture>
+
+    <div class="hero-text">
+        <div class="text-overlay">
+            <h1>Forma din framtid i norr</h1>
+            <p>Utforska tusentals kurser och bygg ditt personliga ramschema vid Norrlands Universitet</p>
+        </div>
+    </div>
+</div>

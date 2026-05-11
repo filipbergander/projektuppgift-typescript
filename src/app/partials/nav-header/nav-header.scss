@@ -1,6 +1,6 @@
 header {
     width: 100%;
-    background-color: #53cbf32a;
+    background-color: #0ea5e9;
     padding: 0em;
     display: flex;
     justify-content: center;
@@ -42,48 +42,6 @@ header {
     }
 }
 
-.hero {
-    position: relative;
-    height: min(50vh, 425px);
-    overflow: hidden;
-    img {
-        z-index: -1;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: bottom;
-    }
-    .hero-text {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 1rem;
-        z-index: 2;
-        color: white;
-        text-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
-    }
-    h1 {
-        font-size: clamp(1.4rem, 4vw, 3.5rem);
-        font-weight: 800;
-        margin: 0;
-    }
-    p {
-        font-size: clamp(0.7rem, 1vw, 1.5rem);
-        max-width: 700px;
-        margin-top: 1.5rem;
-    }
-}
-
-.text-overlay {
-    background-color: rgba(0, 0, 0, 0.589);
-    padding: 1.5rem 0.5rem 0.25rem;
-    border-radius: 12px;
-}
-
 .header-logo {
     display: flex;
     align-items: center;
@@ -100,17 +58,6 @@ header {
     }
 }
 
-@media (max-width: 1200px) {
-    .text-overlay {
-        padding: 1.3rem 0.5rem 0.2rem;
-    }
-    .hero {
-        p {
-            margin-top: 0.5rem;
-        }
-    }
-}
-
 @media (max-width: 768px) {
     .header-logo {
         padding-left: 2em;
@@ -122,15 +69,6 @@ header {
         a {
             font-size: 1.6em;
         }
-    }
-    .hero {
-        height: 200px;
-        p {
-            margin-top: 0.2rem;
-        }
-    }
-    .text-overlay {
-        padding: 1rem 0.5rem 0rem;
     }
 }
 
@@ -148,18 +86,6 @@ header {
         }
         a {
             font-size: 1em;
-        }
-    }
-    .hero {
-        text-align: center;
-        line-height: 1.2;
-        height: 180px;
-        p {
-            max-width: 40ch;
-            margin-top: 0.2em;
-        }
-        .text-overlay {
-            padding: 1em;
         }
     }
 }

@@ -1,0 +1,129 @@
+section {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 700px;
+    padding: 0.3em;
+    background-color: #2B7CA1;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.548);
+    div {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+    P {
+        font-weight: 800;
+        font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+        display: flex;
+        align-items: center;
+        margin-top: 0;
+        color: #fefefe;
+        line-height: 1.2;
+    }
+    .p-items {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0em;
+    }
+    mat-icon {
+        font-size: 2rem;
+        width: 2rem;
+        height: 2rem;
+        color: #FBBF24;
+        animation: iconPulse 2.7s ease-in-out infinite;
+        transform-origin: center;
+    }
+}
+
+h2 {
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    margin-bottom: 0.5em;
+    width: 80%;
+    color: #fefefe;
+    border-bottom: 3px solid #FBBF24;
+    padding-bottom: 0.3em;
+    display: inline-block;
+}
+
+.star-icon {
+    animation-delay: 0;
+}
+
+.book-icon {
+    animation-delay: 0.3s;
+}
+
+.school-icon {
+    animation-delay: 0.6s;
+}
+
+.choose-us {
+    @extend section;
+    background-color: #16cf6094;
+    max-width: 500px;
+    margin-top: 2rem;
+    h3 {
+        font-size: clamp(1.05rem, 2vw, 1.4rem);
+    }
+    ul {
+        margin-left: 3rem;
+        padding-left: 1rem;
+        line-height: 1.5;
+        text-align: left;
+    }
+    li {
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        list-style-position: inside;
+        font-size: clamp(0.75rem, 1.5vw, 1rem);
+    }
+}
+
+.choose-us mat-icon {
+    font-size: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #000000;
+    animation: none;
+    filter: none;
+    transform: none;
+}
+
+.park-icon {
+    color: black;
+    align-content: center;
+}
+
+@keyframes iconPulse {
+    0% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 0 #fbbe2400);
+    }
+    50% {
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 10px #fbbe24ab);
+    }
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 0 #fbbe2400);
+    }
+}
+
+@media (max-width: 600px) {
+    section {
+        padding: 0.3em 0;
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 360px) {
+    section {
+        .p-container {
+            gap: 1em;
+        }
+    }
+}

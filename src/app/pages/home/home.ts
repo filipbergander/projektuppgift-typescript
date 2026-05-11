@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { NavHeader } from '../../partials/nav-header/nav-header';
+import { Hero } from '../../partials/hero/hero';
+import { Statistic } from '../../partials/statistic/statistic';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NavHeader],
+  imports: [Hero, Statistic],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
