@@ -134,6 +134,7 @@
         }
     }
     
+    // Ikon för länk till kursplan
     td.mat-mdc-cell.mat-column-syllabus a {
         display: flex;
         justify-content: center;
@@ -144,6 +145,7 @@
         }
     }
     
+    // Kolumnen för att lägga till respektive kurs i ramschema
     .mat-column-add {
         width: 60px;
         text-align: center;
@@ -152,6 +154,7 @@
         }
     }
     
+    // Cellen och raden för kursplan
     .course-plan-row {
         display: flex;
         align-items: center;
@@ -159,10 +162,12 @@
         margin: 0 auto;
     }
     
+    // Ikon för att lägga till en kurs, +  visas inte på desktop
     .add-icon {
         display: none;
     }
     
+    // Knapp för att lägga till en kurs
     .add-course-btn {
         background-color: rgb(245, 158, 100);
         padding: 0.8em 1.5em;
@@ -186,9 +191,6 @@
     }
     
     @media (max-width:900px) {
-        .mat-mdc-row {
-            height: 60px;
-        }
         .add-course-btn {
             padding: 0.8em 0.5em;
             font-size: 0.95em;
@@ -238,7 +240,6 @@
         }
         // Kolumnernas rubriker
         .mat-mdc-header-row {
-            background-color: rgb(233, 229, 11);
             font-size: 0.75em;
         }
         // Kolumernas rubriker varje cell
@@ -326,9 +327,11 @@
     }
     
     @media (max-width: 400px) {
+        // Visar inte knappens text
         .add-course-text {
             display: none;
         }
+        // Visar ikonen
         .add-icon {
             display: block;
             align-content: center;
@@ -336,6 +339,7 @@
             height: 20px;
             width: 20px;
         }
+        // Gör knappen för ikonen lite mindre
         .add-course-btn {
             padding: 0em;
             font-size: 0.8em;
@@ -360,7 +364,6 @@
         }
         // Kolumnernas rubriker
         .mat-mdc-header-row {
-            background-color: rgb(233, 229, 11);
             font-size: 0.7em;
         }
         // Kolumernas rubriker varje cell

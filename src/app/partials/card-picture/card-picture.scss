@@ -167,15 +167,19 @@ mat-card-content p::before {
 @media (max-width: 500px) {
     .pictures-flex {
         padding: 0em;
+        margin-top: 3rem;
         img {
             border-radius: 0;
         }
+    }
+    .card-grid {
+        margin-top: 3rem;
+        gap: 2rem;
     }
 }
 
 @media (max-width: 360px) {
     .card-grid {
         grid-template-columns: repeat(auto-fit, minmax(280px, 300px));
-        gap: 2rem;
     }
 }

@@ -5,38 +5,36 @@
     box-shadow: 0 0 12px 1px rgb(161, 158, 158);
 }
 
+// Container runt hela table
 .mat-elevation-z8 {
     width: 100%;
     margin: 0 auto;
 }
 
-.dropdown-menu {
-    font-size: 1em;
-    mat-label {
-        font-size: 0.9em;
-    }
-}
-
+// Raden för hela header med kolumnnamnen i tabellen
 .mat-mdc-header-row {
     background-color: rgb(233, 229, 11);
 }
 
+// Varje enstaka kolumnnamn i headern
 .mat-mdc-header-cell {
     font-weight: bold;
-    font-size: 0.95em;
+    font-size: 1.1em;
     padding: 2px 4px;
     &:hover {
         text-decoration: underline;
     }
 }
 
+// Varje enskild cell i tabellen
 .mat-mdc-cell {
-    font-size: 0.9em;
+    font-size: 1em;
     padding: 2px 4px;
 }
 
+// Raderna i tabellen
 .mat-mdc-row {
-    height: 50px;
+    height: 60px;
 }
 
 // Bakgrundsfärg på varannan rad i tabellen för att avskilja
@@ -44,28 +42,32 @@
     background: #ebe8e854;
 }
 
+// Kolumnen för kurskod
 .mat-column-courseCode {
     width: 80px;
     padding: 4px 8px;
 }
 
+// Kolumnen för kursnamn
 .mat-column-courseName {
     width: 240px;
 }
 
+// Kolumnen för poäng
 .mat-column-points {
     width: 50px;
-    text-align: center;
 }
 
 td.mat-mdc-cell.mat-column-points {
     text-align: left;
 }
 
+// Kolumnen för ämne
 .mat-column-subject {
     width: 175px;
 }
 
+// Kolumnen för kursplan
 .mat-column-syllabus {
     padding: 2px 2px;
     width: 60px;
@@ -75,6 +77,7 @@ td.mat-mdc-cell.mat-column-points {
     }
 }
 
+// Ikon för länk till kursplan
 td.mat-mdc-cell.mat-column-syllabus a {
     display: flex;
     justify-content: center;
@@ -85,6 +88,7 @@ td.mat-mdc-cell.mat-column-syllabus a {
     }
 }
 
+// Kolumnen för att radera kurser från ramschemat
 .mat-column-removed {
     width: 60px;
     text-align: center;
@@ -93,6 +97,7 @@ td.mat-mdc-cell.mat-column-syllabus a {
     }
 }
 
+// Cellen och raden för kursplan
 .course-plan-row {
     display: flex;
     align-items: center;
@@ -100,13 +105,15 @@ td.mat-mdc-cell.mat-column-syllabus a {
     margin: 0 auto;
 }
 
+// Ikon för att ta bort en kurs, papperskorg visas inte på desktop
 .delete-icon {
     display: none;
 }
 
+// Knapp för att ta bort en kurs
 .delete-course-btn {
     background-color: rgb(245, 158, 100);
-    padding: 0.6em 0.75em;
+    padding: 0.8em 1.5em;
     border-radius: 4px;
     border: none;
     cursor: pointer;
@@ -114,6 +121,7 @@ td.mat-mdc-cell.mat-column-syllabus a {
     font-weight: bold;
     transition: .2s ease-in-out;
     box-shadow: 0 0 4px 0.2px black;
+    white-space: nowrap;
     &:hover {
         background-color: rgba(63, 185, 6, 0.699);
     }
@@ -126,8 +134,9 @@ td.mat-mdc-cell.mat-column-syllabus a {
 }
 
 @media (max-width:900px) {
-    .mat-mdc-row {
-        height: 60px;
+    .delete-course-btn {
+        padding: 0.8em 0.5em;
+        font-size: 0.95em;
     }
 }
 
@@ -142,26 +151,8 @@ td.mat-mdc-cell.mat-column-syllabus a {
     .table-container {
         padding: 0em;
     }
-    mat-form-field {
-        gap: 1px;
-        width: 225px;
-        mat-label {
-            font-size: 0.9em;
-        }
-    }
-    .dropdown-menu {
-        font-size: 1em;
-        mat-label {
-            font-size: 0.9em;
-        }
-    }
-    // Selectbox med val av
-    .mat-mdc-select-value,
-    .mat-mdc-option {
-        font-size: 0.9em;
-    } // Kolumnernas rubriker
+    // Kolumnernas rubriker
     .mat-mdc-header-row {
-        background-color: rgb(233, 229, 11);
         font-size: 0.75em;
     }
     // Kolumernas rubriker varje cell
@@ -205,7 +196,7 @@ td.mat-mdc-cell.mat-column-syllabus a {
     }
     // Kolumn för ämne
     .mat-column-subject {
-        width: 125px;
+        width: 105px;
     }
     // Kolumn för kursplan
     .mat-column-syllabus {
@@ -233,8 +224,8 @@ td.mat-mdc-cell.mat-column-syllabus a {
         gap: 1px;
     }
     .delete-course-btn {
-        padding: 0.5em 0.5em;
-        font-size: 0.75em;
+        padding: 0.8em 0.7em;
+        font-size: 0.8em;
     }
     .delete-course-text {
         display: block;
@@ -244,10 +235,12 @@ td.mat-mdc-cell.mat-column-syllabus a {
     }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 400px) {
+    // Visar inte knappens text
     .delete-course-text {
         display: none;
     }
+    // Visar ikonen
     .delete-icon {
         display: block;
         align-content: center;
@@ -255,31 +248,13 @@ td.mat-mdc-cell.mat-column-syllabus a {
         height: 20px;
         width: 20px;
     }
+    // Gör knappen för ikonen lite mindre
     .delete-course-btn {
         padding: 0em;
         font-size: 0.8em;
     }
-    mat-form-field {
-        gap: 1px;
-        width: 225px;
-        mat-label {
-            font-size: 0.9em;
-        }
-    }
-    .dropdown-menu {
-        font-size: 1em;
-        mat-label {
-            font-size: 0.9em;
-        }
-    }
-    // Selectbox med val av
-    .mat-mdc-select-value,
-    .mat-mdc-option {
-        font-size: 0.9em;
-    }
     // Kolumnernas rubriker
     .mat-mdc-header-row {
-        background-color: rgb(233, 229, 11);
         font-size: 0.7em;
     }
     // Kolumernas rubriker varje cell
@@ -297,9 +272,3 @@ td.mat-mdc-cell.mat-column-syllabus a {
         height: 45px;
     }
 }
-
-
-/*@media (max-width: 365px) {
-
-    .mat-column-courseCode {}
-}*/
