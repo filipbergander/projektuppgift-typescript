@@ -139,6 +139,25 @@ mat-card-content p::before {
     top: -0.6rem;
 }
 
+@media (max-width: 800px) {
+    .single-pic {
+        max-width: 700px;
+        flex: 1 1 400px;
+        width: 50%;
+        padding: 0;
+        img {
+            width: 100%;
+            height: auto;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+        p {
+            font-size: 1.2em;
+        }
+    }
+}
+
 @media (max-width: 500px) {
     .pictures-flex {
         padding: 0em;

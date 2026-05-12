@@ -5,13 +5,41 @@ article {
     align-content: center;
     background-color: rgb(245, 172, 172);
     h1 {
-        font-size: 2.5em;
+        font-size: clamp(1.7em, 3vw, 2.5em);
     }
     h2 {
-        font-size: 3em;
+        font-size: clamp(1.5em, 3vw, 2.3em);
     }
     p {
-        font-size: 1.3em;
+        font-size: clamp(1.1em, 2.5vw, 1.3em);
         color: rgb(0, 0, 0);
+    }
+}
+
+@media (max-width: 768px) {
+    article {
+        h1 {
+            // font-size: 2em;
+        }
+        h2 {
+            // font-size: 1.75em;
+        }
+        p {
+            // font-size: 1.15em;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    article {
+        h1 {
+            // font-size: 1.7em;
+        }
+        h2 {
+            //font-size: 1.5em;
+        }
+        p {
+            //font-size: 1.1em;
+        }
     }
 }

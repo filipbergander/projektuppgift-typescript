@@ -12,6 +12,10 @@ $btn-color-news: rgb(255, 238, 0);
 $btn-color-red: #e95500e3;
 $color-text: #000000;
 $color-text-light: #ffffff;
+* {
+    box-sizing: border-box;
+}
+
 html {
     height: 100%;
     @include mat.theme( ( color: ( primary: mat.$rose-palette, tertiary: mat.$red-palette, ), typography: Roboto, density: 0, ));
@@ -40,5 +44,5 @@ body {
 app-root {
     display: flex;
     flex-direction: column;
-    min-width: 100vh;
+    min-width: 100%;
 }
