@@ -6,6 +6,7 @@
     gap: 5em;
     padding: 1em;
     ul {
+        padding-left: 1.5em;
         font-size: 1.2em;
     }
 }
@@ -153,6 +154,11 @@ mat-card-content p::before {
             font-size: 1.5rem;
         }
         p {
+            font-size: 1.1em;
+        }
+    }
+    .pictures-flex {
+        ul {
             font-size: 1.1em;
         }
     }

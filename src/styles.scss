@@ -18,6 +18,8 @@ $color-text-light: #ffffff;
 
 html {
     height: 100%;
+    margin: 0;
+    padding: 0;
     @include mat.theme( ( color: ( primary: mat.$rose-palette, tertiary: mat.$red-palette, ), typography: Roboto, density: 0, ));
 }
 
@@ -44,5 +46,5 @@ body {
 app-root {
     display: flex;
     flex-direction: column;
-    min-width: 100%;
+    min-height: 100vh;
 }

@@ -1,366 +1,472 @@
-@use '@angular/material' as mat;
-$color-primary:#53CBF3;
-$color-secondary:#FFDE42;
-$color: #5478FF;
-$color-background:#111FA2;
-$btn-color-news: rgb(255, 238, 0);
-$btn-color-red: #e95500e3;
-$color-text: #000000;
-$color-text-light: #ffffff;
-.mat-mdc-table {
-    width: 100%;
-    background: #ffffff;
-    box-shadow: 0 0 12px 1px rgb(161, 158, 158);
-}
-
-mat-elevation-z8 {
-    width: 100%;
-    margin: 0 auto;
-}
-
-.filter-field {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    background-color: #53CBF3;
-    gap: 2em;
-    width: 100%;
-}
-
-mat-form-field {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1em;
-    gap: 2px;
-    flex: 1 1 280px;
-    max-width: 375px;
-    width: 100%;
-    padding: 0;
-    margin-top: 1em;
-    mat-label {
+    @use '@angular/material' as mat;
+    $color-primary:#53CBF3;
+    $color-secondary:#FFDE42;
+    $color: #5478FF;
+    $color-background:#111FA2;
+    $btn-color-news: rgb(255, 238, 0);
+    $btn-color-red: #e95500e3;
+    $color-text: #000000;
+    $color-text-light: #ffffff;
+    .mat-mdc-table {
+        width: 100%;
+        background: #ffffff;
+        box-shadow: 0 0 12px 1px rgb(161, 158, 158);
+    }
+    
+    .table-cont-header {
+        display: flex;
+        flex-direction: column;
+        background-color: $color-primary;
+    }
+    
+    mat-elevation-z8 {
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    .course-counter {
+        text-align: left;
+        padding: 0 1em;
+        font-size: 1.1em;
+    }
+    
+    .filter-field {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        background-color: $color-primary;
+        gap: 2em;
+        width: 100%;
+    }
+    
+    mat-form-field {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-size: 1em;
+        gap: 2px;
+        flex: 1 1 20px;
+        max-width: 375px;
+        width: 100%;
+        padding: 0;
+        margin-top: 1em;
+        mat-label {
+            font-size: 1em;
+        }
+        input {
+            font-size: 1.2em;
+        }
     }
-    input {
-        font-size: 1.2em;
-    }
-}
-
-.dropdown-menu {
-    font-size: 1em;
-    mat-label {
+    
+    .dropdown-menu {
         font-size: 1em;
+        mat-label {
+            font-size: 1em;
+        }
+        mat-select {
+            font-size: 1.2em;
+        }
+        mat-option {
+            font-size: 1.2em;
+        }
     }
-    mat-select {
-        font-size: 1.2em;
+    
+    .mat-mdc-select-value,
+    .mat-mdc-option {
+        font-size: 0.9em;
     }
-    mat-option {
-        font-size: 1.2em;
+    
+    .mat-mdc-header-row {
+        background-color: rgb(233, 229, 11);
     }
-}
-
-.mat-mdc-select-value,
-.mat-mdc-option {
-    font-size: 0.9em;
-}
-
-.mat-mdc-header-row {
-    background-color: rgb(233, 229, 11);
-}
-
-.mat-mdc-header-cell {
-    font-weight: bold;
-    font-size: 1.1em;
-    padding: 2px 4px;
-    &:hover {
-        text-decoration: underline;
+    
+    .mat-mdc-header-cell {
+        font-weight: bold;
+        font-size: 1.1em;
+        padding: 2px 4px;
+        &:hover {
+            text-decoration: underline;
+        }
     }
-}
-
-.mat-mdc-cell {
-    font-size: 1em;
-    padding: 2px 4px;
-}
-
-.mat-mdc-row {
-    height: 50px;
-}
-
-// Bakgrundsfärg på varannan rad i tabellen för att avskilja
-.mat-mdc-row:nth-child(even) {
-    background: #ebe8e854;
-}
-
-.mat-column-courseCode {
-    width: 80px;
-    padding: 4px 8px;
-}
-
-.mat-column-courseName {
-    width: 240px;
-}
-
-.mat-column-points {
-    width: 50px;
-}
-
-td.mat-mdc-cell.mat-column-points {
-    text-align: left;
-}
-
-.mat-column-subject {
-    width: 175px;
-}
-
-.mat-column-syllabus {
-    padding: 2px 2px;
-    width: 60px;
-    text-align: center;
-    &:hover {
-        text-decoration: none;
+    
+    .mat-mdc-cell {
+        font-size: 1em;
+        padding: 2px 4px;
     }
-}
-
-td.mat-mdc-cell.mat-column-syllabus a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &:hover {
-        color: rgb(2, 109, 28);
-        transform: scale(1.15);
-    }
-}
-
-.mat-column-add {
-    width: 60px;
-    text-align: center;
-    &:hover {
-        text-decoration: none;
-    }
-}
-
-.course-plan-row {
-    display: flex;
-    align-items: center;
-    gap: 3px;
-    margin: 0 auto;
-}
-
-.add-icon {
-    display: none;
-}
-
-.add-course-btn {
-    background-color: rgb(245, 158, 100);
-    padding: 0.8em 1.5em;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    font-size: 0.95em;
-    font-weight: bold;
-    transition: .2s ease-in-out;
-    box-shadow: 0 0 4px 0.2px black;
-    white-space: nowrap;
-    &:hover {
-        background-color: rgba(63, 185, 6, 0.699);
-    }
-    &.clicked {
-        background-color: rgba(245, 158, 100, 0.671);
-        cursor: default;
-        transition: 0.3s ease;
-        transform: scale(0.95);
-    }
-}
-
-@media (max-width:900px) {
+    
     .mat-mdc-row {
         height: 60px;
     }
-}
-
-@media (max-width: 600px) {
-    .mat-mdc-cell,
-    .mat-mdc-header-cell {
-        white-space: normal;
+    
+    // Bakgrundsfärg på varannan rad i tabellen för att avskilja
+    .mat-mdc-row:nth-child(even) {
+        background: #ebe8e854;
     }
-    mat-elevation-z8 {
-        overflow-x: auto;
-    }
-    .filter-field {
-        gap: 0.5em;
-    }
-    .table-container {
-        padding: 0em;
-    }
-    mat-form-field {
-        gap: 1px;
-        width: 225px;
-        mat-label {
-            font-size: 0.9em;
-        }
-        input {
-            font-size: 1em;
-        }
-    }
-    .dropdown-menu {
-        font-size: 1em;
-        mat-label {
-            font-size: 0.9em;
-        }
-        mat-select {
-            font-size: 1em;
-        }
-        mat-option {
-            font-size: 1em;
-        }
-    }
-    // Selectbox med val av
-    .mat-mdc-select-value,
-    .mat-mdc-option {
-        font-size: 0.9em;
-    }
-    // Kolumnernas rubriker
-    .mat-mdc-header-row {
-        background-color: rgb(233, 229, 11);
-        font-size: 0.75em;
-    }
-    // Kolumernas rubriker varje cell
-    .mat-mdc-header-cell {
-        padding: 1px 2px;
-    }
-    // Radernas celler
-    .mat-mdc-cell {
-        font-size: 0.75em;
-        padding: 1px 2px;
-        line-height: 1.2;
-    }
-    // Raderna
-    .mat-mdc-row {
-        height: 50px;
-        hyphens: auto;
-    }
-    // Kolumn för kurskod
+    
     .mat-column-courseCode {
-        width: 60px;
-        padding: 2px 4px;
+        width: 80px;
+        padding: 4px 8px;
     }
-    // Kolumn för kursnamn
+    
     .mat-column-courseName {
-        width: 170px;
+        width: 240px;
     }
-    .points-header {
-        text-align: center !important;
-    }
-    .points-cell {
-        text-align: center !important;
-    }
-    // Kolumn för poäng
+    
     .mat-column-points {
-        width: 30px;
-        text-align: center;
+        width: 50px;
     }
+    
     td.mat-mdc-cell.mat-column-points {
-        text-align: center;
-        padding: 0;
+        text-align: left;
     }
-    // Kolumn för ämne
+    
     .mat-column-subject {
-        width: 125px;
+        width: 175px;
     }
-    // Kolumn för kursplan
+    
     .mat-column-syllabus {
-        padding: 1px 1px;
-        width: 40px;
+        padding: 2px 2px;
+        width: 60px;
+        text-align: center;
+        &:hover {
+            text-decoration: none;
+        }
     }
-    // Länk (ikonen) till kursplan
-    .syllabus-icon {
-        font-size: 20px;
-        width: 22px;
-        height: 22px;
-        line-height: 22px;
-        transition: transform 0.15s ease;
+    
+    td.mat-mdc-cell.mat-column-syllabus a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:hover {
+            color: rgb(2, 109, 28);
+            transform: scale(1.15);
+        }
     }
-    .course-plan-row:hover .syllabus-icon {
-        transform: scale(1.05);
-    }
-    // Kolumn för att lägga till kurs i ramschema
+    
     .mat-column-add {
         width: 60px;
-        padding: 0 0.6em;
+        text-align: center;
+        &:hover {
+            text-decoration: none;
+        }
     }
-    // Rad för kursplan
+    
     .course-plan-row {
-        gap: 1px;
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        margin: 0 auto;
     }
-    .add-course-btn {
-        padding: 0.8em 0.7em;
-        font-size: 0.8em;
-    }
-    .add-course-text {
-        display: block;
-    }
+    
     .add-icon {
         display: none;
     }
-}
-
-@media (max-width: 380px) {
-    .add-course-text {
-        display: none;
-    }
-    .add-icon {
-        display: block;
-        align-content: center;
-        font-size: 16px;
-        height: 20px;
-        width: 20px;
-    }
+    
     .add-course-btn {
-        padding: 0em;
-        font-size: 0.8em;
-    }
-    mat-form-field {
-        gap: 1px;
-        width: 225px;
-        mat-label {
-            font-size: 0.9em;
+        background-color: rgb(245, 158, 100);
+        padding: 0.8em 1.5em;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        font-size: 0.95em;
+        font-weight: bold;
+        transition: .2s ease-in-out;
+        box-shadow: 0 0 4px 0.2px black;
+        white-space: nowrap;
+        &:hover {
+            background-color: rgba(63, 185, 6, 0.699);
+        }
+        &.clicked {
+            background-color: rgba(245, 158, 100, 0.671);
+            cursor: default;
+            transition: 0.3s ease;
+            transform: scale(0.95);
         }
     }
-    .dropdown-menu {
-        font-size: 1em;
-        mat-label {
-            font-size: 0.9em;
+    
+    @media (max-width:900px) {
+        .mat-mdc-row {
+            height: 60px;
+        }
+        .add-course-btn {
+            padding: 0.8em 0.5em;
+            font-size: 0.95em;
         }
     }
-    // Selectbox med val av
-    .mat-mdc-select-value,
-    .mat-mdc-option {
-        font-size: 0.9em;
+    
+    @media (max-width: 660px) {
+        .mat-mdc-cell,
+        .mat-mdc-header-cell {
+            white-space: normal;
+        }
+        mat-elevation-z8 {
+            overflow-x: auto;
+        }
+        .filter-field {
+            gap: 0.5em;
+        }
+        .table-container {
+            padding: 0em;
+        }
+        mat-form-field {
+            gap: 1px;
+            width: 225px;
+            mat-label {
+                font-size: 0.9em;
+            }
+            input {
+                font-size: 1em;
+            }
+        }
+        .dropdown-menu {
+            font-size: 1em;
+            mat-label {
+                font-size: 0.9em;
+            }
+            mat-select {
+                font-size: 1em;
+            }
+            mat-option {
+                font-size: 1em;
+            }
+        }
+        // Selectbox med val av
+        .mat-mdc-select-value,
+        .mat-mdc-option {
+            font-size: 0.9em;
+        }
+        // Kolumnernas rubriker
+        .mat-mdc-header-row {
+            background-color: rgb(233, 229, 11);
+            font-size: 0.75em;
+        }
+        // Kolumernas rubriker varje cell
+        .mat-mdc-header-cell {
+            padding: 1px 2px;
+        }
+        // Radernas celler
+        .mat-mdc-cell {
+            font-size: 0.75em;
+            padding: 1px 2px;
+            line-height: 1.2;
+        }
+        // Raderna
+        .mat-mdc-row {
+            height: 50px;
+            hyphens: auto;
+        }
+        // Kolumn för kurskod
+        .mat-column-courseCode {
+            width: 60px;
+            padding: 2px 4px;
+        }
+        // Kolumn för kursnamn
+        .mat-column-courseName {
+            width: 170px;
+        }
+        .points-header {
+            text-align: center !important;
+        }
+        .points-cell {
+            text-align: center !important;
+        }
+        // Kolumn för poäng
+        .mat-column-points {
+            width: 30px;
+            text-align: center;
+        }
+        td.mat-mdc-cell.mat-column-points {
+            text-align: center;
+            padding: 0;
+        }
+        // Kolumn för ämne
+        .mat-column-subject {
+            width: 105px;
+        }
+        // Kolumn för kursplan
+        .mat-column-syllabus {
+            padding: 1px 1px;
+            width: 40px;
+        }
+        // Länk (ikonen) till kursplan
+        .syllabus-icon {
+            font-size: 20px;
+            width: 22px;
+            height: 22px;
+            line-height: 22px;
+            transition: transform 0.15s ease;
+        }
+        .course-plan-row:hover .syllabus-icon {
+            transform: scale(1.05);
+        }
+        // Kolumn för att lägga till kurs i ramschema
+        .mat-column-add {
+            width: 60px;
+            padding: 0 0.6em;
+        }
+        // Rad för kursplan
+        .course-plan-row {
+            gap: 1px;
+        }
+        .add-course-btn {
+            padding: 0.8em 0.7em;
+            font-size: 0.8em;
+        }
+        .add-course-text {
+            display: block;
+        }
+        .add-icon {
+            display: none;
+        }
+        .course-counter {
+            font-size: 0.95em;
+            padding: 0 0.5em;
+        }
     }
-    // Kolumnernas rubriker
-    .mat-mdc-header-row {
-        background-color: rgb(233, 229, 11);
-        font-size: 0.7em;
+    
+    @media (max-width: 400px) {
+        .add-course-text {
+            display: none;
+        }
+        .add-icon {
+            display: block;
+            align-content: center;
+            font-size: 16px;
+            height: 20px;
+            width: 20px;
+        }
+        .add-course-btn {
+            padding: 0em;
+            font-size: 0.8em;
+        }
+        mat-form-field {
+            gap: 1px;
+            width: 225px;
+            mat-label {
+                font-size: 0.9em;
+            }
+        }
+        .dropdown-menu {
+            font-size: 1em;
+            mat-label {
+                font-size: 0.9em;
+            }
+        }
+        // Selectbox med val av
+        .mat-mdc-select-value,
+        .mat-mdc-option {
+            font-size: 0.9em;
+        }
+        // Kolumnernas rubriker
+        .mat-mdc-header-row {
+            background-color: rgb(233, 229, 11);
+            font-size: 0.7em;
+        }
+        // Kolumernas rubriker varje cell
+        .mat-mdc-header-cell {
+            padding: 1px 2px;
+        }
+        // Radernas celler
+        .mat-mdc-cell {
+            font-size: 0.6em;
+            padding: 1px 2px;
+            line-height: 1.2;
+        }
+        // Raderna
+        .mat-mdc-row {
+            height: 45px;
+        }
     }
-    // Kolumernas rubriker varje cell
-    .mat-mdc-header-cell {
-        padding: 1px 2px;
+    
+    @media (max-width: 365px) {
+        .add-course-text {
+            display: none;
+        }
+        .add-icon {
+            display: block;
+            align-content: center;
+            font-size: 16px;
+            height: 22px;
+            width: 22px;
+        }
+        mat-form-field {
+            width: 225px;
+            mat-label {
+                font-size: 0.9em;
+            }
+        }
+        .dropdown-menu {
+            font-size: 1em;
+            mat-label {
+                font-size: 0.9em;
+            }
+        }
+        // Selectbox med val av
+        .mat-mdc-select-value,
+        .mat-mdc-option {
+            font-size: 0.9em;
+        }
+        // Kolumnernas rubriker
+        .mat-mdc-header-row {
+            background-color: rgb(233, 229, 11);
+            font-size: 0.7em;
+        }
+        // Kolumernas rubriker varje cell
+        .mat-mdc-header-cell {
+            padding: 1px 1px;
+        }
+        // Radernas celler
+        .mat-mdc-cell {
+            font-size: 0.6em;
+            padding: 1px 0.5px;
+            line-height: 1.2;
+        }
+        // Raderna
+        .mat-mdc-row {
+            height: 45px;
+        }
+        .mat-column-courseCode {
+            width: 80px;
+            padding: 4px 8px;
+        }
+        .mat-column-courseName {
+            width: 175px;
+        }
+        .mat-column-points {
+            width: 30px;
+        }
+        td.mat-mdc-cell.mat-column-points {
+            text-align: left;
+        }
+        .mat-column-subject {
+            width: 175px;
+        }
+        .mat-column-syllabus {
+            text-align: left;
+        }
+        .mat-column-add {
+            text-align: center;
+        }
+        .header-courseplan {
+            text-align: left !important;
+        }
+        .cell-courseplan {
+            text-align: left !important;
+        }
+        th.header-coursecode,
+        td.cell-coursecode,
+        th.header-coursename,
+        td.cell-coursename,
+        .header-subject,
+        .cell-subject {
+            padding: 0.5em 1px;
+        }
+        .cell-points,
+        .header-points {
+            text-align: right;
+        }
+        .cell-points {
+            text-align: center !important;
+        }
     }
-    // Radernas celler
-    .mat-mdc-cell {
-        font-size: 0.6em;
-        padding: 1px 2px;
-        line-height: 1.2;
-    }
-    // Raderna
-    .mat-mdc-row {
-        height: 45px;
-    }
-}
-
-
-/*@media (max-width: 365px) {
-
-    .mat-column-courseCode {}
-}*/
