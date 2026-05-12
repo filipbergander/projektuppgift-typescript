@@ -31,7 +31,7 @@ section {
 }
 
 h2 {
-    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    font-size: clamp(1.6rem, 2vw, 1.8rem);
     margin-bottom: 0.5em;
     width: 80%;
     color: #fefefe;
@@ -67,7 +67,7 @@ mat-icon {
     max-width: 500px;
     margin-top: 5rem;
     h3 {
-        font-size: clamp(1.05rem, 2vw, 1.4rem);
+        font-size: clamp(1.5rem, 2.5vw, 1.7rem);
     }
     ul {
         margin-left: 3rem;
@@ -81,7 +81,7 @@ mat-icon {
         align-items: center;
         gap: 0.5rem;
         list-style-position: inside;
-        font-size: clamp(0.75rem, 1.5vw, 1rem);
+        font-size: clamp(1rem, 1.5vw, 1rem);
     }
 }
 
