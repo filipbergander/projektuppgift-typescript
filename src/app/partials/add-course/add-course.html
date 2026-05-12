@@ -43,8 +43,9 @@
 
             <!--Knapp för att ta bort kursen i ramschemat-->
             <ng-container matColumnDef="removed">
-                <th mat-header-cell *matHeaderCellDef>Radera</th>
-                <td mat-cell *matCellDef="let row"><button class="delete-course-btn" id="{{row.courseCode}}" [class.clicked]="row.removed" [disabled]="row.removed" mat-button (click)="deleteCourseFromPlan(row.courseCode)"><span class="delete-course-text"> Ta bort</span><mat-icon class="delete-icon">delete_outline
+                <th mat-header-cell *matHeaderCellDef>Val</th>
+                <td mat-cell *matCellDef="let row"><button class="delete-course-btn" id="{{row.courseCode}}" [class.clicked]="row.removed" [disabled]="row.removed" mat-button (click)="deleteCourseFromPlan(row.courseCode)"><span class="delete-course-text"> Ta
+                            bort</span><mat-icon class="delete-icon">delete_outline
                         </mat-icon></button></td>
             </ng-container>
 
@@ -52,5 +53,19 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
         </table>
+        <!-- Visar hur många kurser som är tillagda, samt totala antalet högskolepoäng -->
+        <div class="course-amount">
+            <p class="total-courses">Antal {{dataSource.data.length === 1 ? "kurs":"kurser"}}: <span>
+               {{dataSource.data.length}} stycken 
+            </span>
+                <mat-icon>{{dataSource.data.length === 1 ? "book" : "menu_book"}}</mat-icon>
+            </p>
+            <p class="total-points">Totalt antal poäng: <span>
+                     {{countCoursePoints()}}hp
+                </span>
+                <mat-icon>workspace_premium</mat-icon>
+            </p>
+        </div>
+
     </div>
 </div>

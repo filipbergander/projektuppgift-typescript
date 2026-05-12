@@ -30,6 +30,11 @@ export class DisplayCoursesService {
     return this.coursesSignal;
   }
 
+  public addCourseToPlan(course: Course): void {
+    localStorage.setItem(course.courseCode, JSON.stringify(course));
+    this.loadFromLocalStorage();
+  }
+
   // Tar bort kurser från localstorage och i tabellen
   public removeCourse(courseCode: string): void {
     localStorage.removeItem(courseCode); // Tar bort den specifika kursen i localstorage genom kurskod

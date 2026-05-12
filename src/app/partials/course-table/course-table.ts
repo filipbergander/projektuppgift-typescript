@@ -9,6 +9,7 @@ import { MatLabel, MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { DisplayCoursesService } from '../../services/display-courses';
 
 @Component({
   selector: 'app-course-table',
@@ -30,12 +31,15 @@ export class CourseTable implements AfterViewInit {
 
   // Hämtar in kurser genom service
   courseService = inject(GetCourseService);
+  // Hämtar in servicen för att använda till att lägga till kurserna i ramschemat
+  DisplayCoursesService = inject(DisplayCoursesService);
 
   // Lagrar de inhämtade kurserna i courses
   courses = this.courseService.fetchCourses();
 
   subjects: string[] = [];
   selected: string = "";
+
 
   // Hämtar in data från webbtjänsten genom servicen och lagrar som signal
   constructor() {
@@ -79,7 +83,7 @@ export class CourseTable implements AfterViewInit {
   addCourseToPlan(course: Course): void {
     console.log("Knappen klickades: ", course)
     this.setButtonDisabled(course); // Sätter knappen som klickades på till disabled genom metoden
-    localStorage.setItem(course.courseCode, JSON.stringify(course)) // Lägger till den klickade kursen i localstorage    
+    this.DisplayCoursesService.addCourseToPlan(course); // Lägger till den klickade kursen i localstorage genom servicen  
   }
 
   // Ändrar knapp till disabled efter att den klickats på för att lägga till en kurs i ramschemat

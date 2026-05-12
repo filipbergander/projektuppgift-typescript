@@ -12,12 +12,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-add-course',
-  imports: [ MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatSelectModule, MatInputModule, MatIconModule, FormsModule],
+  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatSelectModule, MatInputModule, MatIconModule, FormsModule],
   templateUrl: './add-course.html',
   styleUrl: './add-course.scss',
 })
 export class AddCourse implements AfterViewInit {
-  
+
   // Alla kolumner som ska visas i tabellen
   displayedColumns: string[] = ["courseCode", "courseName", "points", "subject", "syllabus", "removed"];
   // Sparar som en variabel för att visa och sortera data i tabellen
@@ -48,6 +48,18 @@ export class AddCourse implements AfterViewInit {
   // Tar bort kurs från ramschemat genom kurskoden
   deleteCourseFromPlan(courseCode: string): void {
     this.addCourseService.removeCourse(courseCode);
+  }
+
+  // Visar antal poäng för kurser som är tillagda i ramschemat
+  countCoursePoints(): number {
+    // I början är totala poängen 0
+    let totalHp = 0;
+    // Itererar över varje kurs med dess poäng som finns tillagd i localstorage
+    this.dataSource.data.forEach(course => {
+      totalHp += course.points;
+    });
+    // Returnerar det antal poängen för att visa inom ramschemat
+    return totalHp;
   }
 }
 

@@ -11,6 +11,41 @@
     margin: 0 auto;
 }
 
+.course-amount {
+    text-align: left;
+}
+
+.total-points {
+    padding: 1em 1.5em;
+    width: fit-content;
+    border-radius: 16px;
+    background-color: #dadddd81;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    span {
+        margin-left: 0.2em;
+        color: rgb(155, 64, 3);
+        font-weight: 600;
+    }
+    mat-icon {
+        color: rgb(155, 64, 3);
+    }
+}
+
+.total-courses {
+    @extend .total-points;
+    span {
+        margin-left: 0.2em;
+        color: rgb(155, 64, 3);
+        font-weight: 600;
+    }
+    mat-icon {
+        color: rgb(155, 64, 3);
+    }
+}
+
 // Raden för hela header med kolumnnamnen i tabellen
 .mat-mdc-header-row {
     background-color: rgb(233, 229, 11);
