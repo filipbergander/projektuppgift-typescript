@@ -1,16 +1,10 @@
-.card-grid {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 350px));
-    gap: 5rem;
-    margin-top: 5rem;
-}
-
 .pictures-flex {
     margin-top: 5rem;
     display: flex;
     justify-content: center;
-    gap: 10em;
+    flex-wrap: wrap;
+    gap: 5em;
+    padding: 1em;
     ul {
         font-size: 1.2em;
     }
@@ -34,11 +28,17 @@
 .single-pic {
     background-color: #e2e2e2;
     text-align: left;
-    max-width: 800px;
+    max-width: 700px;
+    flex: 1 1 350px;
+    width: 100%;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
     img {
+        display: block;
+        width: 100%;
+        height: auto;
         margin-bottom: 0em;
         border-radius: 12px;
+        object-fit: cover;
     }
     h3 {
         font-size: 1.7rem;
@@ -51,6 +51,15 @@
         margin-top: 0.8em;
         max-width: 65ch;
     }
+}
+
+.card-grid {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 350px));
+    gap: 5rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
 }
 
 .icon-card {
@@ -128,6 +137,15 @@ mat-card-content p::before {
     margin-left: 0.2em;
     left: 0.1rem;
     top: -0.6rem;
+}
+
+@media (max-width: 500px) {
+    .pictures-flex {
+        padding: 0em;
+        img {
+            border-radius: 0;
+        }
+    }
 }
 
 @media (max-width: 360px) {

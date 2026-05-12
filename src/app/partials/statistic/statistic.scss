@@ -115,9 +115,27 @@ mat-icon {
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     section {
         padding: 0.3em 0;
+        border-radius: 0;
+    }
+    .choose-us {
+        border-radius: 16px;
+        box-shadow: none;
+    }
+}
+
+
+/*@media (max-width: 600px) {
+    section {
+        padding: 0.3em 0;
+        border-radius: 0;
+    }
+}*/
+
+@media (max-width: 500px) {
+    .choose-us {
         border-radius: 0;
     }
 }
