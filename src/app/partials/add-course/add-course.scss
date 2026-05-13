@@ -5,6 +5,26 @@
     box-shadow: 0 0 12px 1px rgb(161, 158, 158);
 }
 
+.back-container {
+    text-align: left;
+    mat-button {
+        color: brown;
+    }
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 4px;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
 // Container runt hela table
 .mat-elevation-z8 {
     width: 100%;
@@ -158,7 +178,7 @@ td.mat-mdc-cell.mat-column-syllabus a {
     cursor: pointer;
     font-size: 0.95em;
     font-weight: bold;
-    transition: .2s ease-in-out;
+    transition: .25s ease-in-out;
     box-shadow: 0 0 4px 0.2px black;
     white-space: nowrap;
     &:hover {
@@ -274,7 +294,45 @@ td.mat-mdc-cell.mat-column-syllabus a {
     }
 }
 
+@media (max-width: 500px) {
+    .back-btn {
+        gap: 0.4em;
+        padding: 0.3em;
+        font-size: 1em;
+        margin-left: 0.3em;
+    }
+}
+
 @media (max-width: 400px) {
+    // Container för att lista hur många kurser som visas i tabellen för ramschemat
+    .course-amount {
+        text-align: left;
+    }
+    // Visar totalt antal poäng som lagts till i ramschemat
+    .total-points {
+        padding: 0.5em 1em;
+        font-size: 0.9em;
+        span {
+            margin-left: 0.2em;
+            font-weight: 600;
+        }
+        // Ikonen
+        mat-icon {
+            color: rgb(155, 64, 3);
+        }
+    }
+    // Texten & ikon för totala antalet kurser
+    .total-courses {
+        @extend .total-points;
+        span {
+            margin-left: 0.2em;
+            color: rgb(155, 64, 3);
+            font-weight: 600;
+        }
+        mat-icon {
+            color: rgb(155, 64, 3);
+        }
+    }
     // Visar inte knappens text
     .delete-course-text {
         display: none;

@@ -1,8 +1,31 @@
 <footer>
-    <div>
-        <mat-icon>contact_mail</mat-icon>
-        <mat-icon>facebook</mat-icon>
-        <mat-icon>blog</mat-icon>
-        <p>Kontakt: <a href="mailto:info@uni-NU.se">info@uni-NU.se</a> | Projektuppgift TypeScript | Copyright © 2026 Norrlands Universitet</p>
+    <div class="footer-container">
+        <section class="contact-details">
+            <p class="footer-heading">Kontaktuppgifter</p>
+            <ul>
+                <li>Norrlandsgatan 12, Örnsköldsvik
+                    <mat-icon>home</mat-icon>
+                </li>
+                <li><a (click)="$event.preventDefault()" href="mailto:#">info@uni-NU.se</a>
+                    <mat-icon>mail</mat-icon>
+                </li>
+                <li>010-4329900
+                    <mat-icon>phone</mat-icon>
+                </li>
+            </ul>
+        </section>
+        <section class="social-media">
+            <p class="footer-heading">Medier</p>
+            <mat-icon>facebook</mat-icon>
+            <a (click)="$event.preventDefault()" href="#">Studentkårens blogg</a>
+        </section>
+        <nav>
+            <p class="footer-heading">Länkar</p>
+            <ul>
+                <li><a (click)="$event.preventDefault()" href="#">Integritetspolicy</a></li>
+                <li><a (click)="$event.preventDefault()" href="#">Användarvillkor</a></li>
+            </ul>
+        </nav>
     </div>
+    <p>Copyright © 2026 Norrlands Universitet</p>
 </footer>

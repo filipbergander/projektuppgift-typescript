@@ -9,10 +9,12 @@ import { MatIconModule } from "@angular/material/icon";
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { RouterLink, RouterLinkActive } from "@angular/router";
+import { MatAnchor } from "@angular/material/button";
 
 @Component({
   selector: 'app-add-course',
-  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatSelectModule, MatInputModule, MatIconModule, FormsModule],
+  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatSelectModule, MatInputModule, MatIconModule, FormsModule, RouterLink, RouterLinkActive, MatAnchor],
   templateUrl: './add-course.html',
   styleUrl: './add-course.scss',
 })

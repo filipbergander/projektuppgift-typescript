@@ -1,12 +1,10 @@
     @use '@angular/material' as mat;
     $color-primary:#53CBF3;
     $color-secondary:#FFDE42;
-    $color: #5478FF;
-    $color-background:#111FA2;
-    $btn-color-news: rgb(255, 238, 0);
-    $btn-color-red: #e95500e3;
-    $color-text: #000000;
-    $color-text-light: #ffffff;
+    h1 {
+        text-align: center;
+    }
+    
     // Tabellen
     .mat-mdc-table {
         width: 100%;
@@ -53,13 +51,14 @@
         }
         // Felmeddelande
         .warning-points {
-            color: red;
+            color: rgb(248, 37, 37);
+            letter-spacing: 0.5px;
             font-weight: bold;
-            font-size: 1.1em;
+            font-size: 1.2em;
             margin-top: 0.2em;
         }
         .points-text {
-            color: #000000;
+            color: #ffffff;
             font-size: 1.2em;
             font-weight: bold;
             margin-top: 0.2em;
@@ -71,13 +70,15 @@
         width: 62.5%;
         max-width: 800px;
         backdrop-filter: blur(3.5px);
-        background-color: rgba(163, 163, 163, 0.85);
+        background-color: rgba(59, 58, 58, 0.717);
         padding: 1em 2em;
         border-radius: 4px;
         position: fixed;
+        z-index: 10;
         bottom: 0;
         left: 50%;
         opacity: 0;
+        color: white;
         box-shadow: 0 0px 10px 2px rgba(0, 0, 0, 0.555);
         transform: translateX(-50%);
         transition: opacity 0.35s ease, transform 0.35s ease;
@@ -91,7 +92,7 @@
             align-items: center;
             justify-content: center;
             font-size: 1em;
-            font-weight: 500;
+            font-weight: 600;
             margin: 0 auto;
             text-align: left;
         } // Ikon

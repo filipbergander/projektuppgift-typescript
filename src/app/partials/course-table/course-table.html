@@ -1,6 +1,8 @@
 <!-- Använder Angular Material UI för att skapa tabellen -->
 <div class="table-container">
+
     <div class="table-cont-header">
+        <h1>Kurser</h1>
         <!-- Inputfält för att söka efter kurser eller filtrera -->
         <div class="filter-field">
             <mat-form-field>
@@ -46,7 +48,7 @@
                     <p class="warning-points">Du överstiger med {{totalPoints - targetPoints}}hp för max som går att läsa! Ta bort kurser från ramschemat.</p>}
 
                     <!--Text med poängen-->
-                    <p class="points-text">{{totalPoints}} / {{targetPoints}}hp</p>
+                    <p class="points-text">{{totalPoints | number: '1.0-1'}} / {{targetPoints | number:'1.0-1'}}hp</p>
 
                     <!--Visar progressbar med texter och ikoner-->
                     <div>
@@ -59,7 +61,7 @@
                         <!--Annars om det är poäng kvar mot "målpoängen"-->
                         @else if (totalPoints
                         < targetPoints) { <p class="points-left">
-                            {{ targetPoints - totalPoints }} hp kvar!
+                            {{ targetPoints - totalPoints | number:'1.0-1' }} hp kvar!
                             <!--Visar olika ikoner beroende på progressen-->
                             <mat-icon class="points-left-icon"> @if (progressPercentage() >= 66) {trending_up} @else if (progressPercentage() >= 33) {hourglass_bottom} @else {hourglass_empty}
                             </mat-icon>
@@ -126,7 +128,7 @@
             <!--Knapp för att lägga till kursen i ramschemat genom localStorage, ändrar knappens text beroende på om tillhörande kurs är tillagd-->
             <ng-container matColumnDef="add">
                 <th mat-header-cell *matHeaderCellDef>Val</th>
-                <td mat-cell *matCellDef="let row"><button class="add-course-btn" id="{{row.courseCode}}" [class.clicked]="row.added" [disabled]="row.added" mat-button (click)="addCourseToPlan(row)"><span class="add-course-text">{{row.added
+                <td mat-cell *matCellDef="let row"><button class="add-course-btn" id="{{row.courseCode}}" [class.clicked]="row.added" [disabled]="row.added" (click)="addCourseToPlan(row)" aria-label="Lägg till kurs i ramschema"><span class="add-course-text">{{row.added
                             ? "Lagt till" : "Lägg till" }}</span><mat-icon class="add-icon">
                             add
                         </mat-icon></button></td>

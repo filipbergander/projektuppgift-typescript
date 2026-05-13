@@ -4,6 +4,7 @@
 // Learn more about theming and how to use it for your application's
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
+@include mat.core();
 $color-primary:#53CBF3;
 $color-secondary:#FFDE42;
 $color: #5478FF;
@@ -16,11 +17,13 @@ $color-text-light: #ffffff;
     box-sizing: border-box;
 }
 
+//$dark-theme: mat.define-dark-theme(( color: ( theme-type: dark, primary: $color-primary, tertiary: $color-secondary, ), typography: Roboto, density: 0, ));
 html {
+    //@include mat.theme($dark-theme);
     height: 100%;
     margin: 0;
     padding: 0;
-    @include mat.theme( ( color: ( primary: mat.$rose-palette, tertiary: mat.$red-palette, ), typography: Roboto, density: 0, ));
+    @include mat.theme( ( color: ( primary: mat.$blue-palette, tertiary: mat.$azure-palette, ), typography: Roboto, density: 0, ));
 }
 
 // Klass för att lägga till en röd färg på progressbar under 33%
@@ -56,7 +59,7 @@ body {
     // Set a default background, font and text colors for the application using
     // Angular Material's system-level CSS variables. Learn more about these
     // variables at https://material.angular.dev/guide/system-variables
-    background-color: var(--mat-sys-surface);
+    background-color: rgba(248, 232, 178, 0.274);
     color: var(--mat-sys-on-surface);
     font: var(--mat-sys-body-medium);
     // Reset the user agent margin.

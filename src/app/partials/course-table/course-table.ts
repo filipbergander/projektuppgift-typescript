@@ -11,12 +11,12 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { DisplayCoursesService } from '../../services/display-courses';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { NgClass } from '@angular/common';
+import { NgClass, DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-course-table',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatLabel, MatInputModule, MatIconModule, MatSelectModule, FormsModule, MatProgressBarModule, NgClass],
+  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatLabel, MatInputModule, MatIconModule, MatSelectModule, FormsModule, MatProgressBarModule, NgClass, DecimalPipe],
   templateUrl: './course-table.html',
   styleUrl: './course-table.scss',
 })
