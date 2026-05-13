@@ -10,6 +10,8 @@
 /node_modules
 npm-debug.log
 yarn-error.log
+arkiv/course-table-arkiv.ts
+arkiv/course-table-arkiv.html
 
 # IDEs and editors
 .idea/

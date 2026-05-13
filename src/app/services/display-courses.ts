@@ -29,7 +29,7 @@ export class DisplayCoursesService {
   public getCourses() {
     return this.coursesSignal;
   }
-
+// Lägger till kurser i localstorage och laddar in tabellen på nytt för att visa de tillagda kurserna 
   public addCourseToPlan(course: Course): void {
     localStorage.setItem(course.courseCode, JSON.stringify(course));
     this.loadFromLocalStorage();

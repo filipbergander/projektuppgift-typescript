@@ -10,11 +10,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { DisplayCoursesService } from '../../services/display-courses';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-course-table',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatLabel, MatInputModule, MatIconModule, MatSelectModule, FormsModule],
+  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatLabel, MatInputModule, MatIconModule, MatSelectModule, FormsModule, MatProgressBarModule, NgClass],
   templateUrl: './course-table.html',
   styleUrl: './course-table.scss',
 })
@@ -40,6 +42,8 @@ export class CourseTable implements AfterViewInit {
   subjects: string[] = [];
   selected: string = "";
 
+  targetPoints: number = 0;
+  totalPoints: number = 0;
 
   // Hämtar in data från webbtjänsten genom servicen och lagrar som signal
   constructor() {
@@ -50,6 +54,7 @@ export class CourseTable implements AfterViewInit {
       const fetchedData = coursesSignal(); // Lagrar de inhämtade kurserna i fetchedData
       this.dataSource.data = this.courses();
       this.subjects = [...new Set(fetchedData.map(c => c.subject))] // Alla ämnen lagras i subjects för att användas i dropdown-menyn till att filtrera i tabellen
+      this.progressPercentage();
     });
   }
 
@@ -79,7 +84,7 @@ export class CourseTable implements AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  // Lägger till en kurs till localstorage
+  // Lägger till en kurs till localstorage genom servicen och disablar knappen
   addCourseToPlan(course: Course): void {
     console.log("Knappen klickades: ", course)
     this.setButtonDisabled(course); // Sätter knappen som klickades på till disabled genom metoden
@@ -100,4 +105,36 @@ export class CourseTable implements AfterViewInit {
       }
     });
   }
+
+  /* Beräknar procent för antal poäng som besökaren vill läsa, samt felhantering*/
+  progressPercentage(): number {
+    const addedCourses = this.DisplayCoursesService.getCourses(); // De kurser som användaren lagt till i ramschemat
+    const coursePoints = addedCourses().map(course => course.points); // Lagrar antal poäng som finns tillagd inom totalen av kurserna i ramschemat 
+    this.totalPoints = coursePoints.reduce((total, points) => total + points, 0); // Börjar från 0 och går igenom alla poäng som blivit tillagda och summerar dem i totalpoints
+
+    if (this.targetPoints <= 0) return 0; // Om angivet poäng är 0 eller mindre blir det 0 i input och samtidigt körs inte resten av koden
+    // Om man angett över 300 poäng -> 300 i input
+    if (this.targetPoints > 300) {
+      this.targetPoints = 300;
+
+      // Sätter poängen till 0
+    } if (this.targetPoints < 0) {
+      this.targetPoints = 0;
+    }
+    // Annars beräknas procenten mellan antal poäng som blivit tillagt och poängen som besökaren vill läsa
+    return (this.totalPoints / this.targetPoints) * 100;
+  }
+
+  // Beräknar vilken färg som ska visas för progressbaren
+  barProgressColor(): string {
+
+    const percent = this.progressPercentage(); // Eftersom metoden returnerar procent används det här
+
+    if (percent < 33) return "bar-red"; // Om det är under 33% blir färgen röd
+    if (percent >= 33 && percent < 66) return "bar-yellow"; // Gul
+    if (percent >= 66 && percent < 100) return "bar-light-green"; // Ljusgrön
+    if (percent === 100) return "bar-green"; // Grönfärg vid 100%
+    else return "";
+  }
+
 }

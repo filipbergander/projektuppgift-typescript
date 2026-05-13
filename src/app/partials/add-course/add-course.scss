@@ -11,10 +11,12 @@
     margin: 0 auto;
 }
 
+// Container för att lista hur många kurser som visas i tabellen för ramschemat
 .course-amount {
     text-align: left;
 }
 
+// Visar totalt antal poäng som lagts till i ramschemat
 .total-points {
     padding: 1em 1.5em;
     width: fit-content;
@@ -29,11 +31,13 @@
         color: rgb(155, 64, 3);
         font-weight: 600;
     }
+    // Ikonen
     mat-icon {
         color: rgb(155, 64, 3);
     }
 }
 
+// Texten & ikon för totala antalet kurser
 .total-courses {
     @extend .total-points;
     span {

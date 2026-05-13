@@ -7,23 +7,27 @@
     $btn-color-red: #e95500e3;
     $color-text: #000000;
     $color-text-light: #ffffff;
+    // Tabellen
     .mat-mdc-table {
         width: 100%;
         background: #ffffff;
         box-shadow: 0 0 12px 1px rgb(161, 158, 158);
     }
     
+    // Container ovanför tabellen
     .table-cont-header {
         display: flex;
         flex-direction: column;
         background-color: $color-primary;
     }
     
+    // Container runt tabellen
     mat-elevation-z8 {
         width: 100%;
         margin: 0 auto;
     }
     
+    // Hur många kurser som visas i tabellen
     .course-counter {
         text-align: left;
         font-weight: 500;
@@ -31,6 +35,80 @@
         font-size: 1.1em;
     }
     
+    // Container med antalet poäng som man vill läsa
+    .points-container {
+        .points-label {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #000000;
+        }
+        .points-input {
+            width: 100px;
+            padding: 0.5em;
+            font-size: 1.1em;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
+            margin-left: 0.2em;
+        }
+        // Felmeddelande
+        .warning-points {
+            color: red;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-top: 0.2em;
+        }
+        .points-text {
+            color: #000000;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 0.2em;
+        }
+    }
+    
+    // Container för progressbaren visas
+    .homemade-bar-container {
+        width: 62.5%;
+        max-width: 800px;
+        backdrop-filter: blur(3.5px);
+        background-color: rgba(163, 163, 163, 0.85);
+        padding: 1em 2em;
+        border-radius: 4px;
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        opacity: 0;
+        box-shadow: 0 0px 10px 2px rgba(0, 0, 0, 0.555);
+        transform: translateX(-50%);
+        transition: opacity 0.35s ease, transform 0.35s ease;
+        &:hover {
+            transform: translateX(-50%) scale(1.01);
+            transition: transform 0.2s ease;
+        }
+        // Tillhörande text för progressbaren
+        .points-left {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1em;
+            font-weight: 500;
+            margin: 0 auto;
+            text-align: left;
+        } // Ikon
+        .points-left-icon {
+            font-size: 1.7em;
+            width: 1.7em;
+            height: 1.7em;
+            align-content: center;
+        }
+    }
+    
+    // Visar progressebaren
+    .homemade-bar-container.show {
+        opacity: 1;
+    }
+    
+    // Container för att filtrera kurser i tabellen
     .filter-field {
         display: flex;
         align-items: center;
@@ -41,6 +119,7 @@
         width: 100%;
     }
     
+    // Formuläret för filtrering
     mat-form-field {
         display: flex;
         align-items: center;
@@ -60,6 +139,7 @@
         }
     }
     
+    // Meny för att välja ämne i tabellen
     .dropdown-menu {
         font-size: 1em;
         mat-label {
@@ -199,6 +279,32 @@
     }
     
     @media (max-width: 660px) {
+        .points-container {
+            .points-label {
+                font-size: 1em;
+            }
+            .points-input {
+                width: 80px;
+                padding: 0.5em;
+                font-size: 1em;
+            }
+            .warning-points {
+                font-size: 1em;
+            }
+            .points-text {
+                font-size: 1.1em;
+            }
+        }
+        .homemade-bar-container {
+            .points-left {
+                font-size: 0.95em;
+            }
+            .points-left-icon {
+                font-size: 1.6em;
+                width: 1.6em;
+                height: 1.6em;
+            }
+        }
         .mat-mdc-cell,
         .mat-mdc-header-cell {
             white-space: normal;
@@ -327,7 +433,64 @@
         }
     }
     
+    @media (max-width: 500px) {
+        .points-container {
+            .points-label {
+                font-size: 0.9em;
+            }
+            .points-input {
+                width: 80px;
+                padding: 0.5em;
+                font-size: 0.9em;
+            }
+            .warning-points {
+                font-size: 0.9em;
+            }
+            .points-text {
+                font-size: 0.95em;
+            }
+        }
+        .homemade-bar-container {
+            width: 100%;
+            padding: 0.5em 0em;
+            .points-left {
+                font-size: 0.9em;
+            }
+            .points-left-icon {
+                font-size: 1.6em;
+                width: 1.6em;
+                height: 1.6em;
+            }
+        }
+    }
+    
     @media (max-width: 400px) {
+        .points-container {
+            .points-label {
+                font-size: 0.9em;
+            }
+            .points-input {
+                width: 80px;
+                padding: 0.5em;
+                font-size: 0.9em;
+            }
+            .warning-points {
+                font-size: 0.9em;
+            }
+            .points-text {
+                font-size: 0.95em;
+            }
+        }
+        .homemade-bar-container {
+            .points-left {
+                font-size: 0.9em;
+            }
+            .points-left-icon {
+                font-size: 1.6em;
+                width: 1.6em;
+                height: 1.6em;
+            }
+        }
         // Visar inte knappens text
         .add-course-text {
             display: none;

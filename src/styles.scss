@@ -23,6 +23,31 @@ html {
     @include mat.theme( ( color: ( primary: mat.$rose-palette, tertiary: mat.$red-palette, ), typography: Roboto, density: 0, ));
 }
 
+// Klass för att lägga till en röd färg på progressbar under 33%
+.bar-red {
+    @include mat.progress-bar-overrides(( active-indicator-color: #e53935, track-color: #ffcccc, ));
+}
+
+// Klass för att lägga till en gul färg på progressbar under 66%
+.bar-yellow {
+    @include mat.progress-bar-overrides(( active-indicator-color: #fbc02d, track-color: #fff4c2, ));
+}
+
+// Klass för att lägga till en ljusgrön färg på progressbar under 100%
+.bar-light-green {
+    @include mat.progress-bar-overrides(( active-indicator-color: #97f79b, track-color: #ffffff, ));
+}
+
+// Klass för att lägga till en grön färg på progressbar när man uppnått 100%
+.bar-green {
+    @include mat.progress-bar-overrides(( active-indicator-color: #0df818, ));
+}
+
+// Styling för höjd på progressbaren
+.homemade-bar-container {
+    @include mat.progress-bar-overrides(( active-indicator-height: 10px, track-height: 10px, ));
+}
+
 body {
     // Default the application to a light color theme. This can be changed to
     // `dark` to enable the dark color theme, or to `light dark` to defer to the
