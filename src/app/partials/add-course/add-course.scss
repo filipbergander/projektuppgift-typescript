@@ -352,15 +352,20 @@ td.mat-mdc-cell.mat-column-syllabus a {
             margin-left: 0em;
         }
     }
-    /* mat-icon {
-        margin-left: 0.5em;
-    }*/
 }
 
 @media (max-width: 420px) {
     // Tabellen
     .mat-mdc-table {
         table-layout: fixed;
+    }
+    .mat-column-courseCode,
+    .mat-column-courseName,
+    .mat-column-points,
+    .mat-column-subject,
+    .mat-column-syllabus,
+    .mat-column-add {
+        min-width: 0;
     }
     // Container för att lista hur många kurser som visas i tabellen för ramschemat
     .course-amount {
@@ -410,16 +415,15 @@ td.mat-mdc-cell.mat-column-syllabus a {
     }
     // Kolumnernas rubriker
     .mat-mdc-header-row {
-        font-size: 0.7em;
+        font-size: 0.75em;
     }
     // Kolumernas rubriker varje cell
     .mat-mdc-header-cell {
-        //padding: 1px 2px;
         padding: 0.5px 0.75px;
     }
     // Radernas celler
     .mat-mdc-cell {
-        font-size: 0.6em;
+        font-size: 0.7em;
         padding: 1px 0.5px;
         line-height: 1.2;
     }
@@ -434,14 +438,6 @@ td.mat-mdc-cell.mat-column-syllabus a {
     // Raderna
     .mat-mdc-row {
         height: 45px;
-    }
-    .mat-column-courseCode,
-    .mat-column-courseName,
-    .mat-column-points,
-    .mat-column-subject,
-    .mat-column-syllabus,
-    .mat-column-add {
-        min-width: 0;
     }
     .mat-column-courseCode {
         width: 50px;
@@ -518,26 +514,6 @@ td.mat-mdc-cell.mat-column-syllabus a {
             width: 25px;
         }
     }
-    mat-form-field {
-        width: 225px;
-        mat-label {
-            font-size: 0.9em;
-        }
-    }
-    .dropdown-menu {
-        font-size: 1em;
-        mat-label {
-            font-size: 0.9em;
-        }
-    }
-    // Länk (ikonen) till kursplan
-    /*.syllabus-icon {
-            font-size: 22px;
-            width: 30px;
-            height: 20px;
-            line-height: 25px;
-            transition: transform 0.15s ease;
-        }*/
     // Selectbox med val av
     .mat-mdc-select-value,
     .mat-mdc-option {
@@ -545,7 +521,6 @@ td.mat-mdc-cell.mat-column-syllabus a {
     }
     // Kolumnernas rubriker
     .mat-mdc-header-row {
-        background-color: rgb(233, 229, 11);
         font-size: 0.7em;
     }
     // Kolumernas rubriker varje cell
