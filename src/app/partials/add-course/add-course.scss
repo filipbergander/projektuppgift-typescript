@@ -164,6 +164,7 @@ mat-elevation-z8 {
 
 td.mat-mdc-cell.mat-column-points {
     text-align: left;
+    width: auto;
 }
 
 // Kolumnen för ämne
@@ -357,6 +358,10 @@ td.mat-mdc-cell.mat-column-syllabus a {
 }
 
 @media (max-width: 420px) {
+    // Tabellen
+    .mat-mdc-table {
+        table-layout: fixed;
+    }
     // Container för att lista hur många kurser som visas i tabellen för ramschemat
     .course-amount {
         text-align: left;
@@ -430,8 +435,17 @@ td.mat-mdc-cell.mat-column-syllabus a {
     .mat-mdc-row {
         height: 45px;
     }
+    .mat-column-courseCode,
+    .mat-column-courseName,
+    .mat-column-points,
+    .mat-column-subject,
+    .mat-column-syllabus,
+    .mat-column-add {
+        min-width: 0;
+    }
     .mat-column-courseCode {
-        width: auto;
+        width: 50px;
+        text-align: left;
         padding: 2px 4px;
     }
     .mat-column-courseName {
@@ -441,7 +455,10 @@ td.mat-mdc-cell.mat-column-syllabus a {
         width: auto;
     }
     td.mat-mdc-cell.mat-column-points {
-        text-align: left;
+        text-align: center;
+    }
+    .points-header {
+        text-align: left !important;
     }
     .mat-column-subject {
         width: auto;
@@ -450,7 +467,8 @@ td.mat-mdc-cell.mat-column-syllabus a {
         text-align: left;
     }
     .mat-column-add {
-        text-align: center;
+        text-align: left;
+        width: 200px;
     }
     .header-courseplan {
         text-align: left !important;
@@ -468,7 +486,7 @@ td.mat-mdc-cell.mat-column-syllabus a {
     }
     .cell-points,
     .header-points {
-        text-align: right;
+        text-align: center;
     }
     .cell-points {
         text-align: center !important;
@@ -533,10 +551,12 @@ td.mat-mdc-cell.mat-column-syllabus a {
     // Kolumernas rubriker varje cell
     .mat-mdc-header-cell {
         padding: 0.5px 0.75px;
+        text-overflow: ellipsis;
     }
     // Radernas celler
     .mat-mdc-cell {
         padding: 1px 0.5px;
+        text-overflow: ellipsis;
     }
     .mat-cell,
     .mat-header-cell {
@@ -551,9 +571,3 @@ td.mat-mdc-cell.mat-column-syllabus a {
         padding: 2px 4px;
     }
 }
-
-
-/* mat-mdc-cell mdc-data-table__cell cdk-cell cdk-column-courseCode mat-column-courseCode {
-        width: 50px;
-        padding: 2px 4px;
-    }*/

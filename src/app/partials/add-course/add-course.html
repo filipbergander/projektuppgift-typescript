@@ -32,7 +32,7 @@
 
             <!-- Högskolepoäng -->
             <ng-container matColumnDef="points">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Poäng </th>
+                <th mat-header-cell class="points-header" *matHeaderCellDef mat-sort-header> Poäng </th>
                 <td mat-cell class="points-row" *matCellDef="let row"> {{row.points}} </td>
             </ng-container>
 
