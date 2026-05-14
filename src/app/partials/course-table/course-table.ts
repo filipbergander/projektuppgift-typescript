@@ -92,7 +92,6 @@ export class CourseTable implements AfterViewInit {
   }
   // Lägger till en kurs till localstorage genom servicen och disablar knappen
   addCourseToPlan(course: Course): void {
-    console.log("Knappen klickades: ", course)
     this.setButtonDisabled(course); // Sätter knappen som klickades på till disabled genom metoden
     this.DisplayCoursesService.addCourseToPlan(course); // Lägger till den klickade kursen i localstorage genom servicen  
   }
