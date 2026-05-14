@@ -1,4 +1,4 @@
-section {
+div {
     display: flex;
     justify-content: center;
     gap: 2em;
@@ -22,6 +22,52 @@ section {
     transition: 0.3s ease;
     &:hover {
         background-color: #FBBF24;
+    }
+}
+
+section {
+    margin-top: 5em;
+    background-color: #e4e4e48a;
+    padding: 2em 0 2em;
+    border-radius: 20px;
+}
+
+.about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin: 0 auto;
+    padding: 1em;
+    background-color: #f8f8f8;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 1.1em;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.123);
+    width: 50%;
+    border-left: 3px solid #2B7CA1;
+    p {
+        max-width: 60ch;
+        text-align: left;
+        line-height: 1.4;
+    }
+    ul {
+        margin: 0;
+        padding: 0;
+        text-align: left;
+    }
+    li {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+        margin-bottom: 8px;
+    }
+    mat-icon {
+        font-size: 1.5rem;
+        width: 1.5rem;
+        height: 1.5rem;
     }
 }
 
