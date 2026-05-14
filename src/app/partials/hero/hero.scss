@@ -25,11 +25,13 @@
     h1 {
         font-size: clamp(1.4rem, 4vw, 3.5rem);
         font-weight: 800;
+        //padding-bottom: 4px;
         margin: 0;
     }
     p {
-        font-size: clamp(0.7rem, 1vw, 1.5rem);
-        max-width: 700px;
+        margin: 0 auto;
+        font-size: clamp(0.8rem, 1.2vw, 1.5rem);
+        max-width: 60ch;
         margin-top: 1.5rem;
         line-height: 1.3;
     }

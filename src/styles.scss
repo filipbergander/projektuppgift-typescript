@@ -76,3 +76,21 @@ app-root {
     flex-direction: column;
     min-height: 100vh;
 }
+
+header {
+    .current {
+        position: relative;
+        color: #2d6cdf;
+        font-weight: 600;
+    }
+    .current::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        height: 4px;
+        width: 100%;
+        background: linear-gradient(90deg, #2d6cdf, #6aa8ff);
+        border-radius: 4px 4px 0;
+    }
+}

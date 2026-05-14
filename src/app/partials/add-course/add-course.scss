@@ -1,32 +1,77 @@
 @use '@angular/material' as mat;
-.mat-mdc-table {
-    width: 100%;
-    background: #ffffff67;
-    box-shadow: 0 0 12px 1px rgb(161, 158, 158);
-}
-
+$color-primary:#FBBF24;
+$color-secondary:#FFDE42;
+// Knapp för att gå tillbaka till kursschemat
 .back-container {
     text-align: left;
     mat-button {
         color: brown;
     }
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5em;
+        font-size: 1.1em;
+        margin-bottom: 0.2em;
+        font-weight: bold;
+        border-radius: 4px;
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+        transition: .3s ease-in-out;
+        background: linear-gradient(135deg, #00abfa, #045986);
+        &:hover {
+            transform: translateY(-2px);
+        }
+    }
 }
 
-.back-btn {
-    display: inline-flex;
+h1 {
+    display: flex;
     align-items: center;
-    gap: 0.5em;
-    font-size: 1.1em;
-    font-weight: bold;
-    border-radius: 4px;
-    text-decoration: none;
-    color: black;
-    cursor: pointer;
-    transition: .3s ease-in-out;
+    justify-content: center;
+    gap: 0.2em;
+}
+
+// Container ovanför tabellen
+.table-cont-header {
+    display: flex;
+    flex-direction: column;
+    background-color: $color-primary;
+}
+
+.no-courses {
+    background-color: $color-primary;
+    margin: 0;
+    padding: 1em;
+    text-align: center;
+    font-size: 1.2em;
+    p {
+        animation: pulse 3s ease-in-out infinite;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+// Tabellen
+.mat-mdc-table {
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 0 12px 1px rgb(161, 158, 158);
 }
 
 // Container runt hela table
-.mat-elevation-z8 {
+mat-elevation-z8 {
     width: 100%;
     margin: 0 auto;
 }
@@ -199,7 +244,7 @@ td.mat-mdc-cell.mat-column-syllabus a {
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 620px) {
     .mat-mdc-cell,
     .mat-mdc-header-cell {
         white-space: normal;
@@ -264,10 +309,10 @@ td.mat-mdc-cell.mat-column-syllabus a {
     }
     // Länk (ikonen) till kursplan
     .syllabus-icon {
-        font-size: 20px;
-        width: 22px;
-        height: 22px;
-        line-height: 22px;
+        font-size: 25px;
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
         transition: transform 0.15s ease;
     }
     .course-plan-row:hover .syllabus-icon {
@@ -296,11 +341,19 @@ td.mat-mdc-cell.mat-column-syllabus a {
 
 @media (max-width: 500px) {
     .back-btn {
-        gap: 0.4em;
-        padding: 0.3em;
+        padding: 0.9em 0.5em;
         font-size: 1em;
         margin-left: 0.3em;
+        margin-top: 0.5em;
     }
+    h1 {
+        mat-icon {
+            margin-left: 0em;
+        }
+    }
+    /* mat-icon {
+        margin-left: 0.5em;
+    }*/
 }
 
 @media (max-width: 400px) {
@@ -341,9 +394,9 @@ td.mat-mdc-cell.mat-column-syllabus a {
     .delete-icon {
         display: block;
         align-content: center;
-        font-size: 16px;
-        height: 20px;
-        width: 20px;
+        font-size: 20px;
+        height: 25px;
+        width: 25px;
     }
     // Gör knappen för ikonen lite mindre
     .delete-course-btn {
@@ -367,5 +420,123 @@ td.mat-mdc-cell.mat-column-syllabus a {
     // Raderna
     .mat-mdc-row {
         height: 45px;
+    }
+}
+
+@media (max-width: 365px) {
+    .add-course-text {
+        display: none;
+    }
+    .add-course-btn {
+        .add-icon {
+            display: block;
+            align-content: center;
+            font-size: 19px;
+            height: 25px;
+            width: 25px;
+        }
+    }
+    mat-form-field {
+        width: 225px;
+        mat-label {
+            font-size: 0.9em;
+        }
+    }
+    .dropdown-menu {
+        font-size: 1em;
+        mat-label {
+            font-size: 0.9em;
+        }
+    }
+    // Länk (ikonen) till kursplan
+    /*.syllabus-icon {
+            font-size: 22px;
+            width: 30px;
+            height: 20px;
+            line-height: 25px;
+            transition: transform 0.15s ease;
+        }*/
+    // Selectbox med val av
+    .mat-mdc-select-value,
+    .mat-mdc-option {
+        font-size: 0.9em;
+    }
+    // Kolumnernas rubriker
+    .mat-mdc-header-row {
+        background-color: rgb(233, 229, 11);
+        font-size: 0.7em;
+    }
+    // Kolumernas rubriker varje cell
+    .mat-mdc-header-cell {
+        padding: 0.5px 0.75px;
+    }
+    // Radernas celler
+    .mat-mdc-cell {
+        font-size: 0.6em;
+        padding: 1px 0.5px;
+        line-height: 1.2;
+    }
+    .mat-cell,
+    .mat-header-cell {
+        padding: 2px 4px;
+    }
+    // Raderna
+    .mat-mdc-row {
+        height: auto;
+    }
+    .mat-column-courseCode {
+        width: auto;
+        padding: 2px 4px;
+    }
+    .mat-column-courseName {
+        width: auto;
+    }
+    .mat-column-points {
+        width: auto;
+    }
+    td.mat-mdc-cell.mat-column-points {
+        text-align: left;
+    }
+    .mat-column-subject {
+        width: auto;
+    }
+    .mat-column-syllabus {
+        text-align: left;
+    }
+    .mat-column-add {
+        text-align: center;
+    }
+    .header-courseplan {
+        text-align: left !important;
+    }
+    .cell-courseplan {
+        text-align: left !important;
+    }
+    th.header-coursecode,
+    td.cell-coursecode,
+    th.header-coursename,
+    td.cell-coursename,
+    .header-subject,
+    .cell-subject {
+        padding: 0.5em 1px;
+    }
+    .cell-points,
+    .header-points {
+        text-align: right;
+    }
+    .cell-points {
+        text-align: center !important;
+    }
+    // Kolumn för kurskod
+    .mat-column-courseCode {
+        flex: 0 0 50px;
+        padding: 2px 4px;
+        text-align: center;
+    }
+    .mat-column-courseCode .mat-mdc-header-cell,
+    .mat-column-courseCode .mat-mdc-cell {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }

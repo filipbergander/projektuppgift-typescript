@@ -1,8 +1,73 @@
+<div class="forward-container">
+    <a mat-raised-button class="forward-btn" routerLink="/ramschema" routerLinkActive="current">
+        <mat-icon>arrow_forward</mat-icon> Ramschema</a>
+</div>
+
 <!-- Använder Angular Material UI för att skapa tabellen -->
 <div class="table-container">
 
     <div class="table-cont-header">
-        <h1>Kurser</h1>
+        <h1>Kurser
+            <mat-icon>view_timeline</mat-icon>
+        </h1>
+        <!-- Container för att skriva in antal poäng för studierna samt progressbar (determinate) -->
+        <div class="points-container">
+            <div class="input-points-area">
+                <!--Hur många poäng som besökaren vill läsa på universitetet-->
+                <span class="points-label">Hur många poäng vill du läsa?<mat-icon>workspace_premium</mat-icon></span>
+                <input type="number" [(ngModel)]="targetPoints" min="0.5" step="0.5" max="300" class="points-input" aria-label="Skriv antal högskolepoäng du vill läsa">
+
+                <!--Om poäng som skrivits in i input är > 300 eller under 0 visas varningsmeddelandet-->
+                @if (targetPoints > 300 || targetPoints
+                < 0) { <p class="warning-label">
+                    <mat-icon>warning</mat-icon>Max antal poäng är 300hp. </p>}
+            </div>
+
+            <!--Om poängen som angivits i input är += 0.5 visas progressbaren -->
+            @if (targetPoints >= 0.5) {
+            <div class="homemade-bar-container" [class.show]="targetPoints >= 0.5" [ngClass]="barProgressColor()">
+
+                <!--Om poäng som besökaren lagt till i ramschemat är mer än poängen som den vill läsa och att det inte överstiger 300hp visas annat varningsmeddelande-->
+                @if (totalPoints > targetPoints && targetPoints
+                < 300) { <p class="warning-points">
+                    <mat-icon>warning</mat-icon>Du överstiger med {{totalPoints - targetPoints}}hp! Ta bort kurser från ramschemat eller öka antal poäng du vill läsa.</p>}
+
+                    <!--Om poäng besökaren vill läsa är 300 men den lagt till för många kurser som överstiger 300hp, varningsmeddelande-->
+                    @else if (targetPoints === 300 && totalPoints > targetPoints) {
+                    <p class="warning-points">
+                        <mat-icon>warning</mat-icon>Du överstiger med {{totalPoints - targetPoints}}hp för max som går att läsa! Ta bort kurser från ramschemat.
+                    </p>}
+
+                    <!--Text med poängen-->
+                    <p class="points-text">{{totalPoints | number: '1.0-1'}} / {{targetPoints | number:'1.0-1'}}hp</p>
+
+                    <!--Visar progressbar med texter och ikoner-->
+                    <div>
+                        <!--Om man uppnått alla poängen som man angivit-->
+                        @if (progressPercentage() === 100) {
+                        <div class="points-complete-container">
+                            <p class="points-complete">Full pott för schemat!
+                                <mat-icon class="points-left-icon">celebration</mat-icon>
+                            </p>
+                            <a class="schema-link" routerLink="/ramschema" routerLinkActive="current">Visa ramschemat</a>
+                        </div>
+                        }
+                        <!--Annars om det är poäng kvar mot "målpoängen"-->
+                        @else if (totalPoints
+                        < targetPoints) { <p class="points-left">
+                            {{ targetPoints - totalPoints | number:'1.0-1' }} hp kvar!
+                            <!--Visar olika ikoner beroende på progressen-->
+                            <mat-icon class="points-left-icon"> @if (progressPercentage() >= 66) {trending_up} @else if (progressPercentage() >= 33) {hourglass_bottom} @else {hourglass_empty}
+                            </mat-icon>
+                            </p>
+                            }
+                            <!--Progressbaren-->
+                            <mat-progress-bar class="progress-bar" mode="determinate" aria-label="Progressbar för antal poäng som vill läsas på universitetet" [value]="progressPercentage()"></mat-progress-bar>
+                    </div>
+            </div>
+            }
+            <!--Avslutar-->
+        </div>
         <!-- Inputfält för att söka efter kurser eller filtrera -->
         <div class="filter-field">
             <mat-form-field>
@@ -23,57 +88,7 @@
             </mat-form-field>
 
         </div>
-        <!-- Container för att skriva in antal poäng för studierna samt progressbar (determinate) -->
-        <div class="points-container">
-            <div>
-                <!--Hur många poäng som besökaren vill läsa på universitetet-->
-                <span class="points-label">Hur många poäng vill du läsa?</span>
-                <input type="number" [(ngModel)]="targetPoints" min="0.5" step="0.5" max="300" class="points-input" aria-label="Skriv antal högskolepoäng du vill läsa">
 
-                <!--Om poäng som skrivits in i input är > 300 eller under 0 visas varningsmeddelandet-->
-                @if (targetPoints > 300 || targetPoints
-                < 0) { <p class="warning-points">Max antal poäng är 300hp. </p>}
-            </div>
-
-            <!--Om poängen som angivits i input är += 0.5 visas progressbaren -->
-            @if (targetPoints >= 0.5) {
-            <div class="homemade-bar-container" [class.show]="targetPoints >= 0.5" [ngClass]="barProgressColor()">
-
-                <!--Om poäng som besökaren lagt till i ramschemat är mer än poängen som den vill läsa och att det inte överstiger 300hp visas annat varningsmeddelande-->
-                @if (totalPoints > targetPoints && targetPoints
-                < 300) { <p class="warning-points">Du överstiger med {{totalPoints - targetPoints}}hp! Ta bort kurser från ramschemat eller öka antal poäng du vill läsa.</p>}
-
-                    <!--Om poäng besökaren vill läsa är 300 men den lagt till för många kurser som överstiger 300hp, varningsmeddelande-->
-                    @else if (targetPoints === 300 && totalPoints > targetPoints) {
-                    <p class="warning-points">Du överstiger med {{totalPoints - targetPoints}}hp för max som går att läsa! Ta bort kurser från ramschemat.</p>}
-
-                    <!--Text med poängen-->
-                    <p class="points-text">{{totalPoints | number: '1.0-1'}} / {{targetPoints | number:'1.0-1'}}hp</p>
-
-                    <!--Visar progressbar med texter och ikoner-->
-                    <div>
-                        <!--Om man uppnått alla poängen som man angivit-->
-                        @if (progressPercentage() === 100) {
-                        <p class="points-left">Full pott för schemat!
-                            <mat-icon class="points-left-icon">celebration</mat-icon>
-                        </p>
-                        }
-                        <!--Annars om det är poäng kvar mot "målpoängen"-->
-                        @else if (totalPoints
-                        < targetPoints) { <p class="points-left">
-                            {{ targetPoints - totalPoints | number:'1.0-1' }} hp kvar!
-                            <!--Visar olika ikoner beroende på progressen-->
-                            <mat-icon class="points-left-icon"> @if (progressPercentage() >= 66) {trending_up} @else if (progressPercentage() >= 33) {hourglass_bottom} @else {hourglass_empty}
-                            </mat-icon>
-                            </p>
-                            }
-                            <!--Progressbaren-->
-                            <mat-progress-bar class="progress-bar" mode="determinate" aria-label="Progressbar för antal poäng som vill läsas på universitetet" [value]="progressPercentage()"></mat-progress-bar>
-                    </div>
-            </div>
-            }
-            <!--Avslutar-->
-        </div>
 
         <!-- Visar antal kurser som matchar sökningen -->
         <div class="course-counter">

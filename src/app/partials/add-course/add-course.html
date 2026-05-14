@@ -4,11 +4,20 @@
 </div>
 <!-- Använder Angular Material UI för att skapa tabellen -->
 <div class="table-container">
-    <h1> Mitt ramschema</h1>
+    <div class="table-cont-header">
+        <h1>Mitt ramschema
+            <mat-icon class="schema-icon">event_note</mat-icon>
+        </h1>
+    </div>
+
     <!-- Tabell med kurser inhämtade från service -->
     <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" matSort>
 
+        @if (dataSource.data.length === 0 ) {
+        <div class="no-courses">
+            <p>Inga kurser finns tillagda i ditt ramschema.</p>
+        </div>}
+        <table mat-table [dataSource]="dataSource" matSort>
             <!-- Kurskod -->
             <ng-container matColumnDef="courseCode">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Kurskod </th>

@@ -12,11 +12,13 @@ import { FormsModule } from '@angular/forms';
 import { DisplayCoursesService } from '../../services/display-courses';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NgClass, DecimalPipe } from '@angular/common';
+import { RouterLink, RouterLinkActive } from "@angular/router";
+import { MatAnchor } from "@angular/material/button";
 
 @Component({
   selector: 'app-course-table',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatLabel, MatInputModule, MatIconModule, MatSelectModule, FormsModule, MatProgressBarModule, NgClass, DecimalPipe],
+  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatLabel, MatInputModule, MatIconModule, MatSelectModule, FormsModule, MatProgressBarModule, NgClass, DecimalPipe, RouterLink, RouterLinkActive, MatAnchor],
   templateUrl: './course-table.html',
   styleUrl: './course-table.scss',
 })
@@ -52,9 +54,13 @@ export class CourseTable implements AfterViewInit {
     // Uppdateras varje gång som signalen ändras -> tabellen uppdateras automatiskt när man exempelvis söker i sökfält eller paginerar/sorterar   
     effect(() => {
       const fetchedData = coursesSignal(); // Lagrar de inhämtade kurserna i fetchedData
-      this.dataSource.data = this.courses();
-      this.subjects = [...new Set(fetchedData.map(c => c.subject))] // Alla ämnen lagras i subjects för att användas i dropdown-menyn till att filtrera i tabellen
-      this.progressPercentage();
+      let data = this.courses(); // Lagrar kurserna
+      if (this.selected !== "") { // Filtreringen av ämne behålls även efter man lägger till en kurs i ramschemat
+        data = data.filter(c => c.subject.includes(this.selected));
+      }
+      this.dataSource.data = data; // Uppdaterar tabellen beroende på filtrering av ämne
+      this.subjects = [...new Set(fetchedData.map(c => c.subject))] // Uppdaterar listan med ämnena i dropdownmenyn 
+      this.progressPercentage(); // Uppdaterar progressbaren
     });
   }
 
