@@ -39,12 +39,19 @@ header {
         padding: 0.5rem 0;
         font-weight: 600;
         transition: 0.25s ease;
+        display: flex;
+        align-items: center;
         &:hover {
             transform: translateY(-2px);
-            color: rgba(0, 0, 0, 0.418);
-            text-shadow: 0 2px 2px rgba(12, 52, 226, 0.25);
+            color: rgba(12, 1, 1, 0.418);
         }
     }
+}
+
+mat-icon {
+    font-size: 1.8rem;
+    width: 1.8rem;
+    height: 1.8rem;
 }
 
 .header-logo {
