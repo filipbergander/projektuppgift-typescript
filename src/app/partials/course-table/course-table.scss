@@ -214,6 +214,14 @@
             height: 1.7em;
             align-content: center;
         }
+        .progress-icon {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 2em;
+            margin: 4px;
+            cursor: pointer;
+        }
     }
     
     // Visar progressebaren
@@ -639,6 +647,9 @@
                 font-size: 1.6em;
                 width: 1.6em;
                 height: 1.6em;
+            }
+            .progress-icon {
+                font-size: 1.7em;
             }
         }
         // Visar inte knappens text

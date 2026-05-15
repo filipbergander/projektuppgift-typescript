@@ -67,7 +67,11 @@
                             </p>
                             }
                             <!--Progressbaren-->
-                            <mat-progress-bar class="progress-bar" mode="determinate" aria-label="Progressbar för antal poäng som vill läsas på universitetet" [value]="progressPercentage()"></mat-progress-bar>
+                            <div class="bar-wrapper">
+                                <mat-progress-bar class="progress-bar" mode="determinate" aria-label="Progressbar för antal poäng som vill läsas på universitetet" [value]="progressPercentage()">
+                                </mat-progress-bar>
+                                <mat-icon (click)="minimizeBar()" class="progress-icon">close</mat-icon>
+                            </div>
                     </div>
             </div>
             }

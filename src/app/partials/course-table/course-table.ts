@@ -153,4 +153,11 @@ export class CourseTable implements AfterViewInit {
     sessionStorage.setItem("target-points", points.toString()); // Lagrar poängen i sessionsStorage
   }
 
+  // DÖljer progressbaren genom att sätta "målpoängen" till 0 & radera från sessionStorage
+  minimizeBar(): void {
+    this.goalPoints.set(0); // Sätter målpoängen till 0 så att progressbaren inte visas
+    this.targetPoints.set(0); // Sätter targetPoints till 0 så att eventuella felmeddelanden tas bort
+    sessionStorage.removeItem("target-points"); // Tar bort poängen i sessionsStorage
+  }
+
 }
