@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, effect, inject, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, effect, inject, signal, ViewChild } from '@angular/core';
 import { GetCourseService } from '../../services/get-courses';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -41,11 +41,13 @@ export class CourseTable implements AfterViewInit {
   // Lagrar de inhämtade kurserna i courses
   courses = this.courseService.fetchCourses();
 
-  subjects: string[] = [];
-  selected: string = "";
+  // Properties
+  subjects: string[] = []; // Ämnen i dropdownmenyn
+  selected: string = ""; // Valt ämne i dropdownmenyn
+  totalPoints: number = 0; // Antal poäng som användaren lagt till i ramschemat
 
-  targetPoints: number = 0;
-  totalPoints: number = 0;
+  targetPoints = signal(0); // Antal poäng som användaren skrivit i input för, används till att visa felmeddelande
+  goalPoints = signal(0); // Antal poäng som användaren vill läsa som används i progressbaren
 
   // Hämtar in data från webbtjänsten genom servicen och lagrar som signal
   constructor() {
@@ -53,8 +55,8 @@ export class CourseTable implements AfterViewInit {
 
     // Uppdateras varje gång som signalen ändras -> tabellen uppdateras automatiskt när man exempelvis söker i sökfält eller paginerar/sorterar   
     effect(() => {
-      const fetchedData = coursesSignal(); // Lagrar de inhämtade kurserna i fetchedData
-      let data = this.courses(); // Lagrar kurserna
+      const fetchedData = coursesSignal(); // Lagrar de inhämtade kurserna i fetchedData för att använda till dropdown-menyn
+      let data = this.courses(); // Lagrar kurserna för att använda till tabellen
       if (this.selected !== "") { // Filtreringen av ämne behålls även efter man lägger till en kurs i ramschemat
         data = data.filter(c => c.subject.includes(this.selected));
       }
@@ -62,6 +64,14 @@ export class CourseTable implements AfterViewInit {
       this.subjects = [...new Set(fetchedData.map(c => c.subject))] // Uppdaterar listan med ämnena i dropdownmenyn 
       this.progressPercentage(); // Uppdaterar progressbaren
     });
+  }
+
+  // Om användaren går från kurslistan till ramschemat ska poängen som senast skrivits i inputfältet visas igen när den navigerar tillbaka till kurslistan
+  ngOnInit(): void {
+    const savedPoints = sessionStorage.getItem("target-points"); // Hämtar in poäng från sessionsstorage
+    if (savedPoints) { // Om det finns poäng lagrade
+      this.goalPoints.set(parseFloat(savedPoints)); // Sätter poängen i signalen till det lagrade värdet
+    }
   }
 
   // När vy har laddats klart för sidan blir tabellen kopplad till sorteringen och pagineringen
@@ -117,29 +127,30 @@ export class CourseTable implements AfterViewInit {
     const coursePoints = addedCourses().map(course => course.points); // Lagrar antal poäng som finns tillagd inom totalen av kurserna i ramschemat 
     this.totalPoints = coursePoints.reduce((total, points) => total + points, 0); // Börjar från 0 och går igenom alla poäng som blivit tillagda och summerar dem i totalpoints
 
-    if (this.targetPoints <= 0) return 0; // Om angivet poäng är 0 eller mindre blir det 0 i input och samtidigt körs inte resten av koden
-    // Om man angett över 300 poäng -> 300 i input
-    if (this.targetPoints > 300) {
-      this.targetPoints = 300;
+    if (this.goalPoints() <= 0) return 0; // Om angivet poäng är 0 eller mindre returneras 0 i input och samtidigt körs inte resten av koden
 
-      // Sätter poängen till 0
-    } if (this.targetPoints < 0) {
-      this.targetPoints = 0;
-    }
     // Annars beräknas procenten mellan antal poäng som blivit tillagt och poängen som besökaren vill läsa
-    return (this.totalPoints / this.targetPoints) * 100;
+    return (this.totalPoints / this.goalPoints()) * 100;
   }
 
   // Beräknar vilken färg som ska visas för progressbaren
   barProgressColor(): string {
-
     const percent = this.progressPercentage(); // Eftersom metoden returnerar procent används det här
-
     if (percent < 33) return "bar-red"; // Om det är under 33% blir färgen röd
     if (percent >= 33 && percent < 66) return "bar-yellow"; // Gul
     if (percent >= 66 && percent < 100) return "bar-light-green"; // Ljusgrön
     if (percent === 100) return "bar-green"; // Grönfärg vid 100%
     else return "";
+  }
+
+  // Lagrar poäng i sessionStorage som skrivs in i input för antal poäng
+  storePointsStorage(points: number): void {
+    points = ((points) || 0); // Poängen blir 0 om det inte är ett giltigt nummer som angetts i input
+    this.targetPoints.set(points); // Används till validering i input för att visa felmeddelande i DOM till användaren
+    if (points > 300) { points = 300 }; // Över 300 blir 300 automatiskt
+    if (points < 0) { points = 0 }; // Om användaren skrivit in poäng under 0 så blir det noll
+    this.goalPoints.set(points); // Uppdaterar signalen till värdet
+    sessionStorage.setItem("target-points", points.toString()); // Lagrar poängen i sessionsStorage
   }
 
 }

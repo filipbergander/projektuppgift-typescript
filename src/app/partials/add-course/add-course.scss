@@ -445,7 +445,7 @@ td.mat-mdc-cell.mat-column-syllabus a {
         padding: 2px 4px;
     }
     .mat-column-courseName {
-        width: auto;
+        width: 80px;
     }
     .mat-column-points {
         width: auto;
@@ -489,15 +489,9 @@ td.mat-mdc-cell.mat-column-syllabus a {
     }
     // Kolumn för kurskod
     .mat-column-courseCode {
-        flex: 0 0 50px;
-        padding: 2px 4px;
-        text-align: center;
-    }
-    .mat-column-courseCode .mat-mdc-header-cell,
-    .mat-column-courseCode .mat-mdc-cell {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        width: 65px;
+        padding: 2px 1px;
+        text-align: left;
     }
 }
 
@@ -531,7 +525,6 @@ td.mat-mdc-cell.mat-column-syllabus a {
     // Radernas celler
     .mat-mdc-cell {
         padding: 1px 0.5px;
-        text-overflow: ellipsis;
     }
     .mat-cell,
     .mat-header-cell {

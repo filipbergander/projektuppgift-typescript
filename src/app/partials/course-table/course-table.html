@@ -15,31 +15,35 @@
             <div class="input-points-area">
                 <!--Hur många poäng som besökaren vill läsa på universitetet-->
                 <span class="points-label">Hur många poäng vill du läsa?<mat-icon>workspace_premium</mat-icon></span>
-                <input type="number" [(ngModel)]="targetPoints" min="0.5" step="0.5" max="300" class="points-input" aria-label="Skriv antal högskolepoäng du vill läsa">
+                <input type="number" [ngModel]="goalPoints()" (ngModelChange)="storePointsStorage($event)" min="0.5" step="0.5" max="300" class="points-input" aria-label="Skriv antal högskolepoäng du vill läsa">
 
                 <!--Om poäng som skrivits in i input är > 300 eller under 0 visas varningsmeddelandet-->
-                @if (targetPoints > 300 || targetPoints
-                < 0) { <p class="warning-label">
-                    <mat-icon>warning</mat-icon>Max antal poäng är 300hp. </p>}
+                @if (targetPoints() > 300) {
+                <p class="warning-label">
+                    <mat-icon>warning</mat-icon>Max antal poäng är 300hp.
+                </p>} @else if (targetPoints()
+                < 0 || targetPoints()> 0 && targetPoints()
+                    < 0.5){<p class="warning-label">
+                        <mat-icon>warning</mat-icon>Minsta antal poäng är 0,5hp. </p>}
             </div>
 
             <!--Om poängen som angivits i input är += 0.5 visas progressbaren -->
-            @if (targetPoints >= 0.5) {
-            <div class="homemade-bar-container" [class.show]="targetPoints >= 0.5" [ngClass]="barProgressColor()">
+            @if (goalPoints() >= 0.5) {
+            <div class="homemade-bar-container" [class.show]="goalPoints() >= 0.5" [ngClass]="barProgressColor()">
 
                 <!--Om poäng som besökaren lagt till i ramschemat är mer än poängen som den vill läsa och att det inte överstiger 300hp visas annat varningsmeddelande-->
-                @if (totalPoints > targetPoints && targetPoints
+                @if (totalPoints > goalPoints() && goalPoints()
                 < 300) { <p class="warning-points">
-                    <mat-icon>warning</mat-icon>Du överstiger med {{totalPoints - targetPoints}}hp! Ta bort kurser från ramschemat eller öka antal poäng du vill läsa.</p>}
+                    <mat-icon>warning</mat-icon>Du överstiger med {{totalPoints - goalPoints() | number:'1.0-1'}}hp! Ta bort kurser från ramschemat eller öka antal poäng du vill läsa.</p>}
 
                     <!--Om poäng besökaren vill läsa är 300 men den lagt till för många kurser som överstiger 300hp, varningsmeddelande-->
-                    @else if (targetPoints === 300 && totalPoints > targetPoints) {
+                    @else if (goalPoints() === 300 && totalPoints > goalPoints()) {
                     <p class="warning-points">
-                        <mat-icon>warning</mat-icon>Du överstiger med {{totalPoints - targetPoints}}hp för max som går att läsa! Ta bort kurser från ramschemat.
+                        <mat-icon>warning</mat-icon>Du överstiger med {{totalPoints - goalPoints() | number:'1.0-1'}}hp för max som går att läsa! Ta bort kurser från ramschemat.
                     </p>}
 
                     <!--Text med poängen-->
-                    <p class="points-text">{{totalPoints | number: '1.0-1'}} / {{targetPoints | number:'1.0-1'}}hp</p>
+                    <p class="points-text">{{totalPoints | number: '1.0-1'}} / {{goalPoints() | number:'1.0-1'}}hp</p>
 
                     <!--Visar progressbar med texter och ikoner-->
                     <div>
@@ -49,13 +53,14 @@
                             <p class="points-complete">Full pott för schemat!
                                 <mat-icon class="points-left-icon">celebration</mat-icon>
                             </p>
-                            <a class="schema-link" routerLink="/ramschema" routerLinkActive="current">Visa ramschemat</a>
+                            <a class="schema-link" routerLink="/ramschema" routerLinkActive="current">Visa
+                                ramschemat</a>
                         </div>
                         }
                         <!--Annars om det är poäng kvar mot "målpoängen"-->
                         @else if (totalPoints
-                        < targetPoints) { <p class="points-left">
-                            {{ targetPoints - totalPoints | number:'1.0-1' }} hp kvar!
+                        < goalPoints()) { <p class="points-left">
+                            {{ goalPoints() - totalPoints | number:'1.0-1' }} hp kvar!
                             <!--Visar olika ikoner beroende på progressen-->
                             <mat-icon class="points-left-icon"> @if (progressPercentage() >= 66) {trending_up} @else if (progressPercentage() >= 33) {hourglass_bottom} @else {hourglass_empty}
                             </mat-icon>
