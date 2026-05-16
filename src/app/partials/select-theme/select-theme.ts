@@ -15,12 +15,12 @@ export class SelectTheme {
 
   // Känner av tema och ändringar hos användaren
   constructor() {
-
+    // Hämtar in det sparade temat och använder det för att byta, om det finns lagrat i sessionstorage
     const savedTheme = sessionStorage.getItem("theme") as "light" | "dark" | null;
-
+    // Om det finns ett tema i sessionsstorage används det, annars körs resten av koden
     if (savedTheme) {
       this.changeTheme(savedTheme);
-      return;
+      return; // Avslutar om det fanns ett tema sparat
     }
     // Om valt tema är mörkt
     const preferredDarkTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -39,7 +39,7 @@ export class SelectTheme {
   }
   // Om man byter tema via select-boxen
   changeTheme(theme: "light" | "dark") {
-    sessionStorage.setItem("theme", theme);
+    sessionStorage.setItem("theme", theme); // Sparar till sessionsstorage temat som användaren valt i selectboxen
     this.theme.set(theme); // Uppdaterar signalen utifrån det valda temat
     if (theme === "light") { // Vid klick på ljusttema sätts klassen ljusttema
       document.body.classList.remove("dark-theme");

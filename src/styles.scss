@@ -76,6 +76,8 @@
         --text-primary: #000000;
         --text-secondary: #cbd5e1;
         --text-hover: #0c01016b;
+        --text-warning: #740101;
+        --text-warning-bar: #f55e5e;
         // icons
         --icon-color: #000000;
         /* Borders */
@@ -88,6 +90,21 @@
         --btn-add: #f1b528;
         --btn-remove: #ff784e;
         --bg-button: #e4e4e48a;
+        --bg-course-btn: #f59e64;
+        // Table
+        --bg-table-header: #53CBF3;
+        --bg-table-header-schema: #FBBF24;
+        --cell-colour: #ffffff;
+        --bg-points-cont: #05a7ff;
+        --bg-row-header: #e9e50b;
+        --cell-row-even: #ebe8e854;
+        --cell-row-hover: #e8f0ff;
+        --syllabus-icon-hover: #026d1c;
+        --bg-progressbar: #3b3a3adc;
+        --bg-row: #ffffff;
+        --bg-table-alt: #ffffff;
+        --bg-floating-text: #dadddd81;
+        --bg-floating-label: #9b4003;
     }
     
     .dark-theme {
@@ -97,9 +114,6 @@
         --mat-sys-surface: #1e293b;
         --mat-sys-surface-container: #243447;
         --mat-sys-surface-container-low: #2d3b4f;
-        /* html {
-            background-color: #111FA2;
-        }*/
         --brand-primary: #03457e;
         --brand-secondary: #ffb300;
         /* Backgrounds */
@@ -117,6 +131,8 @@
         --text-primary: #ffffff;
         --text-secondary: #cbd5e1;
         --text-hover: #ffffffc9;
+        --text-warning: #FF4242;
+        --text-warning-bar: #f31212;
         // icons
         --icon-color: #FBBF24;
         /* Borders */
@@ -129,6 +145,21 @@
         --btn-add: #f1b528;
         --btn-remove: #ff784e;
         --bg-button: #011d4b;
+        --bg-course-btn: #9e5a1e;
+        // Table
+        --bg-table-header: #13036c;
+        --bg-table-header-schema: #6c1200;
+        --cell-colour: #2b7ca1c0;
+        --bg-points-cont: #012031;
+        --bg-row-header: #630172;
+        --cell-row-even: #01143dd4;
+        --cell-row-hover: #2e0393;
+        --syllabus-icon-hover: #f4faf6;
+        --bg-progressbar: #1e0479dc;
+        --bg-row: #000526;
+        --bg-table-alt: #01143dd4;
+        --bg-floating-text: #01592dd4;
+        --bg-floating-label: #ffb300;
     }
     
     body {

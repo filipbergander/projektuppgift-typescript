@@ -2,6 +2,7 @@
     $color-primary:#53CBF3;
     $color-secondary:#FFDE42;
     h1 {
+        color: var(--text-primary);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -36,7 +37,9 @@
     // Tabellen
     .mat-mdc-table {
         width: 100%;
-        background: #ffffff;
+        background: var(--cell-colour);
+        color: var(--text-primary);
+        // background: #ffffff;
         box-shadow: 0 0 12px 1px rgb(161, 158, 158);
     }
     
@@ -44,7 +47,8 @@
     .table-cont-header {
         display: flex;
         flex-direction: column;
-        background-color: $color-primary;
+        background: var(--bg-table-header);
+        // background-color: $color-primary;
     }
     
     // Container runt tabellen
@@ -59,6 +63,7 @@
         font-weight: 500;
         padding: 0 1em;
         font-size: 1.1em;
+        color: var(--text-primary);
     }
     
     // Container med antalet poäng som man vill läsa
@@ -66,21 +71,13 @@
         margin: 1em auto;
         padding: 1em;
         width: 50%;
-        background-color: #05a7ff;
+        background: var(--bg-points-cont);
+        //background-color: #05a7ff;
         border-radius: 12px;
         box-shadow: 0 0 10px 3px #05a7ff;
         gap: 0.8em;
-        // Felmeddelande
-        .warning-points {
-            display: flex;
-            align-items: center;
-            color: #f55e5e;
-            letter-spacing: 0.5px;
-            font-weight: bold;
-            font-size: 1.2em;
-            margin-top: 0.2em;
-        }
         .points-text {
+            //color: var(--text-primary);
             color: #ffffff;
             font-size: 1.2em;
             font-weight: bold;
@@ -88,9 +85,30 @@
         }
         .warning-label {
             @extend .warning-points;
-            color: #740101;
+            color: var(--text-warning);
             letter-spacing: 0.9px;
             margin-bottom: 0;
+        }
+    }
+    
+    // Felmeddelande
+    .warning-points {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        color: var(--text-warning-bar);
+        //color: #f55e5e;
+        letter-spacing: 0.5px;
+        max-width: 60ch;
+        font-weight: bold;
+        font-size: 1.2em;
+        margin-top: 0.2em;
+        mat-icon {
+            align-content: center;
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
         }
     }
     
@@ -116,7 +134,8 @@
             align-items: center;
             font-size: 1.2em;
             font-weight: bold;
-            color: #000000;
+            color: var(--text-primary);
+            //color: #000000;
             text-align: center;
             animation: pulse 4s ease-in-out infinite;
         }
@@ -141,8 +160,10 @@
         .schema-link {
             margin: 0 0 0.2em;
             padding: 0.5em;
-            background-color: #FBBF24;
-            color: black;
+            background: var(--bg-course-btn);
+            // background-color: #FBBF24;
+            color: var(--text-primary);
+            // color: black;
             font-weight: bold;
             border-radius: 4px;
             text-decoration: none;
@@ -179,10 +200,12 @@
     
     // Container för progressbaren visas
     .homemade-bar-container {
-        width: 62.5%;
+        width: 100%;
+        //width: 62.5%;
         max-width: 800px;
         backdrop-filter: blur(4px);
-        background-color: #3b3a3adc;
+        background: var(--bg-progressbar);
+        //background-color: #3b3a3adc;
         padding: 1em 2em;
         border-radius: 4px;
         position: fixed;
@@ -222,11 +245,18 @@
             margin: 4px;
             cursor: pointer;
         }
+        .warning-points {
+            margin-right: 30px;
+        }
     }
     
     // Visar progressebaren
     .homemade-bar-container.show {
         opacity: 1;
+        mat-icon {
+            width: 40px;
+            height: 40px;
+        }
     }
     
     // Container för att filtrera kurser i tabellen
@@ -235,7 +265,8 @@
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
-        background-color: $color-primary;
+        background: var(--bg-table-header);
+        //background-color: $color-primary;
         gap: 2em;
         width: 100%;
     }
@@ -262,6 +293,7 @@
             border-radius: 50px !important;
             padding-left: 14px;
             padding-right: 14px;
+            background: var(--bg-filter-field);
         }
     }
     
@@ -286,7 +318,8 @@
     
     // Hela raden med rubriker
     .mat-mdc-header-row {
-        background-color: rgb(233, 229, 11);
+        background: var(--bg-row-header);
+        //background-color: #e9e50b;
     }
     
     // Rubrikernas celler
@@ -308,16 +341,20 @@
     
     .mat-mdc-row {
         height: 60px;
+        background: var(--bg-row);
         &:hover {
-            background-color: #e8f0ff;
+            background: var(--cell-row-hover);
+            //background-color: #e8f0ff;
         }
     }
     
     // Bakgrundsfärg på varannan rad i tabellen för att avskilja
     .mat-mdc-row:nth-child(even) {
-        background: #ebe8e854;
+        background: var(--cell-row-even);
+        //background: #ebe8e854;
         &:hover {
-            background-color: #e8f0ff;
+            background: var(--cell-row-hover);
+            // background-color: #e8f0ff;
         }
     }
     
@@ -357,8 +394,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        color: var(--syllabus-icon-hover);
         &:hover {
-            color: rgb(2, 109, 28);
+            color: var(--syllabus-icon-hover);
             transform: scale(1.15);
         }
     }
@@ -387,7 +425,10 @@
     
     // Knapp för att lägga till en kurs
     .add-course-btn {
-        background-color: rgb(245, 158, 100);
+        background: var(--bg-course-btn);
+        //  background-color: #f59e64;
+        //color: black;
+        color: var(--text-primary);
         padding: 0.8em 1.5em;
         border-radius: 4px;
         border: none;
@@ -401,6 +442,7 @@
             background-color: rgba(63, 185, 6, 0.699);
         }
         &.clicked {
+            color: black;
             background-color: rgba(245, 158, 100, 0.671);
             cursor: default;
             transition: 0.3s ease;
