@@ -120,11 +120,12 @@ mat-elevation-z8 {
     background-color: rgb(233, 229, 11);
 }
 
-// Varje enstaka kolumnnamn i headern
+// Rubrikernas celler
 .mat-mdc-header-cell {
     font-weight: bold;
     font-size: 1.1em;
     padding: 2px 4px;
+    border-bottom: 1px solid #cecdcd;
     &:hover {
         text-decoration: underline;
     }
@@ -134,16 +135,23 @@ mat-elevation-z8 {
 .mat-mdc-cell {
     font-size: 1em;
     padding: 2px 4px;
+    border-bottom: 1px solid #cecdcd;
 }
 
 // Raderna i tabellen
 .mat-mdc-row {
     height: 60px;
+    &:hover {
+        background-color: #e8f0ff;
+    }
 }
 
 // Bakgrundsfärg på varannan rad i tabellen för att avskilja
 .mat-mdc-row:nth-child(even) {
     background: #ebe8e854;
+    &:hover {
+        background-color: #e8f0ff;
+    }
 }
 
 // Kolumnen för kurskod

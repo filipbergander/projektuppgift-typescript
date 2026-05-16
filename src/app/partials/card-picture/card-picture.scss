@@ -15,19 +15,25 @@
     margin-top: 0;
     padding: 1em;
     border-radius: 12px;
+    color: var(--text-primary);
+    background: var(--bg-element);
     span {
         font-weight: bold;
+        color: var(--text-primary);
     }
     mat-icon {
         align-content: center;
         font-size: 30px;
         width: 30px;
         height: 30px;
+        font-weight: bold;
+        color: var( --icon-color);
     }
 }
 
 .single-pic {
-    background-color: #e2e2e2;
+    background: var(--bg-surface-element);
+    //background-color: #e2e2e2;
     text-align: left;
     max-width: 700px;
     flex: 1 1 350px;
@@ -87,10 +93,13 @@ mat-card-header {
     .title {
         font-weight: 700;
         text-align: left;
+        color: var(--text-primary);
     }
     .subtitle {
         text-align: left;
-        color: rgb(102, 102, 102);
+        background: var(--bg-surface-alt);
+        color: var(--card-text-alt);
+        //color: #666666;
     }
 }
 
@@ -104,6 +113,10 @@ mat-card-content {
         margin-left: 0.2em;
         font-style: italic;
     }
+    .card-text {
+        background: var(--card-bg);
+        color: var(--text-primary);
+    }
 }
 
 .icon-card {
@@ -113,6 +126,7 @@ mat-card-content {
     overflow: hidden;
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: var(--bg-surface-alt);
 }
 
 .icon-card:hover {

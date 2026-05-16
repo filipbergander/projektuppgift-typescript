@@ -4,7 +4,8 @@ footer {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    background-color: #233211d7;
+    background: var(--bg-footer);
+    //background-color: #233211d7;
     color: white;
     padding: 3em 2em;
     font-size: 1.1em;

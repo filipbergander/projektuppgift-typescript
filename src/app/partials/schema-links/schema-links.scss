@@ -9,7 +9,8 @@
     display: flex;
     align-items: center;
     font-size: clamp(0.9em, 2vw, 1.5em);
-    color: black;
+    color: var(--text-primary);
+    background: var(--bg-button);
     text-decoration: none;
     padding: clamp(0.2em, 2vw, 0.5em) clamp(1em, 5vw, 4em);
     border-top: 5px solid #FBBF24 !important;
@@ -27,10 +28,12 @@
 
 section {
     margin-top: 5em;
-    background-color: #e4e4e48a;
+    background: var(--bg-stats);
+    //background-color: #e4e4e48a;
     padding: 2em 0 4em;
     border-radius: 20px;
     h1 {
+        color: var(--text-primary);
         font-size: clamp(1.7rem, 2vw, 2rem);
     }
 }
@@ -44,11 +47,14 @@ section {
     margin: 0 auto;
     padding: 1em;
     max-width: 700px;
-    background-color: #f8f8f8;
+    background: var(--bg-about);
+    color: var(--text-primary);
+    //background-color: #f8f8f8;
     border-radius: 12px;
     font-weight: 500;
     font-size: 1.1em;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--border-color);
+    //border: 1px solid #e0e0e0;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.123);
     width: 100%;
     border-left: 3px solid #2B7CA1;

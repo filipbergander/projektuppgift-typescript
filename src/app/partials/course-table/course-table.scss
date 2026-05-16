@@ -258,6 +258,11 @@
         input {
             font-size: 1.2em;
         }
+        .mdc-text-field {
+            border-radius: 50px !important;
+            padding-left: 14px;
+            padding-right: 14px;
+        }
     }
     
     // Meny för att välja ämne i tabellen
@@ -279,14 +284,17 @@
         font-size: 0.9em;
     }
     
+    // Hela raden med rubriker
     .mat-mdc-header-row {
         background-color: rgb(233, 229, 11);
     }
     
+    // Rubrikernas celler
     .mat-mdc-header-cell {
         font-weight: bold;
         font-size: 1.1em;
         padding: 2px 4px;
+        border-bottom: 1px solid #cecdcd;
         &:hover {
             text-decoration: underline;
         }
@@ -295,15 +303,22 @@
     .mat-mdc-cell {
         font-size: 1em;
         padding: 2px 4px;
+        border-bottom: 1px solid #cecdcd;
     }
     
     .mat-mdc-row {
         height: 60px;
+        &:hover {
+            background-color: #e8f0ff;
+        }
     }
     
     // Bakgrundsfärg på varannan rad i tabellen för att avskilja
     .mat-mdc-row:nth-child(even) {
         background: #ebe8e854;
+        &:hover {
+            background-color: #e8f0ff;
+        }
     }
     
     .mat-column-courseCode {

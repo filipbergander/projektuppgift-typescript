@@ -1,96 +1,172 @@
-// Include theming for Angular Material with `mat.theme()`.
-// This Sass mixin will define CSS variables that are used for styling Angular Material
-// components according to the Material 3 design spec.
-// Learn more about theming and how to use it for your application's
-// custom components at https://material.angular.dev/guide/theming
-@use '@angular/material' as mat;
-@include mat.core();
-$color-primary:#53CBF3;
-$color-secondary:#FFDE42;
-$color: #5478FF;
-$color-background:#111FA2;
-$btn-color-news: rgb(255, 238, 0);
-$btn-color-red: #e95500e3;
-$color-text: #000000;
-$color-text-light: #ffffff;
-* {
-    box-sizing: border-box;
-}
-
-//$dark-theme: mat.define-dark-theme(( color: ( theme-type: dark, primary: $color-primary, tertiary: $color-secondary, ), typography: Roboto, density: 0, ));
-html {
-    //@include mat.theme($dark-theme);
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    @include mat.theme( ( color: ( primary: mat.$blue-palette, tertiary: mat.$azure-palette, ), typography: Roboto, density: 0, ));
-}
-
-// Klass för att lägga till en röd färg på progressbar under 33%
-.bar-red {
-    @include mat.progress-bar-overrides(( active-indicator-color: #e53935, track-color: #ffcccc, ));
-}
-
-// Klass för att lägga till en gul färg på progressbar under 66%
-.bar-yellow {
-    @include mat.progress-bar-overrides(( active-indicator-color: #fbc02d, track-color: #fff4c2, ));
-}
-
-// Klass för att lägga till en ljusgrön färg på progressbar under 100%
-.bar-light-green {
-    @include mat.progress-bar-overrides(( active-indicator-color: #97f79b, track-color: #ffffff, ));
-}
-
-// Klass för att lägga till en grön färg på progressbar när man uppnått 100%
-.bar-green {
-    @include mat.progress-bar-overrides(( active-indicator-color: #0df818, ));
-}
-
-// Styling för höjd på progressbaren
-.homemade-bar-container {
-    @include mat.progress-bar-overrides(( active-indicator-height: 10px, track-height: 10px, ));
-}
-
-body {
-    // Default the application to a light color theme. This can be changed to
-    // `dark` to enable the dark color theme, or to `light dark` to defer to the
-    // user's system settings.
-    color-scheme: light;
-    // Set a default background, font and text colors for the application using
-    // Angular Material's system-level CSS variables. Learn more about these
-    // variables at https://material.angular.dev/guide/system-variables
-    background-color: rgba(248, 232, 178, 0.274);
-    color: var(--mat-sys-on-surface);
-    font: var(--mat-sys-body-medium);
-    // Reset the user agent margin.
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-app-root {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-header {
-    .current {
-        position: relative;
-        color: #2d6cdf;
-        font-weight: 600;
+    // Include theming for Angular Material with `mat.theme()`.
+    // This Sass mixin will define CSS variables that are used for styling Angular Material
+    // components according to the Material 3 design spec.
+    // Learn more about theming and how to use it for your application's
+    // custom components at https://material.angular.dev/guide/theming
+    @use '@angular/material' as mat;
+    @include mat.core();
+    $color-primary:#53CBF3;
+    $color-secondary:#FFDE42;
+    $color: #5478FF;
+    $color-background:#111FA2;
+    $btn-color-news: rgb(255, 238, 0);
+    $btn-color-red: #e95500e3;
+    $color-text: #000000;
+    $color-text-light: #ffffff;
+    $color-dark-primary: #03457e;
+    $color-dark-secondary: #ffb300;
+    $light-theme: mat.define-theme(( color: ( theme-type: light, primary: mat.$cyan-palette, tertiary: mat.$blue-palette, ), ));
+    $dark-theme: mat.define-theme(( color: ( theme-type: dark, primary: mat.$cyan-palette, tertiary: mat.$blue-palette, ), ));
+    * {
+        box-sizing: border-box;
     }
-    .current::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        height: 4px;
-        width: 100%;
-        background: linear-gradient(90deg, #2d6cdf, #6aa8ff);
-        border-radius: 4px 4px 0;
+    
+    //$dark-theme: mat.define-dark-theme(( color: ( theme-type: dark, primary: $color-primary, tertiary: $color-secondary, ), typography: Roboto, density: 0, ));
+    html {
+        //@include mat.theme($dark-theme);
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        @include mat.theme( ( color: ( primary: mat.$blue-palette, tertiary: mat.$azure-palette, ), typography: Roboto, density: 0, ));
     }
-}
+    
+    // Klass för att lägga till en röd färg på progressbar under 33%
+    .bar-red {
+        @include mat.progress-bar-overrides(( active-indicator-color: #e53935, track-color: #ffcccc, ));
+    }
+    
+    // Klass för att lägga till en gul färg på progressbar under 66%
+    .bar-yellow {
+        @include mat.progress-bar-overrides(( active-indicator-color: #fbc02d, track-color: #fff4c2, ));
+    }
+    
+    // Klass för att lägga till en ljusgrön färg på progressbar under 100%
+    .bar-light-green {
+        @include mat.progress-bar-overrides(( active-indicator-color: #97f79b, track-color: #ffffff, ));
+    }
+    
+    // Klass för att lägga till en grön färg på progressbar när man uppnått 100%
+    .bar-green {
+        @include mat.progress-bar-overrides(( active-indicator-color: #0df818, ));
+    }
+    
+    // Styling för höjd på progressbaren
+    .homemade-bar-container {
+        @include mat.progress-bar-overrides(( active-indicator-height: 10px, track-height: 10px, ));
+    }
+    
+    .light-theme {
+        @include mat.all-component-themes($light-theme);
+        --mat-sys-primary: #53CBF3;
+        --mat-sys-secondary: #FFDE42;
+        --brand-primary: #03457e;
+        --brand-secondary: #ffb300;
+        /* Backgrounds */
+        --bg-body: #f8e8b246;
+        --bg-body-alt: #ffffff;
+        --bg-stats: #e4e4e48a;
+        --bg-surface-stats: #2B7CA1;
+        --bg-choose-us: #16cf6094;
+        --bg-surface: #ffffff;
+        --bg-surface-alt: #ffffff;
+        --bg-footer: #233211d7;
+        --bg-surface-element: #e2e2e2;
+        --bg-header: #00acfc2f;
+        /* Text */
+        --text-primary: #000000;
+        --text-secondary: #cbd5e1;
+        --text-hover: #0c01016b;
+        // icons
+        --icon-color: #000000;
+        /* Borders */
+        --border-color: #e0e0e0;
+        /* Cards */
+        --card-bg: #ffffff;
+        --card-text: #000000;
+        --card-text-alt: #666666;
+        /* Buttons */
+        --btn-add: #f1b528;
+        --btn-remove: #ff784e;
+        --bg-button: #e4e4e48a;
+    }
+    
+    .dark-theme {
+        @include mat.all-component-themes($dark-theme);
+        --mat-sys-primary: #03457e;
+        --mat-sys-secondary: #f1b528;
+        --mat-sys-surface: #1e293b;
+        --mat-sys-surface-container: #243447;
+        --mat-sys-surface-container-low: #2d3b4f;
+        /* html {
+            background-color: #111FA2;
+        }*/
+        --brand-primary: #03457e;
+        --brand-secondary: #ffb300;
+        /* Backgrounds */
+        --bg-body: #0f172a;
+        --bg-surface: #1e293b;
+        --bg-surface-element: #1e293b;
+        --bg-stats: #243447;
+        --bg-surface-stats: #1e293b;
+        --bg-choose-us: #08148094;
+        --bg-surface-alt: #243447;
+        --bg-footer: #030625;
+        --bg-about: #1e293b;
+        --bg-header: #00acfc2f;
+        /* Text */
+        --text-primary: #ffffff;
+        --text-secondary: #cbd5e1;
+        --text-hover: #ffffffc9;
+        // icons
+        --icon-color: #FBBF24;
+        /* Borders */
+        --border-color: #2b7ca1c0;
+        /* Cards */
+        --card-bg: #1e293b;
+        --card-text: #ffffff;
+        --card-text-alt: #ffffff;
+        /* Buttons */
+        --btn-add: #f1b528;
+        --btn-remove: #ff784e;
+        --bg-button: #011d4b;
+    }
+    
+    body {
+        //@extend .light-theme;
+        //color-scheme: light;
+        background-color: #f8e8b246;
+        background: var(--bg-body);
+        color: var(--mat-sys-on-surface);
+        font: var(--mat-sys-body-medium);
+        font-family: "Inter", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    app-root {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    
+    header {
+        .current {
+            position: relative;
+            color: #2d6cdf;
+            font-weight: 600;
+        }
+        .current::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            height: 4px;
+            width: 100%;
+            background: linear-gradient(90deg, #2d6cdf, #6aa8ff);
+            border-radius: 4px 4px 0;
+        }
+    }

@@ -1,7 +1,8 @@
 header {
     width: 100%;
     overflow: hidden;
-    background-color: #0ea4e92f;
+    background: var(--bg-header);
+    //background-color: #0ea4e92f;
     padding: 0em;
     display: flex;
     justify-content: center;
@@ -33,7 +34,7 @@ header {
         font-family: Manrope, sans-serif;
         text-decoration: none;
         font-size: 2em;
-        color: black;
+        color: var(--text-primary);
         display: inline-block;
         text-transform: uppercase;
         padding: 0.5rem 0;
@@ -43,7 +44,8 @@ header {
         align-items: center;
         &:hover {
             transform: translateY(-2px);
-            color: rgba(12, 1, 1, 0.418);
+            color: var(--text-hover);
+            // color: #0c01016b;
         }
     }
 }
@@ -59,6 +61,7 @@ mat-icon {
     align-items: center;
     padding-left: 5em;
     gap: 1em;
+    color: var(--text-primary);
     img {
         height: auto;
         width: 80px;
