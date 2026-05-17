@@ -14,11 +14,12 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NgClass, DecimalPipe } from '@angular/common';
 import { RouterLink, RouterLinkActive } from "@angular/router";
 import { MatAnchor } from "@angular/material/button";
+import { MatAutocompleteModule, MatAutocompleteSelectedEvent } from "@angular/material/autocomplete";
 
 @Component({
   selector: 'app-course-table',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatLabel, MatInputModule, MatIconModule, MatSelectModule, FormsModule, MatProgressBarModule, NgClass, DecimalPipe, RouterLink, RouterLinkActive, MatAnchor],
+  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatLabel, MatInputModule, MatIconModule, MatSelectModule, FormsModule, MatProgressBarModule, NgClass, DecimalPipe, RouterLink, RouterLinkActive, MatAnchor, MatAutocompleteModule],
   templateUrl: './course-table.html',
   styleUrl: './course-table.scss',
 })
@@ -48,6 +49,7 @@ export class CourseTable implements AfterViewInit {
 
   targetPoints = signal(0); // Antal poäng som användaren skrivit i input för, används till att visa felmeddelande
   goalPoints = signal(0); // Antal poäng som användaren vill läsa som används i progressbaren
+  filteredCourses = signal<Course[]>([]); // Signal som lagrar kurser som användaren vill filtrera efter i sökfältet
 
   // Hämtar in data från webbtjänsten genom servicen och lagrar som signal
   constructor() {
@@ -72,6 +74,16 @@ export class CourseTable implements AfterViewInit {
     if (savedPoints) { // Om det finns poäng lagrade
       this.goalPoints.set(parseFloat(savedPoints)); // Sätter poängen i signalen till det lagrade värdet
     }
+
+    // Filtrerar tabellen efter -> kursnamn eller kurskod
+    this.dataSource.filterPredicate = (course, filter) => {
+      const searchValue = filter.trim().toLowerCase(); // Det som skrivits i sökfältet för filtrering
+
+      // Returnerar sant om man sökt på kursnamn eller kurskod och -> visar kursen
+      return (
+        course.courseName.toLowerCase().includes(searchValue) || course.courseCode.toLowerCase().includes(searchValue)
+      );
+    }
   }
 
   // När vy har laddats klart för sidan blir tabellen kopplad till sorteringen och pagineringen
@@ -79,12 +91,29 @@ export class CourseTable implements AfterViewInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
+  // Vid klick på en kurs i dropdown-listan så läggs kursen till i sökfältet och tabellen filtreras efter kursen
+  chooseCourse(event: MatAutocompleteSelectedEvent): void {
+    const courseValue = event.option.value.trim().toLowerCase(); // Kursen som valdes i listan
+    this.dataSource.filter = courseValue; // Filtrerar tabellen utefter kursen
+
+    // Visar första sidan i pagineringen
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 
   // För att hantera filtrering av tabellen när man söker i sökfältet
   applyFilter(event: Event): void {
-    const filterValue = (event.target as HTMLInputElement).value; // Värdet som skrivs inuti sökfältet
-    this.dataSource.filter = filterValue.trim().toLowerCase(); // Tar bort mellanslag och gör värdet i sökfältet till små bokstäver
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase(); // Värdet som skrivs inuti sökfältet, tar bort mellanslag och gör värdet i sökfältet till små bokstäver
+    this.dataSource.filter = filterValue; // Filtrerar tabellen
 
+    // Filtrerar kurser efter förslag på autocomplete
+    this.filteredCourses.set(
+      // Filtrerar efter kursnamn/kurskod
+      this.courses().filter(course => course.courseName.toLowerCase().includes(filterValue)
+        || course.courseCode.toLowerCase().includes(filterValue)).slice(0, 3)); // Visar 3 kurser som förslag i dropdown-listan
+
+    // Visar första sidan i pagineringen
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
@@ -96,6 +125,7 @@ export class CourseTable implements AfterViewInit {
     this.dataSource.data = filteredSubject; // Uppdaterar hela tabellen beroende på input
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    // Visar första sidan i pagineringen
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }

@@ -81,7 +81,15 @@
         <div class="filter-field">
             <mat-form-field class="filter-input">
                 <mat-label>Filtrera kurser</mat-label>
-                <input matInput (keyup)="applyFilter($event)" placeholder="Sök kurs..." #input>
+                <input matInput (keyup)="applyFilter($event)" [matAutocomplete]="auto" placeholder="Sök kurs..." #input>
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="chooseCourse($event)">
+                    @for (course of filteredCourses(); track course.courseCode) {
+                    <mat-option [value]="course.courseName || course.courseCode">
+                        <strong>{{course.courseCode}}</strong><br>
+                        <span>{{course.courseName}}</span>
+                    </mat-option>
+                    }
+                </mat-autocomplete>
             </mat-form-field>
 
             <!-- Dropdown-meny-->
