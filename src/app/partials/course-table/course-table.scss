@@ -680,6 +680,15 @@
         .mat-column-add {
             min-width: 0;
         }
+        .autocomplete-option {
+            strong {
+                font-size: 0.9em;
+                margin-bottom: 0px;
+            }
+            span {
+                font-size: 0.9em;
+            }
+        }
         .points-container {
             .points-label {
                 font-size: 0.9em;

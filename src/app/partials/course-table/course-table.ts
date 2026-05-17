@@ -91,16 +91,7 @@ export class CourseTable implements AfterViewInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-  // Vid klick på en kurs i dropdown-listan så läggs kursen till i sökfältet och tabellen filtreras efter kursen
-  chooseCourse(event: MatAutocompleteSelectedEvent): void {
-    const courseValue = event.option.value.trim().toLowerCase(); // Kursen som valdes i listan
-    this.dataSource.filter = courseValue; // Filtrerar tabellen utefter kursen
 
-    // Visar första sidan i pagineringen
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
 
   // För att hantera filtrering av tabellen när man söker i sökfältet
   applyFilter(event: Event): void {
@@ -130,6 +121,17 @@ export class CourseTable implements AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
+  // Vid klick på en kurs i dropdown-listan så läggs kursen till i sökfältet och tabellen filtreras efter kursen
+  chooseCourse(event: MatAutocompleteSelectedEvent): void {
+    const courseValue = event.option.value.trim().toLowerCase(); // Kursen som valdes i listan
+    this.dataSource.filter = courseValue; // Filtrerar tabellen utefter kursen
+
+    // Visar första sidan i pagineringen
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
   // Lägger till en kurs till localstorage genom servicen och disablar knappen
   addCourseToPlan(course: Course): void {
     this.setButtonDisabled(course); // Sätter knappen som klickades på till disabled genom metoden
