@@ -84,7 +84,7 @@
                 <input matInput (keyup)="applyFilter($event)" [matAutocomplete]="auto" placeholder="Sök kurs..." #input>
                 <mat-autocomplete #auto="matAutocomplete" (optionSelected)="chooseCourse($event)">
                     @for (course of filteredCourses(); track course.courseCode) {
-                    <mat-option [value]="course.courseName || course.courseCode">
+                    <mat-option [value]="course.courseCode">
                         <strong>{{course.courseCode}}</strong><br>
                         <span>{{course.courseName}}</span>
                     </mat-option>
