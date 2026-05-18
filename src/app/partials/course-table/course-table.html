@@ -162,7 +162,7 @@
                 <th mat-header-cell *matHeaderCellDef>Val</th>
                 <td mat-cell *matCellDef="let row"><button class="add-course-btn" id="{{row.courseCode}}" [class.clicked]="row.added" [disabled]="row.added" (click)="addCourseToPlan(row)" aria-label="Lägg till kurs i ramschema"><span class="add-course-text">{{row.added
                             ? "Lagt till" : "Lägg till" }}</span><mat-icon class="add-icon">
-                            add
+                            {{row.added ? "check" : "add"}}
                         </mat-icon></button></td>
             </ng-container>
 
