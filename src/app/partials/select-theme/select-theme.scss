@@ -1,0 +1,78 @@
+// Text och ikon som visas när innan man klickar på selectboxen
+mat-select-trigger {
+    align-items: center;
+    display: flex;
+    gap: 0.5em;
+    font-size: 1em;
+    mat-icon {
+        vertical-align: center;
+    }
+}
+
+// Selectboxen
+.theme-box {
+    width: 170px;
+    font-size: 1.3em;
+    margin: 2em 2em 0 1em;
+    mat-label {
+        font-size: 1em;
+    }
+    .mat-option {
+        font-size: 1em;
+    }
+    mat-selected {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 930px) {
+    .theme-box {
+        width: 170px;
+        font-size: 1em;
+        margin: 2em 2em 0 1em;
+    }
+    mat-select-trigger {
+        width: 150px;
+        gap: 0.1em;
+        font-size: 1em;
+        mat-icon {
+            font-size: 20px;
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    mat-select-trigger {
+        gap: 0em;
+        font-size: 1em;
+        mat-icon {
+            font-size: 1.5em;
+            width: 1.5em;
+            height: 1.5em;
+            align-content: center;
+        }
+        span {
+            display: none;
+        }
+    }
+    .theme-box {
+        width: 70px;
+        font-size: 1em;
+        margin: 2em 0.1em 0 0em;
+        mat-label {
+            display: none;
+        }
+    }
+    .mat-option-light {
+        span {
+            display: none;
+        }
+    }
+    .mat-option-dark {
+        span {
+            display: none;
+        }
+    }
+}

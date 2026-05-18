@@ -1,0 +1,39 @@
+<!--Footer med kontaktuppgifter, "länkar" och copyright -->
+<footer class="footer">
+    <div class="footer-container">
+        <!--Kontaktuppgifter-->
+        <section class="contact-details">
+            <p class="footer-heading">Kontaktuppgifter</p>
+            <ul>
+                <li>Norrlandsgatan 12, Örnsköldsvik
+                    <mat-icon>home</mat-icon>
+                </li>
+                <!--Förhindrar navigering och gör länken "ej klickbar"-->
+                <li><a (click)="$event.preventDefault()" href="mailto:#">info@uni-NU.se</a>
+                    <mat-icon>mail</mat-icon>
+                </li>
+                <li>010-4329900
+                    <mat-icon>phone</mat-icon>
+                </li>
+            </ul>
+        </section>
+        <!--Sociala medier-->
+        <section class="social-media">
+            <p class="footer-heading">Medier</p>
+            <mat-icon>facebook</mat-icon>
+            <!--Förhindrar navigering och gör länken "ej klickbar"-->
+            <a (click)="$event.preventDefault()" href="#">Studentkårens blogg</a>
+        </section>
+        <!--Länkar-->
+        <nav>
+            <p class="footer-heading">Länkar</p>
+            <ul>
+                <!--Förhindrar navigering och gör länkarna "ej klickbara"-->
+                <li><a (click)="$event.preventDefault()" href="#">Integritetspolicy</a></li>
+                <li><a (click)="$event.preventDefault()" href="#">Användarvillkor</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!--Copyright-->
+    <p>Copyright © 2026 Norrlands Universitet</p>
+</footer>

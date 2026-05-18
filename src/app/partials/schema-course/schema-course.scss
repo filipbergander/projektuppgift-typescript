@@ -1,0 +1,564 @@
+@use '@angular/material' as mat;
+$color-primary:#FBBF24;
+$color-secondary:#FFDE42;
+// Knapp för att gå tillbaka till kursschemat
+.back-container {
+    text-align: left;
+    mat-button {
+        color: brown;
+    }
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5em;
+        font-size: 1.1em;
+        margin-bottom: 0.2em;
+        font-weight: bold;
+        border-radius: 4px;
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+        transition: .3s ease-in-out;
+        background: linear-gradient(135deg, #00abfa, #045986);
+        &:hover {
+            transform: translateY(-2px);
+        }
+    }
+}
+
+// Rubriken
+h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2em;
+}
+
+// Container ovanför tabellen
+.table-cont-header {
+    display: flex;
+    flex-direction: column;
+    color: var(--text-primary);
+    background: var(--bg-table-header-schema);
+    //background-color: $color-primary;
+}
+
+.no-courses {
+    background: var(--bg-table-header-schema);
+    //background-color: $color-primary;
+    color: var(--text-primary);
+    margin: 0;
+    padding: 1em;
+    text-align: center;
+    font-size: 1.2em;
+    p {
+        animation: pulse 3s ease-in-out infinite;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+// Tabellen
+.mat-mdc-table {
+    width: 100%;
+    background: var(--cell-colour);
+    color: var(--text-primary);
+    //background: #ffffff;
+    box-shadow: 0 0 12px 1px rgb(161, 158, 158);
+}
+
+// Container runt hela table
+mat-elevation-z8 {
+    width: 100%;
+    margin: 0 auto;
+}
+
+// Container för att lista hur många kurser som visas i tabellen för ramschemat
+.course-amount {
+    text-align: left;
+}
+
+// Visar totalt antal poäng som lagts till i ramschemat
+.total-points {
+    padding: 1em 1.5em;
+    width: fit-content;
+    border-radius: 16px;
+    color: var(--text-primary);
+    background: var(--bg-floating-text);
+    //background-color: #dadddd81;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    span {
+        margin-left: 0.2em;
+        color: var(--bg-floating-label);
+        //color: #9b4003;
+        font-weight: 600;
+    }
+    // Ikonen
+    mat-icon {
+        color: var(--bg-floating-label);
+        //color: rgb(155, 64, 3);
+    }
+}
+
+// Texten & ikon för totala antalet kurser
+.total-courses {
+    @extend .total-points;
+    span {
+        margin-left: 0.2em;
+        color: var(--bg-floating-label);
+        //color: rgb(155, 64, 3);
+        font-weight: 600;
+    }
+    mat-icon {
+        color: var(--bg-floating-label);
+        //color: rgb(155, 64, 3);
+    }
+}
+
+// Raden för hela header med kolumnnamnen i tabellen
+.mat-mdc-header-row {
+    background: var(--bg-row-header);
+    //background-color: rgb(233, 229, 11);
+}
+
+// Rubrikernas celler
+.mat-mdc-header-cell {
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 2px 4px;
+    border-bottom: 1px solid #cecdcd;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+// Varje enskild cell i tabellen
+.mat-mdc-cell {
+    font-size: 1em;
+    padding: 2px 4px;
+    border-bottom: 1px solid #cecdcd;
+}
+
+// Raderna i tabellen
+.mat-mdc-row {
+    height: 60px;
+    background: var(--bg-row);
+    &:hover {
+        background: var(--cell-row-hover);
+        //  background-color: #e8f0ff;
+    }
+}
+
+// Bakgrundsfärg på varannan rad i tabellen för att avskilja
+.mat-mdc-row:nth-child(even) {
+    // background: #ebe8e854;
+    background: var(--cell-row-even);
+    &:hover {
+        background: var(--cell-row-hover);
+        //background-color: #e8f0ff;
+    }
+}
+
+// Kolumnen för kurskod
+.mat-column-courseCode {
+    width: 80px;
+    padding: 4px 8px;
+}
+
+// Kolumnen för kursnamn
+.mat-column-courseName {
+    width: 240px;
+}
+
+// Kolumnen för poäng
+.mat-column-points {
+    width: 50px;
+}
+
+td.mat-mdc-cell.mat-column-points {
+    text-align: left;
+    width: auto;
+}
+
+// Kolumnen för ämne
+.mat-column-subject {
+    width: 175px;
+}
+
+// Kolumnen för kursplan
+.mat-column-syllabus {
+    padding: 2px 2px;
+    width: 60px;
+    text-align: center;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+// Ikon för länk till kursplan
+td.mat-mdc-cell.mat-column-syllabus a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--syllabus-icon-hover);
+    &:hover {
+        color: var(--syllabus-icon-hover);
+        //color: rgb(2, 109, 28);
+        transform: scale(1.15);
+    }
+}
+
+// Kolumnen för att radera kurser från ramschemat
+.mat-column-removed {
+    width: 60px;
+    text-align: center;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+// Cellen och raden för kursplan
+.course-plan-row {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin: 0 auto;
+}
+
+// Ikon för att ta bort en kurs, papperskorg visas inte på desktop
+.delete-icon {
+    display: none;
+}
+
+// Knapp för att ta bort en kurs
+.delete-course-btn {
+    background: var(--bg-course-btn);
+    color: var(--text-primary);
+    //background-color: #f59e64;
+    padding: 0.8em 1.5em;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: bold;
+    transition: .25s ease-in-out;
+    box-shadow: 0 0 4px 0.2px black;
+    white-space: nowrap;
+    &:hover {
+        background-color: rgba(63, 185, 6, 0.699);
+    }
+    &.clicked {
+        color: black;
+        background-color: rgba(245, 158, 100, 0.671);
+        cursor: default;
+        transition: 0.3s ease;
+        transform: scale(0.95);
+    }
+}
+
+@media (max-width:900px) {
+    .delete-course-btn {
+        padding: 0.8em 0.5em;
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 620px) {
+    .mat-mdc-cell,
+    .mat-mdc-header-cell {
+        white-space: normal;
+    }
+    mat-elevation-z8 {
+        overflow-x: auto;
+    }
+    .table-container {
+        padding: 0em;
+    }
+    // Kolumnernas rubriker
+    .mat-mdc-header-row {
+        font-size: 0.75em;
+    }
+    // Kolumernas rubriker varje cell
+    .mat-mdc-header-cell {
+        padding: 1px 2px;
+    }
+    // Radernas celler
+    .mat-mdc-cell {
+        font-size: 0.75em;
+        padding: 1px 2px;
+        line-height: 1.2;
+    }
+    // Raderna
+    .mat-mdc-row {
+        height: 50px;
+        hyphens: auto;
+    }
+    // Kolumn för kurskod
+    .mat-column-courseCode {
+        width: 60px;
+        padding: 2px 4px;
+    }
+    // Kolumn för kursnamn
+    .mat-column-courseName {
+        width: 170px;
+    }
+    .points-header {
+        text-align: center !important;
+    }
+    .points-cell {
+        text-align: center !important;
+    }
+    // Kolumn för poäng
+    .mat-column-points {
+        width: 30px;
+        text-align: center;
+    }
+    td.mat-mdc-cell.mat-column-points {
+        text-align: center;
+        padding: 0;
+    }
+    // Kolumn för ämne
+    .mat-column-subject {
+        width: 105px;
+    }
+    // Kolumn för kursplan
+    .mat-column-syllabus {
+        padding: 1px 1px;
+        width: 40px;
+    }
+    // Länk (ikonen) till kursplan
+    .syllabus-icon {
+        font-size: 25px;
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        transition: transform 0.15s ease;
+    }
+    .course-plan-row:hover .syllabus-icon {
+        transform: scale(1.05);
+    }
+    // Kolumn för att lägga till kurs i ramschema
+    .mat-column-add {
+        width: 60px;
+        padding: 0 0.6em;
+    }
+    // Rad för kursplan
+    .course-plan-row {
+        gap: 1px;
+    }
+    .delete-course-btn {
+        padding: 0.8em 0.7em;
+        font-size: 0.8em;
+    }
+    .delete-course-text {
+        display: block;
+    }
+    .delete-icon {
+        display: none;
+    }
+}
+
+@media (max-width: 500px) {
+    .back-btn {
+        padding: 0.9em 0.9em;
+        font-size: 1em;
+        margin-left: 0.3em;
+        margin-top: 0.5em;
+    }
+    h1 {
+        mat-icon {
+            margin-left: 0em;
+        }
+    }
+}
+
+@media (max-width: 420px) {
+    // Tabellen
+    .mat-mdc-table {
+        table-layout: fixed;
+    }
+    .mat-column-courseCode,
+    .mat-column-courseName,
+    .mat-column-points,
+    .mat-column-subject,
+    .mat-column-syllabus,
+    .mat-column-add {
+        min-width: 0;
+    }
+    // Container för att lista hur många kurser som visas i tabellen för ramschemat
+    .course-amount {
+        text-align: left;
+    }
+    // Visar totalt antal poäng som lagts till i ramschemat
+    .total-points {
+        padding: 0.5em 1em;
+        font-size: 0.9em;
+        span {
+            margin-left: 0.2em;
+            font-weight: 600;
+        }
+    }
+    // Texten & ikon för totala antalet kurser
+    .total-courses {
+        @extend .total-points;
+        span {
+            margin-left: 0.2em;
+            font-weight: 600;
+        }
+    }
+    // Visar inte knappens text
+    .delete-course-text {
+        display: none;
+    }
+    // Visar ikonen
+    .delete-icon {
+        display: block;
+        align-content: center;
+        font-size: 20px;
+        height: 25px;
+        width: 25px;
+    }
+    // Gör knappen för ikonen lite mindre
+    .delete-course-btn {
+        padding: 0em;
+        font-size: 0.8em;
+    }
+    // Kolumnernas rubriker
+    .mat-mdc-header-row {
+        font-size: 0.75em;
+    }
+    // Kolumernas rubriker varje cell
+    .mat-mdc-header-cell {
+        padding: 0.5px 0.75px;
+    }
+    // Radernas celler
+    .mat-mdc-cell {
+        font-size: 0.7em;
+        padding: 1px 0.5px;
+        line-height: 1.2;
+    }
+    // Raderna
+    .mat-mdc-row {
+        height: 55px;
+    }
+    .mat-cell,
+    .mat-header-cell {
+        padding: 2px 4px;
+    }
+    // Raderna
+    .mat-mdc-row {
+        height: 45px;
+    }
+    .mat-column-courseCode {
+        width: 50px;
+        text-align: left;
+        padding: 2px 4px;
+    }
+    .mat-column-courseName {
+        width: 80px;
+    }
+    .mat-column-points {
+        width: auto;
+    }
+    td.mat-mdc-cell.mat-column-points {
+        text-align: center;
+    }
+    .points-header {
+        text-align: left !important;
+    }
+    .mat-column-subject {
+        width: auto;
+    }
+    .mat-column-syllabus {
+        text-align: left;
+    }
+    .mat-column-add {
+        text-align: left;
+        width: 200px;
+    }
+    .header-courseplan {
+        text-align: left !important;
+    }
+    .cell-courseplan {
+        text-align: left !important;
+    }
+    th.header-coursecode,
+    td.cell-coursecode,
+    th.header-coursename,
+    td.cell-coursename,
+    .header-subject,
+    .cell-subject {
+        padding: 0.5em 1px;
+    }
+    .cell-points,
+    .header-points {
+        text-align: center;
+    }
+    .cell-points {
+        text-align: center !important;
+    }
+    // Kolumn för kurskod
+    .mat-column-courseCode {
+        width: 65px;
+        padding: 2px 1px;
+        text-align: left;
+    }
+}
+
+@media (max-width: 365px) {
+    .add-course-text {
+        display: none;
+    }
+    .add-course-btn {
+        .add-icon {
+            display: block;
+            align-content: center;
+            font-size: 19px;
+            height: 25px;
+            width: 25px;
+        }
+    }
+    // Selectbox med val av
+    .mat-mdc-select-value,
+    .mat-mdc-option {
+        font-size: 0.9em;
+    }
+    // Kolumnernas rubriker
+    .mat-mdc-header-row {
+        font-size: 0.7em;
+    }
+    // Kolumernas rubriker varje cell
+    .mat-mdc-header-cell {
+        padding: 0.5px 0.75px;
+        text-overflow: ellipsis;
+    }
+    // Radernas celler
+    .mat-mdc-cell {
+        padding: 1px 0.5px;
+    }
+    .mat-cell,
+    .mat-header-cell {
+        padding: 2px 4px;
+    }
+    // Raderna
+    .mat-mdc-row {
+        height: auto;
+    }
+    .mat-column-courseCode {
+        width: auto;
+        padding: 2px 4px;
+    }
+}

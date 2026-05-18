@@ -1,0 +1,164 @@
+// Hela headern
+header {
+    width: 100%;
+    overflow: hidden;
+    background: var(--bg-header);
+    //background-color: #0ea4e92f;
+    padding: 0em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+    z-index: 10;
+    border: none;
+    box-shadow: 0px 4px 8px 1px #0ea4e92f;
+    nav {
+        width: 100%;
+        max-width: 1200px;
+        display: flex;
+        padding-right: 2em;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    ul {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        display: flex;
+        align-items: center;
+    }
+    // Länk
+    a {
+        font-family: Manrope, sans-serif;
+        text-decoration: none;
+        font-size: 2em;
+        color: var(--text-primary);
+        display: inline-block;
+        text-transform: uppercase;
+        padding: 0.5rem 0;
+        font-weight: 600;
+        transition: 0.25s ease;
+        display: flex;
+        align-items: center;
+        &:hover {
+            transform: translateY(-2px);
+            color: var(--text-hover);
+            // color: #0c01016b;
+        }
+    }
+}
+
+// Ikon
+mat-icon {
+    font-size: 1.8rem;
+    width: 1.8rem;
+    height: 1.8rem;
+}
+
+// Logotypen  samt "rubriken" i headern
+.header-logo {
+    display: flex;
+    align-items: center;
+    padding-left: 2em;
+    gap: 1em;
+    white-space: nowrap;
+    color: var(--text-primary);
+    img {
+        height: auto;
+        width: 80px;
+        padding-left: 0;
+        margin-left: 0;
+    }
+    p {
+        line-height: 0.9;
+        font-size: 2.3em;
+        white-space: nowrap;
+        font-family: Manrope, sans-serif;
+    }
+}
+
+@media (max-width: 790px) {
+    .header-logo {
+        white-space: normal;
+        padding-left: 2em;
+        p {
+            font-size: 2em;
+            white-space: normal;
+        }
+    }
+    header {
+        a {
+            font-size: 1.8em;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    header {
+        nav {
+            padding-right: 1em;
+        }
+    }
+    .header-logo {
+        padding-left: 2em;
+        gap: 0.2em;
+        p {
+            font-size: 1.8em;
+        }
+    }
+    header {
+        ul {
+            gap: 0.5em;
+        }
+        a {
+            font-size: 1.6em;
+        }
+    }
+}
+
+@media (max-width: 420px) {
+    header {
+        nav {
+            padding-right: 0.4em;
+        }
+    }
+    .header-logo {
+        padding-left: 0.5em;
+        gap: 0.2em;
+        p {
+            font-size: 1.2em;
+        }
+        img {
+            width: 60px;
+        }
+    }
+    header {
+        ul {
+            gap: 0.1em;
+        }
+        a {
+            font-size: 1.3em;
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .header-logo {
+        padding-left: 0.2em;
+        p {
+            font-size: 1.1em;
+        }
+        img {
+            width: 50px;
+        }
+    }
+    header {
+        a {
+            font-size: 1.1em;
+        }
+    }
+}

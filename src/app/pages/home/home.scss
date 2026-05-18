@@ -1,0 +1,26 @@
+h1 {
+    text-align: center;
+}
+
+// Huvudinnehållet styling startsidan
+main {
+    padding: 2em;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    flex: 1;
+    min-height: 100%;
+    text-align: center;
+}
+
+@media (max-width: 1300px) {
+    main {
+        padding: 0em;
+    }
+}
+
+@media (max-width: 600px) {
+    main {
+        padding: 0em;
+    }
+}

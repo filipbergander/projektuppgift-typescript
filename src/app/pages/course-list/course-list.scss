@@ -1,0 +1,28 @@
+// Rubriken
+h1 {
+    text-align: center;
+}
+
+// Huvudinnehållet med tabell på kurssidan
+main {
+    padding: 2em;
+    width: 100%;
+    min-height: 100vh;
+    max-width: 1240px;
+    margin: 0 auto;
+    flex: 1;
+    text-align: center;
+}
+
+@media (max-width: 1300px) {
+    main {
+        padding: 0em;
+        margin-bottom: 4em;
+    }
+}
+
+@media (max-width: 600px) {
+    main {
+        padding: 0em;
+    }
+}

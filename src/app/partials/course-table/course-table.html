@@ -1,0 +1,183 @@
+<!--Knapp för att gå till ramschemat från kurslistan-->
+<div class="forward-container">
+    <a mat-raised-button class="forward-btn" routerLink="/ramschema" routerLinkActive="current">
+        <mat-icon>arrow_forward</mat-icon> Ramschema</a>
+</div>
+
+<!-- Använder Angular Material UI för att skapa tabellen -->
+<div class="table-container">
+
+    <div class="table-cont-header">
+        <h1>Kurser
+            <mat-icon>view_timeline</mat-icon>
+        </h1>
+        <!-- Container för att skriva in antal poäng för studierna samt progressbar (determinate) -->
+        <div class="points-container">
+            <div class="input-points-area">
+                <!--Hur många poäng som besökaren vill läsa på universitetet-->
+                <label class="points-label" for="pointsInput">Hur många poäng vill du läsa?<mat-icon>workspace_premium</mat-icon></label>
+                <input type="number" [ngModel]="goalPoints()" (ngModelChange)="storePointsStorage($event)" min="0.5" step="0.5" max="300" id="pointsInput" class="points-input" aria-describedby="points-warning">
+                <!--Om poäng som skrivits in i input är > 300 eller under 0 visas varningsmeddelandet-->
+                @if (targetPoints() > 300) {
+                <p class="warning-label" id="points-warning">
+                    <mat-icon>warning</mat-icon>Max antal poäng är 300hp.
+                </p>} @else if (targetPoints()
+                < 0 || targetPoints()> 0 && targetPoints()
+                    < 0.5){<p class="warning-label" id="points-warning">
+                        <mat-icon>warning</mat-icon>Minsta antal poäng är 0,5hp. </p>}
+            </div>
+
+            <!--Om poängen som angivits i input är += 0.5 visas progressbaren -->
+            @if (goalPoints() >= 0.5) {
+            <div class="homemade-bar-container" [class.show]="goalPoints() >= 0.5" [ngClass]="barProgressColor()">
+
+                <!--Om poäng som besökaren lagt till i ramschemat är mer än poängen som den vill läsa och att det inte överstiger 300hp visas annat varningsmeddelande-->
+                @if (totalPoints > goalPoints() && goalPoints()
+                < 300) { <p class="warning-points">
+                    <mat-icon>warning</mat-icon>Du överstiger med {{totalPoints - goalPoints() | number:'1.0-1'}}hp! Ta bort kurser från ramschemat eller öka antal poäng du vill läsa.</p>}
+
+                    <!--Om poäng besökaren vill läsa är 300 men den lagt till för många kurser som överstiger 300hp, varningsmeddelande-->
+                    @else if (goalPoints() === 300 && totalPoints > goalPoints()) {
+                    <p class="warning-points">
+                        <mat-icon>warning</mat-icon>Du överstiger med {{totalPoints - goalPoints() | number:'1.0-1'}}hp för max som går att läsa! Ta bort kurser från ramschemat.
+                    </p>}
+
+                    <!--Text med poängen-->
+                    <p class="points-text">{{totalPoints | number: '1.0-1'}} / {{goalPoints() | number:'1.0-1'}}hp</p>
+
+                    <!--Visar progressbar med texter och ikoner-->
+                    <div>
+                        <!--Om man uppnått alla poängen som man angivit-->
+                        @if (progressPercentage() === 100) {
+                        <div class="points-complete-container">
+                            <p class="points-complete">Full pott för schemat!
+                                <mat-icon class="points-left-icon">celebration</mat-icon>
+                            </p>
+                            <a class="schema-link" routerLink="/ramschema" routerLinkActive="current">Visa
+                                ramschemat</a>
+                        </div>
+                        }
+                        <!--Annars om det är poäng kvar mot "målpoängen"-->
+                        @else if (totalPoints
+                        < goalPoints()) { <p class="points-left">
+                            {{ goalPoints() - totalPoints | number:'1.0-1' }} hp kvar!
+                            <!--Visar olika ikoner beroende på progressen-->
+                            <mat-icon class="points-left-icon"> @if (progressPercentage() >= 66) {trending_up} @else if (progressPercentage() >= 33) {hourglass_bottom} @else {hourglass_empty}
+                            </mat-icon>
+                            </p>
+                            }
+                            <!--Progressbaren-->
+                            <div class="bar-wrapper">
+                                <mat-progress-bar class="progress-bar" mode="determinate" aria-label="Progressbar för antal poäng som vill läsas på universitetet" [value]="progressPercentage()">
+                                </mat-progress-bar>
+                                <mat-icon (click)="minimizeBar()" class="progress-icon">close</mat-icon>
+                            </div>
+                    </div>
+            </div>
+            }
+            <!--Avslutar-->
+        </div>
+        <!-- Inputfält för att söka efter kurser eller filtrera -->
+        <div class="filter-field">
+            <mat-form-field class="filter-input">
+                <mat-label>Filtrera kurser</mat-label>
+                <!-- Inputfältet för att kunna söka/filtrera efter kurser-->
+                <input matInput (keyup)="applyFilter($event)" [matAutocomplete]="auto" placeholder="Sök kurs..." #input>
+                <!-- Autocomplete-lista under inputfältet-->
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="chooseCourse($event)">
+                    @for (course of filteredCourses(); track course.courseCode) {
+                    <!--Alla förslag som dyker upp, strong på kurskod-->
+                    <mat-option class="autocomplete-option" [value]="course.courseCode">
+                        <strong>{{course.courseCode}}</strong><br>
+                        <span>{{course.courseName}}</span>
+                    </mat-option>
+                    }
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <!-- Dropdown-meny-->
+            <mat-form-field class="dropdown-menu">
+                <mat-label>Ämne:</mat-label>
+                <mat-select [(ngModel)]="selected" (selectionChange)="filterSubject()">
+                    <mat-option value="">Alla</mat-option>
+                    <!-- Filtrera bland varje ämne som finns i den inhämtade datan -->
+                    @for (subject of subjects; track subject) {
+                    <mat-option [value]="subject">{{subject}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+
+
+        <!-- Visar antal kurser som matchar sökningen -->
+        <div class="course-counter">
+            <p>Listar {{dataSource.filteredData.length}} {{dataSource.filteredData.length === 1 || dataSource.filteredData.length === 0 ? "kurs" : "kurser"}} av totalt {{courses().length}}.</p>
+        </div>
+
+    </div>
+</div>
+
+<div>
+
+
+    <!-- Tabell med kurser inhämtade från service -->
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+
+            <!-- Kurskod -->
+            <ng-container matColumnDef="courseCode">
+                <th mat-header-cell class="header-coursecode" *matHeaderCellDef mat-sort-header> Kurskod </th>
+                <td mat-cell class="cell-coursecode" *matCellDef="let row"> {{row.courseCode}} </td>
+            </ng-container>
+
+            <!-- Kursnamn -->
+            <ng-container matColumnDef="courseName">
+                <th mat-header-cell class="header-coursename" *matHeaderCellDef mat-sort-header> Kursnamn </th>
+                <td mat-cell class="cell-coursename" *matCellDef="let row"> {{row.courseName}} </td>
+            </ng-container>
+
+            <!-- Högskolepoäng -->
+            <ng-container matColumnDef="points">
+                <th class="header-points" mat-header-cell *matHeaderCellDef mat-sort-header> Poäng </th>
+                <td class="cell-points" mat-cell *matCellDef="let row"> {{row.points}} </td>
+            </ng-container>
+
+            <!-- Ämne -->
+            <ng-container matColumnDef="subject">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Ämne </th>
+                <td mat-cell *matCellDef="let row"> {{row.subject}} </td>
+            </ng-container>
+
+            <!-- Kursplan med ikon -->
+            <ng-container matColumnDef="syllabus">
+                <th mat-header-cell class="header-courseplan" *matHeaderCellDef> Kursplan </th>
+                <td mat-cell *matCellDef="let row" class="cell-courseplan">
+                    <a href="{{row.syllabus}}" class="course-plan-row" aria-label="Länk till kursplan" target="_blank">
+                        <mat-icon class="syllabus-icon">
+                            link
+                        </mat-icon>
+                    </a>
+                </td>
+            </ng-container>
+            <!--Knapp för att lägga till kursen i ramschemat genom localStorage, ändrar knappens text beroende på om tillhörande kurs är tillagd-->
+            <ng-container matColumnDef="add">
+                <th mat-header-cell *matHeaderCellDef>Val</th>
+                <td mat-cell *matCellDef="let row"><button class="add-course-btn" id="{{row.courseCode}}" [class.clicked]="row.added" [disabled]="row.added" (click)="addCourseToPlan(row)" aria-label="Lägg till kurs i ramschema"><span class="add-course-text">{{row.added
+                            ? "Lagt till" : "Lägg till" }}</span><mat-icon class="add-icon">
+                            {{row.added ? "check" : "add"}}
+                        </mat-icon></button></td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <!-- När ingen kurs matchar sökning visas detta här -->
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">Ingen kurs matchar din sökning "{{input.value}}"</td>
+            </tr>
+        </table>
+        <!-- Paginering istället för att ha allt i en lång lista och sida, och möjlighet att välja antal kurser som visas på varje sida -->
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons aria-label="Välj sida för kurser"></mat-paginator>
+    </div>
+</div>

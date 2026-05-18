@@ -1,0 +1,213 @@
+    // Include theming for Angular Material with `mat.theme()`.
+    // This Sass mixin will define CSS variables that are used for styling Angular Material
+    // components according to the Material 3 design spec.
+    // Learn more about theming and how to use it for your application's
+    // custom components at https://material.angular.dev/guide/theming
+    @use '@angular/material' as mat;
+    @include mat.core();
+    // Olika färger som användes till en början för sidorna
+    $color-primary:#53CBF3;
+    $color-secondary:#FFDE42;
+    $color: #5478FF;
+    $color-background:#111FA2;
+    $btn-color-news: rgb(255, 238, 0);
+    $btn-color-red: #e95500e3;
+    $color-text: #000000;
+    $color-text-light: #ffffff;
+    $color-dark-primary: #03457e;
+    $color-dark-secondary: #ffb300;
+    // Mörkt och ljust tema
+    $light-theme: mat.define-theme(( color: ( theme-type: light, primary: mat.$cyan-palette, tertiary: mat.$blue-palette, ), ));
+    $dark-theme: mat.define-theme(( color: ( theme-type: dark, primary: mat.$cyan-palette, tertiary: mat.$blue-palette, ), ));
+    * {
+        box-sizing: border-box;
+    }
+    
+    html {
+        //@include mat.theme($dark-theme);
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        @include mat.theme( ( color: ( primary: mat.$blue-palette, tertiary: mat.$azure-palette, ), typography: Roboto, density: 0, ));
+    }
+    
+    // Klass för att lägga till en röd färg på progressbar under 33%
+    .bar-red {
+        @include mat.progress-bar-overrides(( active-indicator-color: #e53935, track-color: #ffcccc, ));
+    }
+    
+    // Klass för att lägga till en gul färg på progressbar under 66%
+    .bar-yellow {
+        @include mat.progress-bar-overrides(( active-indicator-color: #fbc02d, track-color: #fff4c2, ));
+    }
+    
+    // Klass för att lägga till en ljusgrön färg på progressbar under 100%
+    .bar-light-green {
+        @include mat.progress-bar-overrides(( active-indicator-color: #97f79b, track-color: #ffffff, ));
+    }
+    
+    // Klass för att lägga till en grön färg på progressbar när man uppnått 100%
+    .bar-green {
+        @include mat.progress-bar-overrides(( active-indicator-color: #0df818, ));
+    }
+    
+    // Styling för höjd på progressbaren
+    .homemade-bar-container {
+        @include mat.progress-bar-overrides(( active-indicator-height: 10px, track-height: 10px, ));
+    }
+    
+    // Ljust färgtema med variabler
+    .light-theme {
+        @include mat.all-component-themes($light-theme);
+        // Allmänna
+        --mat-sys-primary: #53CBF3;
+        --mat-sys-secondary: #FFDE42;
+        --brand-primary: #03457e;
+        --brand-secondary: #ffb300;
+        // Bakgrunder
+        --bg-body: #f8e8b246;
+        --bg-body-alt: #ffffff;
+        --bg-stats: #e4e4e48a;
+        --bg-surface-stats: #2B7CA1;
+        --bg-choose-us: #16cf6094;
+        --bg-surface: #ffffff;
+        --bg-surface-alt: #ffffff;
+        --bg-footer: #233211d7;
+        --bg-surface-element: #e2e2e2;
+        --bg-header: #00acfc2f;
+        --bg-notfound: #f5acac;
+        // Texter
+        --text-primary: #000000;
+        --text-secondary: #cbd5e1;
+        --text-hover: #0c01016b;
+        --text-warning: #5a0101;
+        --text-warning-bar: #ff4a4a;
+        // Ikon
+        --icon-color: #000000;
+        // Borders
+        --border-color: #e0e0e0;
+        // Kort-containern startsida
+        --card-bg: #ffffff;
+        --card-text: #000000;
+        --card-text-alt: #666666;
+        // Knappar
+        --btn-add: #f1b528;
+        --btn-remove: #ff784e;
+        --bg-button: #e4e4e48a;
+        --bg-course-btn: #f59e64;
+        // Tabellerna
+        --bg-table-header: #53CBF3;
+        --bg-table-header-schema: #FBBF24;
+        --cell-colour: #ffffff;
+        --bg-points-cont: #0ea5e9;
+        --bg-row-header: #e9e50b;
+        --cell-row-even: #ebe8e854;
+        --cell-row-hover: #e8f0ff;
+        --syllabus-icon-hover: #026d1c;
+        --bg-progressbar: #3b3a3aee;
+        --bg-row: #ffffff;
+        --bg-table-alt: #ffffff;
+        --bg-floating-text: #dadddd81;
+        --bg-floating-label: #9b4003;
+    }
+    
+    // Mörkt färgtema med variabler
+    .dark-theme {
+        @include mat.all-component-themes($dark-theme);
+        // Allmänna
+        --mat-sys-primary: #03457e;
+        --mat-sys-secondary: #f1b528;
+        --mat-sys-surface: #1e293b;
+        --mat-sys-surface-container: #243447;
+        --mat-sys-surface-container-low: #2d3b4f;
+        --brand-primary: #03457e;
+        --brand-secondary: #ffb300;
+        // Bakgrunder
+        --bg-body: #0f172a;
+        --bg-surface: #1e293b;
+        --bg-surface-element: #1e293b;
+        --bg-stats: #243447;
+        --bg-surface-stats: #1e293b;
+        --bg-choose-us: #08148094;
+        --bg-surface-alt: #243447;
+        --bg-footer: #030625;
+        --bg-about: #1e293b;
+        --bg-header: #00acfc2f;
+        --bg-notfound: #150046;
+        // Texter
+        --text-primary: #ffffff;
+        --text-secondary: #cbd5e1;
+        --text-hover: #ffffffc9;
+        --text-warning: #FF4242;
+        --text-warning-bar: #f31212;
+        // Ikon
+        --icon-color: #FBBF24;
+        // Borders
+        --border-color: #2b7ca1c0;
+        // Kort-containern startsida
+        --card-bg: #1e293b;
+        --card-text: #ffffff;
+        --card-text-alt: #ffffff;
+        // Knappar
+        --btn-add: #f1b528;
+        --btn-remove: #ff784e;
+        --bg-button: #011d4b;
+        --bg-course-btn: #9e5a1e;
+        // Tabellerna
+        --bg-table-header: #13036c;
+        --bg-table-header-schema: #724604;
+        --cell-colour: #2b7ca1c0;
+        --bg-points-cont: #012031;
+        --bg-row-header: #630172;
+        --cell-row-even: #01143dd4;
+        --cell-row-hover: #1d0261;
+        --syllabus-icon-hover: #f4faf6;
+        --bg-progressbar: #0d0138ee;
+        --bg-row: #000526;
+        --bg-table-alt: #01143dd4;
+        --bg-floating-text: #01592dd4;
+        --bg-floating-label: #ffb300;
+    }
+    
+    body {
+        //@extend .light-theme;
+        //color-scheme: light;
+        background-color: #f8e8b246;
+        background: var(--bg-body);
+        color: var(--mat-sys-on-surface);
+        font: var(--mat-sys-body-medium);
+        font-family: "Inter", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    // Allt innehåll i app-root
+    app-root {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    
+    // Länk till hemknappen för att markera när man står på startsidan, border under
+    header {
+        .current {
+            position: relative;
+            color: #2d6cdf;
+            font-weight: 600;
+        }
+        // En border som ligger under hem när man är på sidan
+        .current::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            height: 4px;
+            width: 100%;
+            background: linear-gradient(90deg, #2d6cdf, #6aa8ff); // Skiftande blå färg
+            border-radius: 4px 4px 0;
+        }
+    }

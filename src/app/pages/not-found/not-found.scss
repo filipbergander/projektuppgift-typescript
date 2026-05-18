@@ -1,0 +1,29 @@
+// Själva innehållet på sidan 404
+main {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    height: 100vh;
+    text-align: center;
+    align-content: center;
+    color: var(--text-primary);
+    background: var(--bg-notfound);
+    //background-color: #f5acac;
+    // Responsiv rubrik och text med clamp, minsta och största textstorlek
+    h1 {
+        font-size: clamp(1.7em, 3vw, 2.5em);
+    }
+    h2 {
+        font-size: clamp(1.5em, 3vw, 2.3em);
+    }
+    p {
+        font-size: clamp(1.1em, 2.5vw, 1.3em);
+        //color: rgb(0, 0, 0);
+        color: var(--text-primary);
+    }
+    a {
+        color: var(--text-primary);
+    }
+}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 500px) {}

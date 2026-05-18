@@ -1,0 +1,182 @@
+// Hela containern med statistik och sektionen varför välja oss
+.stats-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-stats);
+    //background-color: #e4e4e48a;
+    border-radius: 20px;
+    padding: 4em 0 4em;
+    width: 100%;
+    margin-top: 5rem;
+}
+
+// Statisik-sektionen
+section {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 700px;
+    padding: 0.3em;
+    background: var(--bg-surface-stats);
+    //background-color: #2B7CA1;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.548);
+    div {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+    P {
+        font-weight: 800;
+        font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+        display: flex;
+        align-items: center;
+        margin-top: 0;
+        color: #fefefe;
+        line-height: 1.2;
+    }
+    .p-items {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0em;
+    }
+}
+
+// Rubrik för statistik
+h2 {
+    font-size: clamp(1.6rem, 2vw, 1.8rem);
+    margin-bottom: 0.5em;
+    width: 80%;
+    color: #fefefe;
+    border-bottom: 3px solid #FBBF24;
+    padding-bottom: 0.3em;
+    display: inline-block;
+}
+
+// Ikoner till statistik-sektionen, med animation
+mat-icon {
+    font-size: 2rem;
+    width: 2rem;
+    height: 2rem;
+    color: #FBBF24;
+    animation: iconPulse 2.7s ease-in-out infinite;
+    transform-origin: center;
+}
+
+// Liten delay för att inte alla ikoner ska pulsera samtidigt
+.star-icon {
+    animation-delay: 0.1s;
+}
+
+.book-icon {
+    animation-delay: 0.3s;
+}
+
+.school-icon {
+    animation-delay: 0.6s;
+}
+
+// Artikeln med -> "varför välja oss"
+.choose-us {
+    @extend section; // Ärver stylingen från "statistik-sektionen"
+    background: var(--bg-choose-us);
+    //background-color: #16cf6094;
+    color: var(--text-primary);
+    max-width: 500px;
+    margin-top: 5rem;
+    h3 {
+        // Responsiv rubrik
+        font-size: clamp(1.5rem, 2.5vw, 1.7rem);
+    }
+    ul {
+        margin-left: 3rem;
+        padding-left: 1rem;
+        line-height: 1.5;
+        text-align: left;
+    }
+    li {
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        list-style-position: inside;
+        font-size: clamp(1rem, 1.5vw, 1rem);
+    }
+}
+
+// Ikoner i "varför välja oss"
+.choose-us mat-icon {
+    font-size: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--text-primary);
+    animation: none;
+    filter: none;
+    transform: none;
+}
+
+.park-icon {
+    color: black;
+    align-content: center;
+}
+
+// Animation
+@keyframes iconPulse {
+    0% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 0 #fbbe2400);
+    }
+    50% {
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 10px #fbbe24ab);
+    }
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 0 #fbbe2400);
+    }
+}
+
+@media (max-width: 1000px) {
+    .stats-container {
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 0.3em 0;
+        border-radius: 0;
+    }
+    .choose-us {
+        border-radius: 16px;
+        box-shadow: none;
+    }
+}
+
+
+/*@media (max-width: 600px) {
+    section {
+        padding: 0.3em 0;
+        border-radius: 0;
+    }
+}*/
+
+@media (max-width: 500px) {
+    .choose-us {
+        border-radius: 0;
+    }
+    .stats-container {
+        margin-top: 3rem;
+    }
+}
+
+@media (max-width: 360px) {
+    section {
+        .p-container {
+            gap: 1em;
+        }
+    }
+}
