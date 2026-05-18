@@ -6,8 +6,10 @@ import { Injectable } from '@angular/core';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 
 @Injectable()
-export class MatPaginatorTranslator extends MatPaginatorIntl {
 
+// Översätter texter i paginering till svenska från engelska
+export class MatPaginatorTranslator extends MatPaginatorIntl {
+  // Texterna
   override itemsPerPageLabel = 'Antal kurser per sida:';
   override nextPageLabel = 'Nästa sida';
   override previousPageLabel = 'Föregående sida';

@@ -1,3 +1,4 @@
+// Hela hero-sektionen med bild och texten som är ovanpå
 .hero {
     position: relative;
     height: min(50vh, 500px);
@@ -37,6 +38,7 @@
     }
 }
 
+// Textens container
 .text-overlay {
     background-color: rgba(0, 0, 0, 0.589);
     padding: 1.5rem 0.5rem 0.25rem;

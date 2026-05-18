@@ -1,3 +1,4 @@
+// Själva innehållet på sidan 404
 main {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     height: 100vh;
@@ -6,6 +7,7 @@ main {
     color: var(--text-primary);
     background: var(--bg-notfound);
     //background-color: #f5acac;
+    // Responsiv rubrik och text med clamp, minsta och största textstorlek
     h1 {
         font-size: clamp(1.7em, 3vw, 2.5em);
     }

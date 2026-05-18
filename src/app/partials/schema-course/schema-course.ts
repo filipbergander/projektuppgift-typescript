@@ -13,12 +13,12 @@ import { RouterLink, RouterLinkActive } from "@angular/router";
 import { MatAnchor } from "@angular/material/button";
 
 @Component({
-  selector: 'app-add-course',
+  selector: 'app-schema-course',
   imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatSelectModule, MatInputModule, MatIconModule, FormsModule, RouterLink, RouterLinkActive, MatAnchor],
-  templateUrl: './add-course.html',
-  styleUrl: './add-course.scss',
+  templateUrl: './schema-course.html',
+  styleUrl: './schema-course.scss',
 })
-export class AddCourse implements AfterViewInit {
+export class SchemaCourse implements AfterViewInit {
 
   // Alla kolumner som ska visas i tabellen
   displayedColumns: string[] = ["courseCode", "courseName", "points", "subject", "syllabus", "removed"];

@@ -1,11 +1,15 @@
+<!-- Välja tema selectbox med dropdown, mörkt/ljust-->
 <mat-form-field class="theme-box" appearance="outline">
     <mat-label>Tema</mat-label>
+    <!--Byter texten beroende på tema-->
     <mat-select [value]="theme()" (selectionChange)="changeTheme($event.value)" [aria-label]="theme() === 'light' ? 'Ljust tema' : 'Mörkt tema'">
         <mat-select-trigger>
+            <!--Byter ikon beroende på tema-->
             <mat-icon> {{theme() === "light" ? "light_mode": "dark_mode"}}</mat-icon><span>
                 {{theme() === "light" ?"Ljust tema": "Mörkt tema"}}
             </span>
         </mat-select-trigger>
+        <!--Texten och ikon för respektive tema ljust/mörkt-->
         <mat-option class="mat-option-light" value="light" aria-label="Välj ljust tema"><span>
                 Ljust tema
             </span>

@@ -1,3 +1,4 @@
+<!--Knapp för att gå tillbaka till kurslistan-->
 <div class="back-container">
     <a mat-raised-button="neutral" class="back-btn" routerLink="/kurser" routerLinkActive="current">
         <mat-icon>arrow_back</mat-icon>Kurser</a>
@@ -61,7 +62,6 @@
                             bort</span><mat-icon class="delete-icon">delete_outline
                         </mat-icon></button></td>
             </ng-container>
-
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 

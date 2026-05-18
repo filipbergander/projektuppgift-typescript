@@ -1,3 +1,4 @@
+// Container för bilderna
 .pictures-flex {
     margin-top: 5rem;
     display: flex;
@@ -11,6 +12,7 @@
     }
 }
 
+// Text till bilderna
 .pictures-text {
     margin-top: 0;
     padding: 1em;
@@ -21,6 +23,7 @@
         font-weight: bold;
         color: var(--text-primary);
     }
+    // Ikoner
     mat-icon {
         align-content: center;
         font-size: 30px;
@@ -31,6 +34,7 @@
     }
 }
 
+// Campusbilden
 .single-pic {
     background: var(--bg-surface-element);
     //background-color: #e2e2e2;
@@ -39,6 +43,7 @@
     flex: 1 1 350px;
     width: 100%;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    // Själva bilden
     img {
         display: block;
         width: 100%;
@@ -47,6 +52,7 @@
         border-radius: 12px;
         object-fit: cover;
     }
+    // Rubrik
     h3 {
         font-size: 1.7rem;
         margin: 0 auto;
@@ -60,6 +66,7 @@
     }
 }
 
+// Kort med recensioner
 .card-grid {
     display: grid;
     justify-content: center;
@@ -73,6 +80,7 @@
     max-width: 400px;
 }
 
+// Ikonbilden
 .man-header {
     background-image: url('/images/students/student-man-icon.jpg');
     background-size: cover;
@@ -81,6 +89,7 @@
     height: 50px;
 }
 
+// Ikonbilden
 .girl-header {
     background-image: url('/images/students/student-icon.jpg');
     background-size: cover;
@@ -89,6 +98,7 @@
     height: 50px;
 }
 
+// Text bredvid ikonen
 mat-card-header {
     .title {
         font-weight: 700;
@@ -103,6 +113,7 @@ mat-card-header {
     }
 }
 
+// Recensionen
 mat-card-content {
     p {
         font-size: 1.5em;
@@ -127,8 +138,14 @@ mat-card-content {
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     background: var(--bg-surface-alt);
+    img {
+        width: 100%;
+        height: 60%;
+        object-fit: cover;
+    }
 }
 
+// Hovereffekt på korten
 .icon-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.22);
@@ -144,6 +161,7 @@ mat-card-content p {
     position: relative;
 }
 
+// Citattecken
 mat-card-content p::before {
     content: "“";
     font-size: 2.4rem;

@@ -1,3 +1,4 @@
+// Text och ikon som visas när innan man klickar på selectboxen
 mat-select-trigger {
     align-items: center;
     display: flex;
@@ -8,6 +9,7 @@ mat-select-trigger {
     }
 }
 
+// Selectboxen
 .theme-box {
     width: 170px;
     font-size: 1.3em;

@@ -1,12 +1,15 @@
+<!-- Header med logo, temaväljare och navigering till hem-->
 <header>
     <div class="header-logo">
         <p class="header-text">Norrlands Universitet</p>
         <a routerLink="/hem"><img fetchpriority="high" src="/images/icon-typescript.png" alt="Logotyp Norrlands Universitet" width="80" height="80"></a>
     </div>
+    <!-- Navigering med en länk till hem, samt ikon-->
     <nav aria-label="Huvudmeny för sidlänkar">
         <ul>
             <li><a routerLink="/hem" routerLinkActive="current">Hem<mat-icon>home</mat-icon></a></li>
         </ul>
     </nav>
+    <!-- Selectbox för att välja tema mörkt/ljust-->
     <app-select-theme class="theme-box"></app-select-theme>
 </header>

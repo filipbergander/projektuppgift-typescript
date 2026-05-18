@@ -1,3 +1,4 @@
+// Länkarna till undersidorna
 .links {
     display: flex;
     justify-content: center;
@@ -5,7 +6,8 @@
     margin: 1em 0;
 }
 
-.link-about {
+// Länken till ramschemat
+.link-schema {
     display: flex;
     align-items: center;
     font-size: clamp(0.9em, 2vw, 1.5em);
@@ -26,6 +28,27 @@
     }
 }
 
+// Båda länkarna med ikon
+.links {
+    mat-icon {
+        align-content: center;
+        font-size: clamp(1.3rem, 2vw, 1.5rem);
+        width: 30px;
+        height: 30px;
+        margin-left: 0.3em;
+    }
+}
+
+// Länk till kurslistan
+.link-courses {
+    @extend .link-schema;
+    border-top: 5px solid #1275f7 !important;
+    &:hover {
+        background-color: #1275f7;
+    }
+}
+
+// Hela sektionen med vilka är vi
 section {
     margin-top: 5em;
     background: var(--bg-stats);
@@ -38,6 +61,7 @@ section {
     }
 }
 
+// Container för styling till vilka är vi
 .about-container {
     display: flex;
     flex-direction: column;
@@ -83,24 +107,6 @@ section {
     }
 }
 
-.links {
-    mat-icon {
-        align-content: center;
-        font-size: clamp(1.3rem, 2vw, 1.5rem);
-        width: 30px;
-        height: 30px;
-        margin-left: 0.3em;
-    }
-}
-
-.link-courses {
-    @extend .link-about;
-    border-top: 5px solid #1275f7 !important;
-    &:hover {
-        background-color: #1275f7;
-    }
-}
-
 @media (max-width: 1000px) {
     section {
         border-radius: 0;
@@ -136,7 +142,7 @@ section {
 @media (max-width: 370px) {}
 
 @media (max-width: 320px) {
-    .link-about {
+    .link-schema {
         width: 30%;
         min-width: 130px;
     }

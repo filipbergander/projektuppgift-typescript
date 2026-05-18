@@ -5,6 +5,7 @@
     // custom components at https://material.angular.dev/guide/theming
     @use '@angular/material' as mat;
     @include mat.core();
+    // Olika färger som användes till en början för sidorna
     $color-primary:#53CBF3;
     $color-secondary:#FFDE42;
     $color: #5478FF;
@@ -15,13 +16,13 @@
     $color-text-light: #ffffff;
     $color-dark-primary: #03457e;
     $color-dark-secondary: #ffb300;
+    // Mörkt och ljust tema
     $light-theme: mat.define-theme(( color: ( theme-type: light, primary: mat.$cyan-palette, tertiary: mat.$blue-palette, ), ));
     $dark-theme: mat.define-theme(( color: ( theme-type: dark, primary: mat.$cyan-palette, tertiary: mat.$blue-palette, ), ));
     * {
         box-sizing: border-box;
     }
     
-    //$dark-theme: mat.define-dark-theme(( color: ( theme-type: dark, primary: $color-primary, tertiary: $color-secondary, ), typography: Roboto, density: 0, ));
     html {
         //@include mat.theme($dark-theme);
         height: 100%;
@@ -55,8 +56,10 @@
         @include mat.progress-bar-overrides(( active-indicator-height: 10px, track-height: 10px, ));
     }
     
+    // Ljust färgtema med variabler
     .light-theme {
         @include mat.all-component-themes($light-theme);
+        // Allmänna
         --mat-sys-primary: #53CBF3;
         --mat-sys-secondary: #FFDE42;
         --brand-primary: #03457e;
@@ -108,8 +111,10 @@
         --bg-floating-label: #9b4003;
     }
     
+    // Mörkt färgtema med variabler
     .dark-theme {
         @include mat.all-component-themes($dark-theme);
+        // Allmänna
         --mat-sys-primary: #03457e;
         --mat-sys-secondary: #f1b528;
         --mat-sys-surface: #1e293b;
@@ -180,18 +185,21 @@
         flex-direction: column;
     }
     
+    // Allt innehåll i app-root
     app-root {
         display: flex;
         flex-direction: column;
         min-height: 100vh;
     }
     
+    // Länk till hemknappen för att markera när man står på startsidan, border under
     header {
         .current {
             position: relative;
             color: #2d6cdf;
             font-weight: 600;
         }
+        // En border som ligger under hem när man är på sidan
         .current::after {
             content: "";
             position: absolute;
@@ -199,7 +207,7 @@
             left: 0;
             height: 4px;
             width: 100%;
-            background: linear-gradient(90deg, #2d6cdf, #6aa8ff);
+            background: linear-gradient(90deg, #2d6cdf, #6aa8ff); // Skiftande blå färg
             border-radius: 4px 4px 0;
         }
     }

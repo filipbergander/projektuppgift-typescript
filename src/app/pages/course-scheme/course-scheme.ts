@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { AddCourse } from '../../partials/add-course/add-course';
+import { SchemaCourse } from '../../partials/schema-course/schema-course';
 
 @Component({
   selector: 'app-course-scheme',
-  imports: [AddCourse],
+  imports: [SchemaCourse],
   templateUrl: './course-scheme.html',
   styleUrl: './course-scheme.scss',
 })
