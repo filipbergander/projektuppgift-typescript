@@ -42,7 +42,7 @@ Jag valde utöver grundkraven att lägga till ytterligare funktionalitet och des
 
 - För att skapa en inbjudande hemsida gjorde jag en startsida med en hero-bild, information om lärosätet med statistik, design samt studentrecensioner. Alla sidor inom webbplatsen fick en navigeringsmeny samt footer.
 
-- Ett **färgschema** för ett mörkt- och ljusttema utformades, och funktionalitet för att skifta mellan teman gjordes med en selectbox samt ikoner inom header. Jag upplevde det som väl användbart för alla användare och tyckte det var kul att experimentera med olika färg. Färgerna sattes inom den globala stylingen, (styles.scss).
+- Ett **färgschema** för ett mörkt- och ljust tema utformades, och funktionalitet för att skifta mellan teman gjordes med en selectbox samt ikoner inom header. Jag upplevde det som väl användbart för alla användare och tyckte det var kul att experimentera med olika färg. Färgerna sattes inom den globala stylingen, (styles.scss).
 
 - **Paginering** samt **autocomplete** kompletterade tabellen för kurslistan. Det finns möjlighet att bläddra mellan sidorna bland kurserna samt välja hur många kurser som ska visas per sida. När man ska filtrera och söka på en kurs visas valmöjligheter (options) för sökförslagen och det går att klicka på ett specifikt förslag för att visa just den kursen i tabellen, genom kurskoden.
 
