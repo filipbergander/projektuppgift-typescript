@@ -54,13 +54,11 @@ Felhantering finns till progress-baren och validerar beroende på vad användare
 <img width="600" height="480" alt="progressbar" src="https://github.com/user-attachments/assets/c5acdc44-b96e-45bc-bef2-0f6a06b0c138" />
 </p>
 
-
  ### Styling & validering
  Styling gjordes med SCSS-filer inom både komponenterna samt i den globala SCSS-filen. Animationer finns för ikoner och texter för ett mer levande och trevligt innehåll. Aria-labels användes för att höja tillgängligheten där det var lämpligt och för att validera koden ytterligare. Mycket färger med bilder användes och det krävde att både bakgrund och textfärgerna valdes med noggrannhet, eftersom webbplatsen skulle vara enkel att navigera i. Webbplatsen testades i både mobil och desktop, samt webbläsarna:
  - Google Chrome
  - Microsoft Edge
  - Mozilla Firefox
->>>>>>> development
 
 ## Instruktioner från Angular:
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
