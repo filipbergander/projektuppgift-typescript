@@ -6,7 +6,8 @@ Jag gav mitt projekt och det fiktiva lärosätet namnet Norrlands Universitet. R
 Möjligheten att filtrera och sortera bland kurserna ska finnas med och funktionalitet samt logik ska finnas inom komponenter, services, och interface.  
 
 **Webbplats:** https://norrlands-universitet.netlify.app/  
-**Rapport:**
+**Rapport:**  
+<img width="1000" height="500" alt="startsida" src="https://github.com/user-attachments/assets/d3de6199-a031-432c-9268-77df2e877143" />
 
 Genom Angular skapade jag komponenter och sidor. Jag skapade tre sidor för webbplatsen som finns inom katalogen pages:
 - **Startsidan** (hem) med hero-bild och information samt lämpliga bilder.
@@ -21,18 +22,7 @@ Komponenter som skulle finnas på sidorna genom sitt innehåll skapades separat 
 
 ### Interface
 Jag valde att skapa ett interface för hur datan som jag hämtade in från webbtjänsten skulle se ut:  
-*export interface Course* {         
-**courseCode:** string;   
-    **subjectCode:** string;   
-    **level:** string;  
-    **progression:** string;  
-    **courseName:** string;  
-   **points:** number;  
-    **institutionCode:** string;  
-    **subject:** string;  
-    **syllabus:** string;  
-    **added?:** boolean;
-    }
+<img width="494" height="272" alt="interface" src="https://github.com/user-attachments/assets/72420f7d-b1e7-4f16-8191-84ad83ae99af" />
 
 ### Services
 
@@ -59,6 +49,11 @@ Jag valde utöver grundkraven att lägga till ytterligare funktionalitet och des
 - **Progress-bar**: ett inputfält finns ovanför tabellen till kurslistan för att kunna skriva in hur många poäng som användaren vill läsa på universitetet. Minst antal poäng är 0.5 och högst är 300. När användaren skriver in ett värde i inputfältet så visas en progress-bar längst ned på skärmen med position fixed, med syftet att visa hur många procent av det angivna antalet poäng som uppnåtts när kurser läggs till i ramschemat. Färgen ändras samtidigt i progress-baren beroende på hur många poäng man har lagt till i ramschemat, exempelvis olika färger vid 33%, 66% och 100%. 
 
 Felhantering finns till progress-baren och validerar beroende på vad användaren skriver in och hur många poäng av kurser som man lagt till. Detta tyckte jag var uppskattande att arbeta med, och varningstexter skrivs ut genom HTML-koden tillsammans med Angulars @if. En ikon likt ett kryss blev tillagd för att stänga progress-baren, vid klick återställs antal poäng som skrivits in i inputfältet och därmed döljer "progress-fältet".
+
+<p align="center">
+<img width="600" height="480" alt="progressbar" src="https://github.com/user-attachments/assets/c5acdc44-b96e-45bc-bef2-0f6a06b0c138" />
+</p>
+
 
  ### Styling & validering
  Styling gjordes med SCSS-filer inom både komponenterna samt i den globala SCSS-filen. Animationer finns för ikoner och texter för ett mer levande och trevligt innehåll. Aria-labels användes för att höja tillgängligheten där det var lämpligt och för att validera koden ytterligare. Mycket färger med bilder användes och det krävde att både bakgrund och textfärgerna valdes med noggrannhet, eftersom webbplatsen skulle vara enkel att navigera i. Webbplatsen testades i både mobil och desktop, samt webbläsarna:
