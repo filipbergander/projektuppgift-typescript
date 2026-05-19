@@ -1,16 +1,24 @@
-// Länkarna till undersidorna
+// Länkarna till undersidorna med ikoner
 .links {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 2em;
     margin: 1em 0;
+    mat-icon {
+        align-content: center;
+        font-size: clamp(1.3rem, 2vw, 1.5rem);
+        width: 30px;
+        height: 30px;
+        margin-left: 0.3em;
+    }
 }
 
 // Länken till ramschemat
 .link-schema {
     display: flex;
     align-items: center;
-    font-size: clamp(0.9em, 2vw, 1.5em);
+    font-size: clamp(1em, 2vw, 1.5em);
     color: var(--text-primary);
     background: var(--bg-button);
     text-decoration: none;
@@ -25,17 +33,6 @@
     transition: 0.3s ease;
     &:hover {
         background-color: #FBBF24;
-    }
-}
-
-// Båda länkarna med ikon
-.links {
-    mat-icon {
-        align-content: center;
-        font-size: clamp(1.3rem, 2vw, 1.5rem);
-        width: 30px;
-        height: 30px;
-        margin-left: 0.3em;
     }
 }
 
@@ -59,6 +56,24 @@ section {
         color: var(--text-primary);
         font-size: clamp(1.7rem, 2vw, 2rem);
     }
+}
+
+.course-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    p {
+        max-width: 40ch;
+        color: var(--text-shady);
+        text-align: center;
+        line-height: 1.2;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.253);
+        font-size: clamp(0.85rem, 1.5vw, 1rem);
+    }
+}
+
+.schema-area {
+    @extend .course-area;
 }
 
 // Container för styling till vilka är vi
@@ -142,8 +157,18 @@ section {
 @media (max-width: 370px) {}
 
 @media (max-width: 320px) {
+    .links {
+        gap: 1em;
+    }
     .link-schema {
-        width: 30%;
-        min-width: 130px;
+        width: 100%;
+        max-width: 300px;
+        gap: 0em;
+        padding: 0.2em 1em;
+        mat-icon {
+            font-size: 1rem;
+            width: 1em;
+            height: 1rem;
+        }
     }
 }
