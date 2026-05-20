@@ -8,7 +8,8 @@ import { Course } from '../interfaces/course';
 })
 export class GetCourseService {
   // Adress till webbtjänst för att hämta in kurser som objekt
-  private url: string = "https://matdah.github.io/DT208G---Programmering-i-TypeScript/Moment%205%20-%20Projekt/miun_courses.json";
+  //private url: string = "https://matdah.github.io/DT208G---Programmering-i-TypeScript/Moment%205%20-%20Projekt/miun_courses.json";
+  private url: string = 'assets/data/miun_courses.json';
 
   // HttpClient för att kunna hämta extern data från webbtjänsten
   private http = inject(HttpClient);
