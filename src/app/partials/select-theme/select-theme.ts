@@ -26,12 +26,10 @@ export class SelectTheme {
     const preferredDarkTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
     // Om valt tema är ljust
     const preferredLightTheme = window.matchMedia("(prefers-color-scheme: light)").matches;
-
     // Om den har valt mörkttema
     if (preferredDarkTheme) {
       this.changeTheme("dark");
       this.theme.set("dark");
-
     } else if (preferredLightTheme) {// Om den har valt ljusttema
       this.changeTheme("light");
       this.theme.set("light");

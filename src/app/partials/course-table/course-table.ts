@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, effect, inject, signal, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, effect, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { GetCourseService } from '../../services/get-courses';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -23,7 +23,7 @@ import { MatAutocompleteModule, MatAutocompleteSelectedEvent } from "@angular/ma
   templateUrl: './course-table.html',
   styleUrl: './course-table.scss',
 })
-export class CourseTable implements AfterViewInit {
+export class CourseTable implements AfterViewInit, OnInit {
 
   // Alla kolumner som ska finnas i tabellen
   displayedColumns: string[] = ["courseCode", "courseName", "points", "subject", "syllabus", "add"];
@@ -44,8 +44,8 @@ export class CourseTable implements AfterViewInit {
 
   // Properties
   subjects: string[] = []; // Ämnen i dropdownmenyn
-  selected: string = ""; // Valt ämne i dropdownmenyn
-  totalPoints: number = 0; // Antal poäng som användaren lagt till i ramschemat
+  selected = ""; // Valt ämne i dropdownmenyn
+  totalPoints = 0; // Antal poäng som användaren lagt till i ramschemat
 
   targetPoints = signal(0); // Antal poäng som användaren skrivit i input för, används till att visa felmeddelande
   goalPoints = signal(0); // Antal poäng som användaren vill läsa som används i progressbaren
