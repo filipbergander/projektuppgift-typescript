@@ -15,9 +15,11 @@
         <div class="points-container">
             <div class="input-points-area">
                 <!--Hur många poäng som besökaren vill läsa på universitetet-->
-                <label class="points-label" for="pointsInput">Hur många poäng vill du läsa?<mat-icon>workspace_premium</mat-icon></label>
+                <label class="points-label" for="pointsInput">Hur många poäng vill du
+                    läsa?<mat-icon>workspace_premium</mat-icon></label>
                 <input type="number" [ngModel]="goalPoints()" (ngModelChange)="storePointsStorage($event)" min="0.5" step="0.5" max="300" id="pointsInput" class="points-input" aria-describedby="points-warning">
-                <!--Om poäng som skrivits in i input är > 300 eller under 0 visas varningsmeddelandet-->
+
+                <!--Om poäng som skrivits in i input är > 300 eller under 0.5 visas varningsmeddelandet-->
                 @if (targetPoints() > 300) {
                 <p class="warning-label" id="points-warning">
                     <mat-icon>warning</mat-icon>Max antal poäng är 300hp.
@@ -25,6 +27,8 @@
                 < 0 || targetPoints()> 0 && targetPoints()
                     < 0.5){<p class="warning-label" id="points-warning">
                         <mat-icon>warning</mat-icon>Minsta antal poäng är 0,5hp. </p>}
+
+
             </div>
 
             <!--Om poängen som angivits i input är += 0.5 visas progressbaren -->

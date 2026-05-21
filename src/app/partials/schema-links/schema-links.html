@@ -1,12 +1,12 @@
 <!-- Länkar till undersidorna kurser och kurschema-->
 <div class="links" aria-label="Länkar till undersidorna, kurser och ramschema">
     <div class="course-area">
-        <a class="link-courses" routerLink="/kurser" routerLinkActive="current">Kurser<mat-icon>arrow_forward</mat-icon></a>
-        <p>Se universitets kurser</p>
+        <a class="link-courses" aria-describedby="kurs-description" routerLink="/kurser" routerLinkActive="current">Kurser<mat-icon>arrow_forward</mat-icon></a>
+        <p id="kurs-description">Se universitets kurser</p>
     </div>
     <div class="schema-area">
-        <a class="link-schema" routerLink="/ramschema" routerLinkActive="current">Ramschema<mat-icon>arrow_forward</mat-icon></a>
-        <p>Dina tillagda kurser</p>
+        <a class="link-schema" aria-describedby="schema-description" routerLink="/ramschema" routerLinkActive="current">Ramschema<mat-icon>arrow_forward</mat-icon></a>
+        <p id="schema-description">Dina tillagda kurser</p>
     </div>
 </div>
 <!-- Avsnitt med vilka är vi-->
