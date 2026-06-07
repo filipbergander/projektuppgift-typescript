@@ -5,7 +5,8 @@ Projektets syfte är att skapa en webbplats för ett fiktivt universitet. Webbpl
 Jag gav mitt projekt och det fiktiva lärosätet namnet Norrlands Universitet. Ramverket som använts i uppgiften är Angular, och den externa kurslistan hämtades in från Mittuniversitetet med en webbtjänst, URL-adress, i JSON-format.  
 Möjligheten att filtrera och sortera bland kurserna ska finnas med och funktionalitet samt logik ska finnas inom komponenter, services, och interface.  
 
-**Webbplats:** https://norrlands-universitet.netlify.app/       
+**Webbplats:** https://norrlands-universitet.netlify.app/  
+
 <img width="1000" height="500" alt="startsida" src="https://github.com/user-attachments/assets/d3de6199-a031-432c-9268-77df2e877143" />
 
 Genom Angular skapade jag komponenter och sidor. Jag skapade tre sidor för webbplatsen som finns inom katalogen pages:
